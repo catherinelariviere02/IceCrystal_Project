@@ -1,0 +1,2 @@
+data/ # don't save data outputs (large files sometimes)
+inputs/ #don't save data inputs (large files sometimes) 
