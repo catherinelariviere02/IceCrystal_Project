@@ -26,7 +26,7 @@ import coxeter
 input_dir = "../../inputs/"
 output_dir = "../../data/IceVIII/"
 
-walltime_stop = 60 * 5 # * 60 # 1 hour in seconds
+walltime_stop = 60 * 60 * 16 # * 60 # 1 hour in seconds
 
 ## crystallographic parameters
 types = ["O", "H"]
@@ -58,8 +58,8 @@ for i, shape_file in enumerate(shape_files):
 
         shape_info = json.load(file)
         mc.shape[types[i]] = dict(vertices=shape_info["8_vertices"])
-        mc.d[types[i]] = 3
-        mc.a[types[i]] = 1
+        mc.d[types[i]] = 0.2
+        mc.a[types[i]] = 0.2
 
         type_shapes.append(dict(type="ConvexPolyhedron", 
                                 rounding_radius = 0,
@@ -151,59 +151,53 @@ final_box.volume = shape_volume / final_volume_fraction
 #add move tuners 
 tune = hoomd.hpmc.tune.MoveSize.scale_solver(
     moves=["a", "d"],
-    target=0.5,
-    trigger=hoomd.trigger.And(
-        [ 
-            hoomd.trigger.Periodic(10), 
-            hoomd.trigger.Before(simulation.timestep + 5000)
-            ]
-    ),
-    types=types
+    target=0.3,
+    trigger=hoomd.trigger.Periodic(10),
+    types=types,
+    max_rotation_move=0.3,
+    max_translation_move=10
 )
-#simulation.operations.tuners.append(tune)
+# simulation.operations.tuners.append(tune)
 
-compress = hoomd.hpmc.update.QuickCompress(trigger=hoomd.trigger.Periodic(10), target_box=final_box)
-simulation.operations.updaters.append(compress)
+# compress = hoomd.hpmc.update.QuickCompress(trigger=hoomd.trigger.Periodic(10), target_box=final_box)
+# simulation.operations.updaters.append(compress)
 
-# run code 
-print("simulation timestep before compression = ", simulation.timestep)
-print(compress.complete)
+# # run code 
+# print("simulation timestep before compression = ", simulation.timestep)
+# print(compress.complete)
 
-simulation.run(1)
-print("initial trial move size")
-print("rotation ", mc.a["O"])
-print("translation ", mc.d["O"])
+# simulation.run(1)
+# print("initial trial move size")
+# print("rotation ", mc.a["O"])
+# print("translation ", mc.d["O"])
 
-t2 = time.time()
-while not compress.complete and simulation.timestep < 1e6: 
-    t1 = time.time()
-    simulation.run(100)
-    print(f"compression running...{time.time() - t1}")
-    print(f"current volume = {shape_volume / simulation.state.box.volume}")
-    print(f"time {time.time() - t2}")
-    print("rotation ", mc.a["O"])
-    print("translation ", mc.d["O"])
+# t2 = time.time()
+# while not compress.complete and simulation.timestep < 1e6: 
+#     t1 = time.time()
+#     simulation.run(100)
+#     print(f"compression running...{time.time() - t1}")
+#     print(f"current volume = {shape_volume / simulation.state.box.volume}")
+#     print(f"time {time.time() - t2}")
+#     print("rotation ", mc.a["O"])
+#     print("translation ", mc.d["O"])
 
-    print("rotation acceptance = ", mc.rotate_moves[0]/sum(mc.rotate_moves))
+#     print("rotation acceptance = ", mc.rotate_moves[0]/sum(mc.rotate_moves))
 
-    print("translation acceptance = ", mc.translate_moves[0] / sum(mc.rotate_moves))
+#     print("translation acceptance = ", mc.translate_moves[0] / sum(mc.rotate_moves))
 
-print(f"time step: {simulation.timestep}")
-print("rotation ", mc.a["O"])
-print("translation ", mc.d["O"])
+# print(f"time step: {simulation.timestep}")
+# print("rotation ", mc.a["O"])
+# print("translation ", mc.d["O"])
 
-if not compress.complete:
-    message = "Compression failed to complete"
-    raise RuntimeError(message)
+# if not compress.complete:
+#     message = "Compression failed to complete"
+#     raise RuntimeError(message)
 
-simulation.operations.updaters.remove(compress)
-
-#add in after initial compression 
-simulation.operations.tuners.append(tune)
+# simulation.operations.updaters.remove(compress)
 
 # slow compress - quick compress with equilibration 
 final_box = hoomd.Box.from_box(initial_box)
-final_volume_fraction = 0.3
+final_volume_fraction = 0.6
 final_box.volume = shape_volume / final_volume_fraction
 
 print(f"initial volume fraction : {shape_volume / simulation.state.box.volume}")
@@ -215,9 +209,10 @@ while simulation.state.box.volume > final_box.volume:
     new_box.volume = simulation.state.box.volume * 0.99 # shrink by 0.99
     print("initial volume fraction ", shape_volume / simulation.state.box.volume) 
     print("goal volume fraction ", shape_volume / new_box.volume)
+
     compress = hoomd.hpmc.update.QuickCompress(trigger=hoomd.trigger.Periodic(10), target_box=new_box)
     simulation.operations.updaters.append(compress)
-    
+    simulation.operations.tuners.append(tune)
     # run until compressed to desired volume
     while not compress.complete: 
         simulation.run(100)
@@ -238,9 +233,24 @@ while simulation.state.box.volume > final_box.volume:
 
     # remove quick compress 
     simulation.operations.updaters.remove(compress)
+    simulation.operations.tuners.append(tune)
 
+    tune_equilib = hoomd.hpmc.tune.MoveSize.scale_solver(
+        moves=["a", "d"],
+        target=0.5,
+        trigger=hoomd.trigger.And(
+            [ 
+                hoomd.trigger.Periodic(10), 
+                hoomd.trigger.Before(simulation.timestep + 5000)
+                ]
+        ),
+        types=types
+    )
+    
     # equilibrate (run for 10,000 steps, for now) 
-    simulation.run(10_000)
+    simulation.operations.tuners.append(tune_equilib)
+    simulation.run(50_000)
+    simulation.operations.tuners.remove(tune_equilib)
 
     # add simulation break for equilibration
     print(simulation.device.communicator.walltime)
@@ -283,3 +293,11 @@ target=0.3,
 logger.add(boxmc, ["shear_moves", "aspect_moves"])
 simulation.operations.updaters.append(boxmc)
 simulation.operations.tuners.append(boxmc_tune)
+
+equilib_time = 10e7
+
+while simulation.timestep < equilib_time:
+    simulation.run(1000)
+    if next_walltime >= walltime_stop: 
+        print("Simulation timed out")
+        break

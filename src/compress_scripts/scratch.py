@@ -35,6 +35,7 @@ def get_shape_info(N_scaling, types, cif):
     typeid = []
     shapes_info = []
     radius = []
+    shape_volume = 0
     for i, type in enumerate(types): 
         shape_file = input_dir + f"shapes/shape_141_H2O_0_{type}_unit_volume_principal_frame.json"
         N_types.append(type_list[type] * N_scaling)
@@ -46,10 +47,11 @@ def get_shape_info(N_scaling, types, cif):
                                     vertices = shapes_info[i]["8_vertices"]))
             poly=coxeter.shapes.ConvexPolyhedron(shapes_info[i]["8_vertices"])
             radius.append(poly.minimal_bounding_sphere.radius)
+            shape_volume += shapes_info[i] * N_types[i]
     
     spacing = 2.2 * max(radius)
 
-    return atoms, type_list, N_types, type_shapes, typeid, shapes_info, spacing
+    return atoms, type_list, N_types, type_shapes, typeid, shapes_info, spacing, shape_volume
 
 
 def initialize_lattice(spacing, N, typeid, type_shapes): 
@@ -85,7 +87,7 @@ def initialize():
     N_scaling = 100
     
     # get shape info 
-    atoms, type_list, N_types, type_shapes, typeid, shapes_info, spacing = get_shape_info(N_scaling, types, cif)
+    atoms, type_list, N_types, type_shapes, typeid, shapes_info, spacing, shape_volume = get_shape_info(N_scaling, types, cif)
     N = sum(N_types)
     print(spacing)
     frame = initialize_lattice(spacing, N, typeid, type_shapes)
@@ -99,26 +101,25 @@ def initialize():
 
     for i, type in enumerate(types):
         mc.shape[type] = dict(vertices=shapes_info[i]["8_vertices"])
-        mc.a[type] = 100
-        mc.d[type] = 20
+        mc.a[type] = 1
+        mc.d[type] = 1
 
     simulation.operations.integrator = mc 
     simulation.create_state_from_gsd(filename = output_dir + "lattice.gsd")
-    ti = time.time()
-    simulation.run(10)
-    print(time.time() - ti)
-    print("box size is ", simulation.state.box.L)
-    print(f"oxygen rotation is {mc.a["O"]}, translation is {mc.d["O"]}")
-    print("rotation acceptance ", mc.rotate_moves[0] / sum(mc.rotate_moves))
 
-    print("translation acceptance ", mc.translate_moves[0] / sum(mc.rotate_moves))
+    simulation.run(1000)
 
     return simulation 
 
 initialize() 
 
-def compress():
+# def tuner():
+
+
+def compress(walltime, output_dir):
     simulation = initialize()
+
+    
 
 
 def equilibrate(): 
