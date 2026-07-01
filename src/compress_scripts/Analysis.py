@@ -9,7 +9,7 @@ import os
 import cv2
 from natsort import natsorted
 
-def rdf(box, points, prop, r_max, dir, bins, frame, ax = None, label = None):
+def rdf(job, box, points, prop, r_max, dir, bins, frame, ax = None, label = None):
     """Helper function for plotting RDFs."""
     if ax is None:
         fig, ax = plt.subplots(1, 1, figsize=(12, 8))
@@ -22,13 +22,13 @@ def rdf(box, points, prop, r_max, dir, bins, frame, ax = None, label = None):
         ax.legend()
     else:
         ax.plot(rdf.bin_centers, getattr(rdf, prop))
-    plt.savefig(dir + f"rdf/rdf_{frame}.png")
+    plt.savefig(job.fn(f"rdf/rdf_{frame}.png"))
     return ax   
 
-def bod(box, points, file, r_max, dir, bins, frame): 
+def bod(job, box, points, file, r_max, dir, bins, frame): 
     #create bond order diagram object
-        n_bins_theta = bins
-        n_bins_phi = bins
+        n_bins_theta = job.sp.bins
+        n_bins_phi = job.sp.bins
         bod = freud.environment.BondOrder((n_bins_theta, n_bins_phi))
 
         #create arrays for plotting
@@ -56,8 +56,7 @@ def bod(box, points, file, r_max, dir, bins, frame):
             width=500, height=500,
             margin=dict(l=0, r=0, b=0, t=40)
             )
-        fig.write_image(dir + f"bod/finalframe_bod_{frame}.png")
-        #fig.show()
+        fig.write_image(job.fn(f"bod/finalframe_bod_{frame}.png"))
 
 def rmsd(dir, data):
     num_frames = len(data)
@@ -73,24 +72,10 @@ def rmsd(dir, data):
     msd.plot()
     plt.savefig(dir + f"rmsd.png")
 
-dir = "../../data/IceVIII/"
-file = "trajectory_temp.gsd"
 
-data = gsd.hoomd.open(dir + file, 'r')
-print(len(data))
-
-#calculate and plot bod
-# for i in range(100):
-#     box, points = data[i].configuration.box, data[i].particles.position
-#     r_max = 5
-#     rdf(box, points, "rdf", r_max, dir, bins = 100, frame = i)
-
-#     r_max = 5
-#     bod(box, points, file, r_max = r_max, dir = dir, bins = 500, frame = i)
-
-def video(prop):
-    path = dir + f"{prop}/"
-    video_name = dir + f"{prop}.mp4"
+def video(job, prop):
+    path = f"{prop}/"
+    video_name = job.fn(dir + f"{prop}.mp4")
     images = [img for img in os.listdir(path) if img.endswith((".jpg", ".jpeg", ".png"))]
     
     images = natsorted(images)
@@ -111,6 +96,28 @@ def video(prop):
     cv2.destroyAllWindows()
     print("Video generated successfully!")
 
-video("rdf")
-video("bod")
-#rmsd(dir, data)
+
+
+#calculate and plot bod
+def analyze(job):
+    if os.path.isdir(job.workspace + "rdf") == False:
+        os.mkdir(job.workspace + "rdf")
+
+    if os.path.isdir(job.workspace + "bod") == False:
+        os.mkdir(job.workspace + "bod")
+
+    file = "trajectory.gsd"
+    data = gsd.hoomd.open(job.fn(file), 'r')
+
+    for i in range(job.statepoint.logsteps):
+        box, points = data[i].configuration.box, data[i].particles.position
+        r_max = job.sp.rdf_rmax
+        rdf(job, box, points, "rdf", r_max, dir, bins = 100, frame = i)
+
+        r_max = job.sp.bod_rmax
+        bod(job, box, points, file, r_max = r_max, dir = dir, bins = 500, frame = i)
+        
+
+    video("rdf")
+    video("bod")
+    #rmsd(dir, data)

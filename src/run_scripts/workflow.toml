@@ -1,16 +1,17 @@
 [workspace]
+path = "../../data/workspace"
 value_file = "signac_statepoint.json"
 
 [default.action]
-command = "python project.py --action $ACTION_NAME {directories}"
+command = "python ../compress_scripts/project.py --action $ACTION_NAME {directories}"
 
 [[action]]
 name = "equilibrate"
 products = ["trajectory.gsd"]
-resources.walltime.per_directory = "00:10:00"
+resources.walltime.per_directory = "01:00:00"
 
 [[action]]
 name = "analyze"
 previous_actions = ["equilibrate"]
-products = ["finalframe_bod.html"]
+products = ["bod.mp4", "rdf.mp4"]
 resources.walltime.per_directory = "00:05:00"
