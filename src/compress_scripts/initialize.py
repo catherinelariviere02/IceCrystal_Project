@@ -7,7 +7,7 @@ def create_simulation():
      
     # IMPORT UNIT CELL AND CRYSTAL SHAPES
     directory = "/Users/clarivi/Desktop/Research/IceCrystal/inputs/cif_files/temp_files/"
-    gsdfile = directory + "/141_H2O_0_nvt_final_pf0p6_0.gsd"
+    gsdfile = directory + "92_H2O_IceXI_nvt_traj_pf0p6_0.gsd"
     atoms = ["O", "H"] #atom names in order they are logged in "shapes"
 
     traj = gsd.hoomd.open(gsdfile, mode="r") 
@@ -22,7 +22,7 @@ def create_simulation():
     simulation.create_state_from_gsd(filename = gsdfile, frame = 0)
 
     # create larger cell from unit cell (replication)
-    replicas = 5
+    replicas = 4
     simulation.state.replicate(nx = replicas, ny = replicas, nz = replicas)
 
     # SET UP MC SIMULATION 
@@ -43,7 +43,7 @@ def create_simulation():
 
     hoomd.write.GSD.write(state = simulation.state, 
                         mode = "xb", 
-                        filename = f"../../data/iceVIII/initialize_{atoms}.gsd", 
+                        filename = f"../../data/iceIX/initialize_{atoms}.gsd", 
                         logger = logger)
 
     return simulation 

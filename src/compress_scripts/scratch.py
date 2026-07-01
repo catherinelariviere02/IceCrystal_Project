@@ -18,13 +18,13 @@ import coxeter
 
 #parameters: 
 input_dir = "../../inputs/"
-output_dir = "../../data/IceVIII/"
-cif = input_dir + "cif_files/141_H2O_0.cif"
+output_dir = "../../data/IceIX/"
+cif = input_dir + "cif_files/92_H2O_0.cif"
 walltime_stop = 60 * 60 # 1 hour in seconds
 
 # get shape information
 types = ["O", "H"]
-N_scaling = 100
+N_scaling = 50
 
 
 def get_shape_info(N_scaling, types, cif):
@@ -37,7 +37,7 @@ def get_shape_info(N_scaling, types, cif):
     radius = []
     shape_volume = 0
     for i, type in enumerate(types): 
-        shape_file = input_dir + f"shapes/shape_141_H2O_0_{type}_unit_volume_principal_frame.json"
+        shape_file = input_dir + f"shapes/92_H2O_1/shape_92_H2O_0_{type}_unit_volume_principal_frame.json"
         N_types.append(type_list[type] * N_scaling)
         typeid = typeid + ([i] * N_types[i])
         with open(shape_file) as file: 
@@ -47,12 +47,45 @@ def get_shape_info(N_scaling, types, cif):
                                     vertices = shapes_info[i]["8_vertices"]))
             poly=coxeter.shapes.ConvexPolyhedron(shapes_info[i]["8_vertices"])
             radius.append(poly.minimal_bounding_sphere.radius)
-            shape_volume += shapes_info[i] * N_types[i]
+            shape_volume += shapes_info[i]["4_Volume"] * N_types[i]
     
     spacing = 2.2 * max(radius)
 
     return atoms, type_list, N_types, type_shapes, typeid, shapes_info, spacing, shape_volume
 
+def initialize_from_uc(uc_file, N_scaling):
+    gsdfile = uc_file
+
+    cpu = hoomd.device.CPU()
+    sim_temp = hoomd.Simulation(device = cpu, seed = 1)
+
+    sim_temp.create_state_from_gsd(filename = gsdfile, frame = 0)
+
+    # create larger cell from unit cell (replication)
+    replicas = N_scaling
+    sim_temp.state.replicate(nx = replicas, ny = replicas, nz = replicas)
+    
+    mc = hoomd.hpmc.integrate.ConvexPolyhedron()
+
+    #interate over all shapes (will be necessary for binary system)
+    for i in range(len(shapes)):
+        mc.shape[atoms[i]] = dict(
+            vertices = shapes[i]["vertices"]
+        )
+
+    logger = hoomd.logging.Logger()
+    logger.add(mc, quantities=["type_shapes"])
+
+    sim_temp.operations.integrator = mc
+
+    sim_temp.run(1)
+
+    hoomd.write.GSD.write(state = sim_temp.state, 
+                        mode = "xb", 
+                        filename = f"lattice.gsd", 
+                        logger = logger)
+
+    hoomd.write.GSD.write(state=sim_temp.state, mode="wb", filename="lattice.gsd")
 
 def initialize_lattice(spacing, N, typeid, type_shapes): 
     #initialize square lattice 
@@ -81,16 +114,22 @@ def initialize_lattice(spacing, N, typeid, type_shapes):
 
     return frame
 
-
 def initialize():
     types = ["O", "H"]
     N_scaling = 100
+    unitcell = True 
+    uc_file = input_dir + "shapes/92_H2O_1/92_H2O_IceXI_nvt_final_pf0p6_0.gsd"
     
     # get shape info 
     atoms, type_list, N_types, type_shapes, typeid, shapes_info, spacing, shape_volume = get_shape_info(N_scaling, types, cif)
     N = sum(N_types)
     print(spacing)
-    frame = initialize_lattice(spacing, N, typeid, type_shapes)
+
+    if unitcell == True:
+        initialize_from_uc(uc_file, N_scaling)
+    else:
+        frame = initialize_lattice(spacing, N, typeid, type_shapes)
+
     # initialize simulation
     cpu = hoomd.device.CPU()
     simulation = hoomd.Simulation(device=cpu, seed = 1)
@@ -111,7 +150,7 @@ def initialize():
 
     return simulation 
 
-initialize() 
+#initialize() 
 
 # def tuner():
 
@@ -119,7 +158,7 @@ initialize()
 def compress(walltime, output_dir):
     simulation = initialize()
 
-    
+
 
 
 def equilibrate(): 
@@ -189,6 +228,9 @@ def equilibrate():
     
     print(f"ran {sim_time} steps in {time.time() - t}")
 
+    os.rename(output_dir + "trajectory_temp.gsd", output_dir + "trajectory.gsd")
+
     simulation.operations.writers.remove(gsd_writer) #GSD files usually close when python script completes, mostly necessary if you run in a notebook
     del gsd_writer
 
+equilibrate() 

@@ -26,7 +26,7 @@ import coxeter
 input_dir = "../../inputs/"
 output_dir = "../../data/IceVIII/"
 
-walltime_stop = 60 * 60 * 16 # * 60 # 1 hour in seconds
+walltime_stop = 60 * 60 * 1 # * 60 # 1 hour in seconds
 
 ## crystallographic parameters
 types = ["O", "H"]
@@ -58,7 +58,7 @@ for i, shape_file in enumerate(shape_files):
 
         shape_info = json.load(file)
         mc.shape[types[i]] = dict(vertices=shape_info["8_vertices"])
-        mc.d[types[i]] = 0.2
+        mc.d[types[i]] = 0.8 #0.8 is step size large enough to randomize in thousands of time steps 
         mc.a[types[i]] = 0.2
 
         type_shapes.append(dict(type="ConvexPolyhedron", 
@@ -115,7 +115,7 @@ print(f"initial overlaps: {mc.overlaps}")
 print(simulation.timestep)
 ti = time.time()
 print("starting randomization")
-simulation.run(1000)
+simulation.run(5000)
 print(f"ending randomization in {time.time()-ti}")
 print(simulation.timestep)
 
@@ -212,7 +212,9 @@ while simulation.state.box.volume > final_box.volume:
 
     compress = hoomd.hpmc.update.QuickCompress(trigger=hoomd.trigger.Periodic(10), target_box=new_box)
     simulation.operations.updaters.append(compress)
-    simulation.operations.tuners.append(tune)
+
+    if shape_volume/simulation.state.box.volume > 0.1: #only tune once packing fraction is out of ideal gas regime 
+        simulation.operations.tuners.append(tune)
     # run until compressed to desired volume
     while not compress.complete: 
         simulation.run(100)
@@ -233,7 +235,9 @@ while simulation.state.box.volume > final_box.volume:
 
     # remove quick compress 
     simulation.operations.updaters.remove(compress)
-    simulation.operations.tuners.append(tune)
+
+    if shape_volume/simulation.state.box.volume > 0.1: #only tune once packing fraction is out of ideal gas regime 
+        simulation.operations.tuners.remove(tune)
 
     tune_equilib = hoomd.hpmc.tune.MoveSize.scale_solver(
         moves=["a", "d"],
@@ -248,9 +252,13 @@ while simulation.state.box.volume > final_box.volume:
     )
     
     # equilibrate (run for 10,000 steps, for now) 
-    simulation.operations.tuners.append(tune_equilib)
+    if shape_volume/simulation.state.box.volume > 0.1: #only tune once packing fraction is out of ideal gas regime 
+        simulation.operations.tuners.append(tune_equilib)
+
     simulation.run(50_000)
-    simulation.operations.tuners.remove(tune_equilib)
+
+    if shape_volume/simulation.state.box.volume > 0.1: #only tune once packing fraction is out of ideal gas regime 
+        simulation.operations.tuners.remove(tune_equilib)
 
     # add simulation break for equilibration
     print(simulation.device.communicator.walltime)
