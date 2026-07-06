@@ -1,0 +1,68 @@
+{
+    "0_Id": "NaCl",
+    "1_Name": "NaCl",
+    "2_ShortName": "NaCl",
+    "3_Commentt": "Vertices are in principal frame,centered, and correspond to unit volume",
+    "4_Volume": 2.75685,
+    "5_center_of_mass": [
+        0.0,
+        0.0,
+        0.0
+    ],
+    "6_moment_of_inertia": [
+        0.903,
+        0.0,
+        -0.0,
+        0.938,
+        -0.0,
+        0.938
+    ],
+    "7_comment_about_moment_of_inertia": "The components are stored as xx, xy, xz, yy, yz, zz",
+    "8_vertices": [
+        [
+            -0.60093,
+            -0.70109,
+            0.75117
+        ],
+        [
+            0.80125,
+            -0.70109,
+            -0.65101
+        ],
+        [
+            -0.60093,
+            -0.70109,
+            -0.65101
+        ],
+        [
+            0.80125,
+            -0.70109,
+            0.75117
+        ],
+        [
+            0.80125,
+            0.70109,
+            -0.65101
+        ],
+        [
+            -0.60093,
+            0.70109,
+            0.75117
+        ],
+        [
+            -0.60094,
+            0.70109,
+            -0.43712
+        ],
+        [
+            0.80125,
+            0.70109,
+            0.75117
+        ],
+        [
+            -0.60094,
+            0.70109,
+            -0.65101
+        ]
+    ]
+}

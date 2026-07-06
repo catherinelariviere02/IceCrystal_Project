@@ -13,5 +13,5 @@ resources.walltime.per_directory = "01:00:00"
 [[action]]
 name = "analyze"
 previous_actions = ["equilibrate"]
-products = ["bod.mp4", "rdf.mp4"]
+products = ["bod.mp4", "rdf.mp4", "bod2.mp4"]
 resources.walltime.per_directory = "00:05:00"

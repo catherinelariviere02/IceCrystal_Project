@@ -9,12 +9,12 @@ import os
 import cv2
 from natsort import natsorted
 
-def rdf(job, box, points, prop, r_max, dir, bins, frame, ax = None, label = None):
+def rdf(job, box, points, prop, r_max, frame, ax = None, label = None):
     """Helper function for plotting RDFs."""
     if ax is None:
         fig, ax = plt.subplots(1, 1, figsize=(12, 8))
         ax.set_title(prop, fontsize=16)
-    rdf = freud.density.RDF(bins, r_max)
+    rdf = freud.density.RDF(job.sp.bins, r_max)
     rdf.compute(system=(box, points), reset=False)
 
     if label is not None:
@@ -25,7 +25,7 @@ def rdf(job, box, points, prop, r_max, dir, bins, frame, ax = None, label = None
     plt.savefig(job.fn(f"rdf/rdf_{frame}.png"))
     return ax   
 
-def bod(job, box, points, file, r_max, dir, bins, frame): 
+def bod(job, box, points, file, r_max, frame, prop): 
     #create bond order diagram object
         n_bins_theta = job.sp.bins
         n_bins_phi = job.sp.bins
@@ -56,9 +56,9 @@ def bod(job, box, points, file, r_max, dir, bins, frame):
             width=500, height=500,
             margin=dict(l=0, r=0, b=0, t=40)
             )
-        fig.write_image(job.fn(f"bod/finalframe_bod_{frame}.png"))
+        fig.write_image(job.fn(f"{prop}/finalframe_bod_{frame}.png"))
 
-def rmsd(dir, data):
+def rmsd(job, data):
     num_frames = len(data)
     N = data[0].particles.N
     positions = np.zeros((num_frames, N, 3), dtype = float)
@@ -70,12 +70,12 @@ def rmsd(dir, data):
     msd = freud.msd.MSD(box, mode = "direct")
     msd.compute(positions)
     msd.plot()
-    plt.savefig(dir + f"rmsd.png")
+    plt.savefig(job.fn(f"rmsd.png"))
 
 
 def video(job, prop):
-    path = f"{prop}/"
-    video_name = job.fn(dir + f"{prop}.mp4")
+    path = job.path + f"/{prop}/"
+    video_name = job.fn(f"{prop}.mp4")
     images = [img for img in os.listdir(path) if img.endswith((".jpg", ".jpeg", ".png"))]
     
     images = natsorted(images)
@@ -99,25 +99,36 @@ def video(job, prop):
 
 
 #calculate and plot bod
-def analyze(job):
-    if os.path.isdir(job.workspace + "rdf") == False:
-        os.mkdir(job.workspace + "rdf")
+def analyze(*jobs):
+    for job in jobs:
+        if os.path.isdir(job.path + "/rdf") == False:
+            os.mkdir(job.path + "/rdf")
 
-    if os.path.isdir(job.workspace + "bod") == False:
-        os.mkdir(job.workspace + "bod")
+        if os.path.isdir(job.path + "/bod") == False:
+            os.mkdir(job.path + "/bod")
 
-    file = "trajectory.gsd"
-    data = gsd.hoomd.open(job.fn(file), 'r')
+        if os.path.isdir(job.path + "/bod2") == False:
+            os.mkdir(job.path + "/bod2")
 
-    for i in range(job.statepoint.logsteps):
-        box, points = data[i].configuration.box, data[i].particles.position
-        r_max = job.sp.rdf_rmax
-        rdf(job, box, points, "rdf", r_max, dir, bins = 100, frame = i)
+        file = "trajectory.gsd"
+        data = gsd.hoomd.open(job.fn(file), 'r')
 
-        r_max = job.sp.bod_rmax
-        bod(job, box, points, file, r_max = r_max, dir = dir, bins = 500, frame = i)
-        
+        for i in range(job.statepoint.logsteps):
+            box, points = data[i].configuration.box, data[i].particles.position
+            if job.isfile(f"rdf/rdf_{i}.png") == False:
+                r_max = job.sp.rdf_rmax
+                rdf(job, box, points, "rdf", r_max, frame = i)
+            
+            if job.isfile(f"bod/finalframe_bod_{i}.png") == False:
+                r_max = job.sp.bod_rmax
+                bod(job, box, points, file, r_max = r_max, frame = i, prop = "bod")
 
-    video("rdf")
-    video("bod")
-    #rmsd(dir, data)
+            if job.isfile(f"bod2/finalframe_bod_{i}.png") == False:
+                r_max = 10
+                bod(job, box, points, file, r_max = r_max, frame = i, prop = "bod2")
+            
+        rmsd(job, data)
+        video(job, "rdf")
+        video(job, "bod")
+        video(job, "bod2")
+        #rmsd(dir, data)
