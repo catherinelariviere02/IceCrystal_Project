@@ -23,7 +23,7 @@ def rdf(job, box, points, prop, r_max, frame, ax = None, label = None):
     else:
         ax.plot(rdf.bin_centers, getattr(rdf, prop))
     plt.savefig(job.fn(f"rdf/rdf_{frame}.png"))
-    return ax   
+    
 
 def bod(job, box, points, file, r_max, frame, prop): 
     #create bond order diagram object
