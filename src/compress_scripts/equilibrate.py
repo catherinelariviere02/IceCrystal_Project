@@ -6,14 +6,20 @@ import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
 import gsd.hoomd
 import plotly.graph_objects as go
-from initialize import create_simulation
+from utils import create_simulation, get_shape_info
 import os 
 import time
 
 #necessary job information: simulation length, number of log points, output file 
 def equilibrate(*jobs):
     for job in jobs:
-        simulation = create_simulation(job)
+        _, _, _, shapes, _, _ = get_shape_info(job.sp.inputfile, 
+                                                         job.sp.replicas, 
+                                                         job.sp.atoms, 
+                                                         job.sp.crystal_name)
+        
+        #possibly write if statement for compression or stability test 
+        simulation = create_simulation(job.fn("initialize.gsd"), frame = 0, shapes = shapes, atoms = jobs.sp.atoms)
 
         logger = hoomd.logging.Logger()
         logger.add(simulation.operations.integrator, 

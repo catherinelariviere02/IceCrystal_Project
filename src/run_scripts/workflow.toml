@@ -6,7 +6,13 @@ value_file = "signac_statepoint.json"
 command = "python ../compress_scripts/project.py --action $ACTION_NAME {directories}"
 
 [[action]]
+name = "initialize"
+products = ["initialize.gsd"]
+resources.walltime.per_directory = "00:10:00"
+
+[[action]]
 name = "equilibrate"
+previous_actions = ["initialize"]
 products = ["trajectory.gsd"]
 resources.walltime.per_directory = "01:00:00"
 
