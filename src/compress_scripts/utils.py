@@ -5,7 +5,15 @@ import json
 import coxeter 
 
 def create_simulation(filename, frame, shapes, atoms):
-    print(shapes)
+    """
+    Inputs: 
+    Filename: filename (including path) of gsd file 
+    frame: frame to use of GSD file 
+    shapes: list of crystal2shape formatted dictionaries giving info on shape vertices
+    atoms: array of atom types (i.e. ["O", "H"])
+
+    Outputs: HPMC simulation with atom shapes input to integrator 
+    """
     cpu = hoomd.device.CPU()
     simulation = hoomd.Simulation(device = cpu, seed = 1)
     

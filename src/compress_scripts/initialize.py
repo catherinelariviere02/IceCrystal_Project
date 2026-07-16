@@ -25,12 +25,12 @@ def initialize_stability(job):
 
     # create state from unit cell 
     simulation.create_state_from_gsd(filename = gsdfile, frame = 0)
-
+    snap = simulation.state.get_snapshot()
+   
     # create larger cell from unit cell (replication)
     replicas = job.statepoint.replicas #4
     simulation.state.replicate(nx = replicas, ny = replicas, nz = replicas)
-    #hoomd.write.GSD.flush()
-
+    
     hoomd.write.GSD.write(state = simulation.state, 
                         mode = "wb", 
                         filename = job.fn(f"initial_temp.gsd"))
@@ -99,6 +99,9 @@ def initialize(*jobs):
                                        frame = 0, 
                                        shapes = shape_json_dicts,
                                        atoms = job.sp.atoms)
+        
+        snap = simulation.state.get_snapshot()
+        
         os.remove(job.fn("initial_temp.gsd")) #remove the initialized GSD without shape information 
 
         logger = hoomd.logging.Logger()

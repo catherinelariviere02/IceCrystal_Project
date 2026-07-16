@@ -7,21 +7,21 @@ import os
 
 project = signac.init_project("../../data")
 list = [1]
-phase_name = "141_H2O_0"
+phase_name = "36_H2O_0"
 # could be made more efficient by changing how list comprehension works, possibly change once running for more ice
 for d in list:
     if os.path.isdir(f"../../inputs/{phase_name}") != True: 
-        os.mkdir(f"../../inputs/{phase_name}")
+        os.mkdir(f"../../inputs/{phase_name}") #this should maybe just raise an error 
     statepoint = dict(inputfile = f"../../inputs/{phase_name}/", 
                       crystal_name = phase_name,
                       runtime = 100_000,
                       logsteps = 100,
-                      replicas = 4, 
-                    compression=True, 
+                      replicas = 5, 
+                    compression=False, 
                     gsd=f"{phase_name}_nvt_final_pf0p6_0.gsd", #insert gsd file here
                     atoms=["O", "H"], 
-                    rdf_rmax=3.0,
-                    bod_rmax=3.0)
+                    rdf_rmax=1.5,
+                    bod_rmax=1.5)
     job = project.open_job(statepoint)
     if job not in project:
         job.init()

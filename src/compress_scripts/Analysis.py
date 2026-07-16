@@ -14,7 +14,7 @@ def rdf(job, box, points, prop, r_max, frame, ax = None, label = None):
     if ax is None:
         fig, ax = plt.subplots(1, 1, figsize=(12, 8))
         ax.set_title(prop, fontsize=16)
-    rdf = freud.density.RDF(job.sp.bins, r_max)
+    rdf = freud.density.RDF(200, r_max)
     rdf.compute(system=(box, points), reset=False)
 
     if label is not None:
@@ -27,8 +27,8 @@ def rdf(job, box, points, prop, r_max, frame, ax = None, label = None):
 
 def bod(job, box, points, file, r_max, frame, prop): 
     #create bond order diagram object
-        n_bins_theta = job.sp.bins
-        n_bins_phi = job.sp.bins
+        n_bins_theta = 200
+        n_bins_phi = 200
         bod = freud.environment.BondOrder((n_bins_theta, n_bins_phi))
 
         #create arrays for plotting

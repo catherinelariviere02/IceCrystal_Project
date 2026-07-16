@@ -11,13 +11,40 @@ products = ["initialize.gsd"]
 resources.walltime.per_directory = "00:10:00"
 
 [[action]]
-name = "equilibrate"
+name = "compress" 
 previous_actions = ["initialize"]
-products = ["trajectory.gsd"]
+products = ["compress.gsd"]
 resources.walltime.per_directory = "01:00:00"
+[[action.group.include]]
+condition = ["/compression", "==", true]
+
 
 [[action]]
-name = "analyze"
-previous_actions = ["equilibrate"]
+name = "equilibrate_compression"
+previous_actions = ["initialize", "compress"]
+products = ["trajectory.gsd"]
+resources.walltime.per_directory = "00:10:00"
+[[action.group.include]]
+condition = ["/compression", "==", true]
+
+
+[[action]]
+name = "equilibrate_stability"
+previous_actions = ["initialize"]
+products = ["trajectory.gsd"]
+resources.walltime.per_directory = "00:10:00"
+[[action.group.include]]
+condition = ["/compression", "==", false]
+
+
+[[action]]
+name = "analyze_compression"
+previous_actions = ["equilibrate_compression"]
+products = ["bod.mp4", "rdf.mp4", "bod2.mp4"]
+resources.walltime.per_directory = "00:05:00"
+
+[[action]]
+name = "analyze_stability"
+previous_actions = ["equilibrate_stability"]
 products = ["bod.mp4", "rdf.mp4", "bod2.mp4"]
 resources.walltime.per_directory = "00:05:00"

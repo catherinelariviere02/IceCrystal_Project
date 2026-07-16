@@ -4,6 +4,7 @@ import signac
 from equilibrate import equilibrate
 from Analysis import analyze
 from initialize import initialize 
+from compress_NEW import compress 
 
 if __name__ == "__main__":
     #parse command line arguments: python project.py --action <ACTION> [DIRECTORIES]
@@ -18,8 +19,14 @@ if __name__ == "__main__":
 
     if args.action == "initialize":
         initialize(*jobs)
-    if args.action == "equilibrate":
+    if args.action == "compress":
+        compress(*jobs)
+    if args.action == "equilibrate_stability":
         equilibrate(*jobs)
-    elif args.action == "analyze":
+    if args.action == "equilibrate_compression":
+        equilibrate(*jobs)
+    if args.action == "analyze_stability":
+        analyze(*jobs)
+    elif args.action == "analyze_compresssion":
         analyze(*jobs)
 
