@@ -4,7 +4,7 @@ from ase.formula import Formula
 import json 
 import coxeter 
 
-def create_simulation(filename, frame, shapes, atoms):
+def create_simulation(filename, frame, shapes, atoms, communicator):
     """
     Inputs: 
     Filename: filename (including path) of gsd file 
@@ -14,7 +14,7 @@ def create_simulation(filename, frame, shapes, atoms):
 
     Outputs: HPMC simulation with atom shapes input to integrator 
     """
-    cpu = hoomd.device.CPU()
+    cpu = hoomd.device.CPU(communicator=communicator)
     simulation = hoomd.Simulation(device = cpu, seed = 1)
     
     simulation.create_state_from_gsd(filename, frame)

@@ -12,15 +12,18 @@ import time
 
 #necessary job information: simulation length, number of log points, output file 
 def equilibrate(*jobs):
-    
-    #import hoomd 
+    import hoomd 
     # Set walltime limits: 
     CLUSTER_JOB_WALLTIME_MINUTES = int(os.environ.get("ACTION_WALLTIME_IN_MINUTES", "60"))
 
     # Allow up to 10 minutes for Python to launch and files to be written at the end.
     HOOMD_RUN_WALLTIME_LIMIT_SECONDS = CLUSTER_JOB_WALLTIME_MINUTES * 60 - 300
 
-    for job in jobs:
+    processes_per_directory = int(os.environ['ACTION_PROCESSES_PER_DIRECTORY'])
+    communicator = hoomd.communicator.Communicator(ranks_per_partition=processes_per_directory)
+    job = jobs[communicator.partition]
+
+    with job as job:
         _, _, _, shapes, _, _ = get_shape_info(job.sp.inputfile, 
                                                          job.sp.replicas, 
                                                          job.sp.atoms, 
@@ -29,7 +32,11 @@ def equilibrate(*jobs):
         # self-assembly test   
         if job.sp.compression == True: 
             try:
-                simulation = create_simulation(job.fn("compressed.gsd"), frame = 0, shapes = shapes, atoms = job.sp.atoms)
+                simulation = create_simulation(job.fn("compressed.gsd"),
+                                               frame = 0,
+                                               shapes = shapes, 
+                                               atoms = job.sp.atoms, 
+                                               communicator = communicator)
 
             except OSError as err:
                 print("OS error:", err)

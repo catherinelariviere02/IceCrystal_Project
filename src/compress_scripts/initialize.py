@@ -95,10 +95,12 @@ def initialize(*jobs):
                                                          job.sp.atoms, 
                                                          job.sp.crystal_name)
 
+        cpu = hoomd.device.CPU()
         simulation = create_simulation(filename = job.fn("initial_temp.gsd"), 
                                        frame = 0, 
                                        shapes = shape_json_dicts,
-                                       atoms = job.sp.atoms)
+                                       atoms = job.sp.atoms, 
+                                       communicator = cpu)
         
         snap = simulation.state.get_snapshot()
         

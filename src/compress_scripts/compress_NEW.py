@@ -25,7 +25,8 @@ def compress(*jobs):
                                                             job.sp.atoms, 
                                                             job.sp.crystal_name)
         
-        simulation = create_simulation(job.fn("initialize.gsd"), 0, shapes = shapes, atoms = job.sp.atoms)
+        cpu = hoomd.device.CPU()
+        simulation = create_simulation(job.fn("initialize.gsd"), 0, shapes = shapes, atoms = job.sp.atoms, communicator = cpu)
         logger = hoomd.logging.Logger()
         logger.add(simulation.operations.integrator, 
                    quantities=["type_shapes"])
