@@ -44,7 +44,7 @@ def get_shape_info(N_scaling, types, crystal_name):
     spacing = spacing between lattice points, 2.2 times the larger minimal bounding radius of the shapes in the uc 
     shape_volume = total volume taken by all the particles in the simulation 
     """
-    cif = f"{crystal_name}.cif"
+    cif = input_dir + f"{crystal_name}.cif"
     atoms = ase.io.read(cif)
     uc_atom_counts = Formula(str(atoms.symbols)).count()
     sim_type_counts = []
@@ -167,16 +167,6 @@ def initialize():
 
     return simulation 
 
-#initialize() 
-
-# def tuner():
-
-
-def compress(walltime, output_dir):
-    simulation = initialize()
-
-
-
 
 def equilibrate(): 
     simulation = initialize()
@@ -250,8 +240,6 @@ def equilibrate():
     simulation.operations.writers.remove(gsd_writer) #GSD files usually close when python script completes, mostly necessary if you run in a notebook
     del gsd_writer
 
-equilibrate() 
-
 
 """ NEW ATTEMPT AT INITIALIZATION CODE """
 
@@ -314,14 +302,14 @@ def create_simulation(filename, frame, shapes, atoms):
     
     simulation.create_state_from_gsd(filename, frame)
 
-    mc = hoomd.hpmc.integrate.ConvexPolyhedron 
+    mc = hoomd.hpmc.integrate.ConvexPolyhedron() 
 
-    for i, shapes in shapes: 
+    for i, shape in enumerate(shapes): 
         mc.shape[atoms[i]] = dict(
-            vertices = shapes[i]["vertices"]
+            vertices = shape["8_vertices"]
         ) 
 
-    simulation.operations.integrator.mc 
+    simulation.operations.integrator = mc 
 
     return simulation
 
@@ -460,3 +448,39 @@ def compress(*jobs):
                               mode="wb", 
                               filename = job.fn("compressed.gsd"), 
                               logger = logger)
+
+
+### TESTING REMOVING AND ADDING TUNERS: 
+
+cpu = hoomd.device.CPU()
+simulation = hoomd.Simulation(device = cpu, seed = 1)
+
+file = "/home/clarivi/projects/IceCrystal_Project/data/workspace/0a631b2609bd635ea2d051e1dcfba71b/"
+filename = file + "initialize.gsd"
+input_dir = "/home/clarivi/projects/IceCrystal_Project/inputs/141_H2O_0/"
+
+_, _, _, shapes, _, shape_volume = get_shape_info(4, 
+                                                            ["O", "H"], 
+                                                            "141_H2O_0")
+        
+simulation = create_simulation(filename, 0, shapes = shapes, atoms = ["O", "H"])
+
+logger = hoomd.logging.Logger()
+logger.add(simulation.operations.integrator, 
+            quantities=["type_shapes"])
+
+tune = hoomd.hpmc.tune.MoveSize.scale_solver(
+            moves=["a", "d"],
+            target=0.3,
+            trigger=hoomd.trigger.Periodic(10),
+            types=["O", "H"],
+            max_rotation_move=0.5,
+            max_translation_move=0.5
+        )
+
+simulation.operations.tuners.append(tune) 
+simulation.run(5)
+if simulation.timestep > 4:
+    simulation.operations.remove(tune) 
+    print("removed")
+simulation.run(5) 

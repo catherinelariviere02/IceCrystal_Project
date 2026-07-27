@@ -1,0 +1,67 @@
+notice(2): Using domain decomposition: n_x = 1 n_y = 1 n_z = 3.
+job id 022cf9a850f064268634d2ec783672d1, rank 2
+got shape!
+job id 022cf9a850f064268634d2ec783672d1, rank 1
+got shape!
+job id 022cf9a850f064268634d2ec783672d1, rank 0
+got shape!
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 41, in equilibrate
+    simulation.timestep = 0
+    ^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 41, in equilibrate
+    simulation.timestep = 0
+    ^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 107, in timestep
+    raise RuntimeError("State must not be set to change timestep.")
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 107, in timestep
+    raise RuntimeError("State must not be set to change timestep.")
+RuntimeError: State must not be set to change timestep.
+RuntimeError: State must not be set to change timestep.
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 41, in equilibrate
+    simulation.timestep = 0
+    ^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 107, in timestep
+    raise RuntimeError("State must not be set to change timestep.")
+RuntimeError: State must not be set to change timestep.
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 0 in communicator MPI_COMM_WORLD
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 1 in communicator MPI_COMM_WORLD
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 2 in communicator MPI_COMM_WORLD
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+[2026-07-26T22:06:11.641] error: *** STEP 55148354.0 ON gl3181 CANCELLED AT 2026-07-26T22:06:11 DUE to SIGNAL Killed ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: gl3182: tasks 9-11: Killed
+srun: error: gl3181: tasks 0,2-8: Killed
+srun: error: gl3181: task 1: Exited with exit code 1
+[row] Error executing command.

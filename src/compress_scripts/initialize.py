@@ -94,13 +94,12 @@ def initialize(*jobs):
                                                          job.sp.replicas, 
                                                          job.sp.atoms, 
                                                          job.sp.crystal_name)
-
-        cpu = hoomd.device.CPU()
+        
         simulation = create_simulation(filename = job.fn("initial_temp.gsd"), 
                                        frame = 0, 
                                        shapes = shape_json_dicts,
                                        atoms = job.sp.atoms, 
-                                       communicator = cpu)
+                                       communicator = None)
         
         snap = simulation.state.get_snapshot()
         
@@ -114,7 +113,8 @@ def initialize(*jobs):
             simulation.run(4000)
         else: 
             simulation.run(1)
- 
+        print(f"job ended after {simulation.walltime} seconds!")
+        
         hoomd.write.GSD.write(state = simulation.state, 
                         mode = "wb", 
                         filename = job.fn(f"initialize.gsd"), 

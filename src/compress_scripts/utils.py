@@ -4,7 +4,7 @@ from ase.formula import Formula
 import json 
 import coxeter 
 
-def create_simulation(filename, frame, shapes, atoms, communicator):
+def create_simulation(filename, frame, shapes, atoms, communicator = None):
     """
     Inputs: 
     Filename: filename (including path) of gsd file 
@@ -59,7 +59,7 @@ def get_shape_info(input_dir, N_scaling, types, crystal_name):
     radius = []
     shape_volume = 0
     for i, type in enumerate(types): 
-        shape_file = input_dir + f"/shape_{crystal_name}_{type}_unit_volume_principal_frame.json"
+        shape_file = input_dir + f"shape_{crystal_name}_{type}_unit_volume_principal_frame.json"
         sim_type_counts.append(uc_atom_counts[type] * N_scaling ** 3) # N_scaling is "replicas" which could be made, so cubed for 3D  
         typeid = typeid + ([i] * sim_type_counts[i])
         with open(shape_file) as file: 

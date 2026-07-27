@@ -17,33 +17,45 @@ def equilibrate(*jobs):
     CLUSTER_JOB_WALLTIME_MINUTES = int(os.environ.get("ACTION_WALLTIME_IN_MINUTES", "60"))
 
     # Allow up to 10 minutes for Python to launch and files to be written at the end.
-    HOOMD_RUN_WALLTIME_LIMIT_SECONDS = CLUSTER_JOB_WALLTIME_MINUTES * 60 - 300
+    HOOMD_RUN_WALLTIME_LIMIT_SECONDS = CLUSTER_JOB_WALLTIME_MINUTES * 60 - 200
 
     processes_per_directory = int(os.environ['ACTION_PROCESSES_PER_DIRECTORY'])
     communicator = hoomd.communicator.Communicator(ranks_per_partition=processes_per_directory)
     job = jobs[communicator.partition]
-
+    
     with job as job:
+        print(f"job id {job.id}, rank {communicator.rank}")
+        #if communicator.rank == 0:
         _, _, _, shapes, _, _ = get_shape_info(job.sp.inputfile, 
-                                                         job.sp.replicas, 
-                                                         job.sp.atoms, 
-                                                         job.sp.crystal_name)
-        
+                                                        job.sp.replicas, 
+                                                        job.sp.atoms, 
+                                                        job.sp.crystal_name)
+        print("got shape!")
         # self-assembly test   
+         
         if job.sp.compression == True: 
-            try:
-                simulation = create_simulation(job.fn("compressed.gsd"),
-                                               frame = 0,
-                                               shapes = shapes, 
-                                               atoms = job.sp.atoms, 
-                                               communicator = communicator)
-
-            except OSError as err:
-                print("OS error:", err)
+            if os.path.isfile(job.fn("timeout_config.gsd")) == True: 
+                simulation = create_simulation(job.fn("timeout_config.gsd"),
+                                                                frame = 0,
+                                                                shapes = shapes, 
+                                                                atoms = job.sp.atoms, 
+                                                                communicator = communicator)
+                sim_time = job.statepoint.runtime + job.document["compressed_step"] # don't change sim_time, because we want 
+            else:
+                try:
+                    simulation = create_simulation(job.fn("compressed.gsd"),
+                                                frame = 0,
+                                                shapes = shapes, 
+                                                atoms = job.sp.atoms, 
+                                                communicator = communicator)
+                    sim_time = job.statepoint.runtime + simulation.timestep # add equilib_time to timesteps already run in compression
+                except OSError as err:
+                    print("OS error:", err)
         
         # stability test
         else:
             simulation = create_simulation(job.fn("initialize.gsd"), frame = 0, shapes = shapes, atoms = job.sp.atoms)
+            sim_time = job.statepoint.runtime
 
         logger = hoomd.logging.Logger()
         logger.add(simulation.operations.integrator, 
@@ -94,7 +106,7 @@ def equilibrate(*jobs):
 
         # ADD WRITER (AFTER LOGGER IS FULLY CONSTRUCTED)
         sim_time = job.statepoint.runtime #10000
-        log_time = int(sim_time/job.statepoint.logsteps)
+        log_time = int(sim_time/(job.statepoint.logsteps*10))
 
         gsd_writer = hoomd.write.GSD(
             filename= job.fn("trajectory_temp.gsd"), #"../../data/iceIX/trajectory_temp.gsd" 
@@ -106,9 +118,9 @@ def equilibrate(*jobs):
 
         print("starting equilibration...")
 
-        if simulation.timestep < sim_time: 
+        while simulation.timestep < sim_time: 
+            #simulation.run(10_000)
             simulation.run(10_000)
-
             next_walltime = simulation.device.communicator.walltime + simulation.walltime
             if next_walltime >= HOOMD_RUN_WALLTIME_LIMIT_SECONDS: 
                 print("simulation timed out")
@@ -120,6 +132,8 @@ def equilibrate(*jobs):
         print(
             f"{job.id} ended on step {simulation.timestep} after {walltime} seconds"
         )
+
+        job.document["equilib_time"] = next_walltime
 
         if simulation.timestep == sim_time: 
             os.rename(job.fn("trajectory_temp.gsd"), job.fn("trajectory.gsd"))

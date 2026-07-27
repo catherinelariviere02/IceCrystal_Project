@@ -14,7 +14,9 @@ resources.walltime.per_directory = "00:10:00"
 name = "compress" 
 previous_actions = ["initialize"]
 products = ["compress.gsd"]
-resources.walltime.per_directory = "01:00:00"
+resources.walltime.per_directory = "10:00:00"
+[action.group]
+maximum_size = 1
 [[action.group.include]]
 condition = ["/compression", "==", true]
 
@@ -23,7 +25,12 @@ condition = ["/compression", "==", true]
 name = "equilibrate_compression"
 previous_actions = ["initialize", "compress"]
 products = ["trajectory.gsd"]
-resources.walltime.per_directory = "00:10:00"
+launchers = ["mpi"]
+[action.resources]
+processes.per_directory = 3
+walltime.per_submission = "08:00:00"
+[action.group]
+maximum_size = 2
 [[action.group.include]]
 condition = ["/compression", "==", true]
 
@@ -32,7 +39,12 @@ condition = ["/compression", "==", true]
 name = "equilibrate_stability"
 previous_actions = ["initialize"]
 products = ["trajectory.gsd"]
-resources.walltime.per_directory = "00:10:00"
+launchers = ["mpi"]
+[action.resources]
+processes.per_directory = 3
+walltime.per_submission = "08:00:00"
+[action.group]
+maximum_size = 2
 [[action.group.include]]
 condition = ["/compression", "==", false]
 

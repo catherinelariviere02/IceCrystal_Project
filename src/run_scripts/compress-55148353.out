@@ -1,0 +1,78 @@
+initial volume fraction = 0.0764268975461013
+compressing, currently time 3.747698
+compression running ... current pf:  0.07719888641020334
+compressing, currently time 3.455249
+compression running ... current pf:  0.07797867314161952
+compressing, currently time 3.418743
+compression running ... current pf:  0.07876633650668637
+compressing, currently time 3.488347
+compression running ... current pf:  0.07956195606735997
+compressing, currently time 3.465064
+compression running ... current pf:  0.0803656121892525
+compressing, currently time 3.509667
+compression running ... current pf:  0.08117738604975003
+compressing, currently time 3.50968
+compression running ... current pf:  0.08199735964621213
+compressing, currently time 3.545943
+compression running ... current pf:  0.08282561580425468
+compressing, currently time 3.514933
+compression running ... current pf:  0.08366223818611582
+compressing, currently time 3.582756
+compression running ... current pf:  0.08450731129910688
+compressing, currently time 3.559698
+compression running ... current pf:  0.08536092050414837
+compressing, currently time 3.628336
+compression running ... current pf:  0.08622315202439229
+compressing, currently time 3.577893
+compression running ... current pf:  0.08709409295393161
+compressing, currently time 3.650467
+compression running ... current pf:  0.08797383126659758
+compressing, currently time 3.612983
+compression running ... current pf:  0.08886245582484602
+compressing, currently time 3.677692
+compression running ... current pf:  0.08976005638873336
+compressing, currently time 3.667589
+compression running ... current pf:  0.09066672362498317
+compressing, currently time 3.725466
+compression running ... current pf:  0.09158254911614461
+compressing, currently time 3.716143
+compression running ... current pf:  0.09250762536984301
+compressing, currently time 3.763709
+compression running ... current pf:  0.09344204582812422
+compressing, currently time 3.728525
+compression running ... current pf:  0.09438590487689312
+compressing, currently time 3.791039
+compression running ... current pf:  0.09533929785544759
+compressing, currently time 3.759754
+compression running ... current pf:  0.09630232106610864
+compressing, currently time 3.820135
+compression running ... current pf:  0.09727507178394813
+compressing, currently time 3.807736
+compression running ... current pf:  0.09825764826661423
+compressing, currently time 3.865806
+compression running ... current pf:  0.0992501497642568
+compressing, currently time 3.831278
+compression running ... current pf:  0.10025267652955233
+Traceback (most recent call last):
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/operations.py", line 169, in remove
+    container = self._get_proper_container(operation)
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/operations.py", line 87, in _get_proper_container
+    raise TypeError(f"{type(operation)} is not a valid operation type.")
+TypeError: <class 'hoomd.data.syncedlist.SyncedList'> is not a valid operation type.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 23, in <module>
+    compress(*jobs)
+    ~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/compress_NEW.py", line 98, in compress
+    simulation.operations.remove(simulation.operations.tuners)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/operations.py", line 171, in remove
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: Type <class 'hoomd.data.syncedlist.SyncedList'> is not a valid type to remove from Operations.
+[row] Error executing command.
+[ERROR row] workflow.toml not found in the current working directory or any parents.

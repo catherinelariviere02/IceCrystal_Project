@@ -5,46 +5,26 @@ import math
 import numpy
 import os
 
-project = signac.init_project("../../data")
+project = signac.init_project("/home/clarivi/projects/IceCrystal_Project/data/")
 list = [1]
-phase_name = "36_H2O_0"
+phase_names = ["36_H2O_0", "141_H2O_0", "92_H2O_3", "92_H2O_5"] # ice II 
+comp_list = [True, False]
 # could be made more efficient by changing how list comprehension works, possibly change once running for more ice
-for d in list:
-    if os.path.isdir(f"../../inputs/{phase_name}") != True: 
-        os.mkdir(f"../../inputs/{phase_name}") #this should maybe just raise an error 
-    statepoint = dict(inputfile = f"../../inputs/{phase_name}/", 
-                      crystal_name = phase_name,
-                      runtime = 100_000,
-                      logsteps = 100,
-                      replicas = 5, 
-                    compression=False, 
-                    gsd=f"{phase_name}_nvt_final_pf0p6_0.gsd", #insert gsd file here
-                    atoms=["O", "H"], 
-                    rdf_rmax=1.5,
-                    bod_rmax=1.5)
-    job = project.open_job(statepoint)
-    if job not in project:
-        job.init()
-
-### Previous Statepoint 
-
-# statepoint = dict(inputfile = f"../../inputs/{phase_num}_{phase_name}/", 
-#                       phase_num = "92_H20" + str(d),
-#                       runtime = 100_000,
-#                       logsteps = 100,
-#                       replicas = 4, 
-#                     compression=False, 
-#                     gsd=f"{phase_num}_{phase_name}_nvt_final_pf0p6_0.gsd", #insert gsd file here
-#                     atoms=["O", "H"], 
-#                     rdf_rmax=3.0,
-#                     bod_rmax=3.0)
-#     job = project.open_job(statepoint)
-#     if job not in project:
-#         job.init()
-
-# for job in project:
-#         if "rdf_rmax" not in job.sp:
-#                 assert "rdf_rmax" not in job.sp, f"includes 'rdf_rmax' in {job.id}"
-#                 job.sp.rdf_rmax = job.statepoint.pop("rdf_max")
-
+for phase_name in phase_names:
+    for comp_state in comp_list:
+        if os.path.isdir(f"../../inputs/{phase_name}") != True: 
+            os.mkdir(f"../../inputs/{phase_name}") #this should maybe just raise an error 
+        statepoint = dict(inputfile = f"/home/clarivi/projects/IceCrystal_Project/inputs/{phase_name}/", 
+                        crystal_name = phase_name,
+                        runtime = 100_000_000,
+                        logsteps = 100,
+                        replicas = 5, 
+                        compression=comp_state, 
+                        gsd=f"{phase_name}_nvt_final_pf0p6_0.gsd", #insert gsd file here
+                        atoms=["O", "H"], 
+                        rdf_rmax=5,
+                        bod_rmax=1.5)
+        job = project.open_job(statepoint)
+        if job not in project:
+            job.init()
 

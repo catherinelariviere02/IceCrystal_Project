@@ -30,3 +30,4 @@ if __name__ == "__main__":
     elif args.action == "analyze_compresssion":
         analyze(*jobs)
 
+
