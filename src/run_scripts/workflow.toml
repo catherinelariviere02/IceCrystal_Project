@@ -14,7 +14,7 @@ resources.walltime.per_directory = "00:10:00"
 name = "compress" 
 previous_actions = ["initialize"]
 products = ["compress.gsd"]
-resources.walltime.per_directory = "10:00:00"
+resources.walltime.per_directory = "5:00:00"
 [action.group]
 maximum_size = 1
 [[action.group.include]]
