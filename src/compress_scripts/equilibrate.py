@@ -34,13 +34,14 @@ def equilibrate(*jobs):
         # self-assembly test   
          
         if job.sp.compression == True: 
-            if os.path.isfile(job.fn("timeout_config.gsd")) == True: 
-                simulation = create_simulation(job.fn("timeout_config.gsd"),
+            sim_time = job.statepoint.runtime + job.document["compressed_step"]
+            # start from timeout_config for equilibration if it exists, otherwise 
+            if os.path.isfile(job.fn("restart.gsd")) == True: 
+                simulation = create_simulation(job.fn("restart.gsd"),
                                                                 frame = 0,
                                                                 shapes = shapes, 
                                                                 atoms = job.sp.atoms, 
                                                                 communicator = communicator)
-                sim_time = job.statepoint.runtime + job.document["compressed_step"] # don't change sim_time, because we want 
             else:
                 try:
                     simulation = create_simulation(job.fn("compressed.gsd"),
@@ -48,14 +49,21 @@ def equilibrate(*jobs):
                                                 shapes = shapes, 
                                                 atoms = job.sp.atoms, 
                                                 communicator = communicator)
-                    sim_time = job.statepoint.runtime + simulation.timestep # add equilib_time to timesteps already run in compression
                 except OSError as err:
                     print("OS error:", err)
         
         # stability test
         else:
-            simulation = create_simulation(job.fn("initialize.gsd"), frame = 0, shapes = shapes, atoms = job.sp.atoms)
             sim_time = job.statepoint.runtime
+            if os.path.isfile(job.fn("restart.gsd")) == True: 
+                            simulation = create_simulation(job.fn("restart.gsd"),
+                                                                            frame = 0,
+                                                                            shapes = shapes, 
+                                                                            atoms = job.sp.atoms, 
+                                                                            communicator = communicator)
+            else:
+                simulation = create_simulation(job.fn("initialize.gsd"), frame = 0, shapes = shapes, atoms = job.sp.atoms)
+                sim_time = job.statepoint.runtime
 
         logger = hoomd.logging.Logger()
         logger.add(simulation.operations.integrator, 
@@ -119,14 +127,13 @@ def equilibrate(*jobs):
         print("starting equilibration...")
 
         while simulation.timestep < sim_time: 
-            #simulation.run(10_000)
             simulation.run(10_000)
             next_walltime = simulation.device.communicator.walltime + simulation.walltime
             if next_walltime >= HOOMD_RUN_WALLTIME_LIMIT_SECONDS: 
                 print("simulation timed out")
                 hoomd.write.GSD.write(state= simulation.state, 
                                           mode = "wb", 
-                                          filename = job.fn("timeout_config.gsd"))
+                                          filename = job.fn("restart.gsd"))
         
         walltime = simulation.device.communicator.walltime
         print(
