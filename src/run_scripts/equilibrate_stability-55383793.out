@@ -1,0 +1,37 @@
+notice(2): Using domain decomposition: n_x = 1 n_y = 3 n_z = 3.
+job id 4adc6b34ee368ab6975680e4489bcb61, rank 1
+got shape!
+starting equilibration...
+4adc6b34ee368ab6975680e4489bcb61 ended on step 10001 after 42.963466 seconds
+job id 4adc6b34ee368ab6975680e4489bcb61, rank 2
+got shape!
+starting equilibration...
+4adc6b34ee368ab6975680e4489bcb61 ended on step 10001 after 42.963466 seconds
+job id bebbbc3db8932992e985623e68ea789b, rank 2
+got shape!
+starting equilibration...
+bebbbc3db8932992e985623e68ea789b ended on step 10001 after 42.963466 seconds
+job id bebbbc3db8932992e985623e68ea789b, rank 1
+got shape!
+starting equilibration...
+bebbbc3db8932992e985623e68ea789b ended on step 10001 after 42.963466 seconds
+job id bebbbc3db8932992e985623e68ea789b, rank 0
+got shape!
+starting equilibration...
+bebbbc3db8932992e985623e68ea789b ended on step 10001 after 42.963466 seconds
+job id 431f56e9d91e2612f2acae352316eff8, rank 1
+got shape!
+starting equilibration...
+431f56e9d91e2612f2acae352316eff8 ended on step 10001 after 42.963466 seconds
+job id 4adc6b34ee368ab6975680e4489bcb61, rank 0
+got shape!
+starting equilibration...
+4adc6b34ee368ab6975680e4489bcb61 ended on step 10001 after 42.963466 seconds
+job id 431f56e9d91e2612f2acae352316eff8, rank 2
+got shape!
+starting equilibration...
+431f56e9d91e2612f2acae352316eff8 ended on step 10001 after 42.963466 seconds
+job id 431f56e9d91e2612f2acae352316eff8, rank 0
+got shape!
+starting equilibration...
+431f56e9d91e2612f2acae352316eff8 ended on step 10001 after 42.963466 seconds

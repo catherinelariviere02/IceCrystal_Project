@@ -1,0 +1,6 @@
+notice(2): Using domain decomposition: n_x = 1 n_y = 1 n_z = 3.
+[2026-07-28T19:06:21.026] error: *** JOB 55297427 ON gl3438 CANCELLED AT 2026-07-28T19:06:21 DUE TO TIME LIMIT ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+[2026-07-28T19:06:21.028] error: *** STEP 55297427.0 ON gl3438 CANCELLED AT 2026-07-28T19:06:21 DUE TO TIME LIMIT ***
+srun: got SIGCONT
+srun: forcing job termination

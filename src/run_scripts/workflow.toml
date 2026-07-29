@@ -14,7 +14,7 @@ resources.walltime.per_directory = "00:10:00"
 name = "compress" 
 previous_actions = ["initialize"]
 products = ["compress.gsd"]
-resources.walltime.per_directory = "5:00:00"
+resources.walltime.per_directory = "05:00:00"
 [action.group]
 maximum_size = 1
 [[action.group.include]]
@@ -29,8 +29,6 @@ launchers = ["mpi"]
 [action.resources]
 processes.per_directory = 3
 walltime.per_submission = "08:00:00"
-[action.group]
-maximum_size = 2
 [[action.group.include]]
 condition = ["/compression", "==", true]
 
@@ -43,8 +41,6 @@ launchers = ["mpi"]
 [action.resources]
 processes.per_directory = 3
 walltime.per_submission = "08:00:00"
-[action.group]
-maximum_size = 2
 [[action.group.include]]
 condition = ["/compression", "==", false]
 

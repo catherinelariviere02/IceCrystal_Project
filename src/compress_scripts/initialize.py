@@ -25,7 +25,6 @@ def initialize_stability(job):
 
     # create state from unit cell 
     simulation.create_state_from_gsd(filename = gsdfile, frame = 0)
-    snap = simulation.state.get_snapshot()
    
     # create larger cell from unit cell (replication)
     replicas = job.statepoint.replicas #4
@@ -100,9 +99,7 @@ def initialize(*jobs):
                                        shapes = shape_json_dicts,
                                        atoms = job.sp.atoms, 
                                        communicator = None)
-        
-        snap = simulation.state.get_snapshot()
-        
+       
         os.remove(job.fn("initial_temp.gsd")) #remove the initialized GSD without shape information 
 
         logger = hoomd.logging.Logger()
@@ -113,11 +110,16 @@ def initialize(*jobs):
             simulation.run(4000)
         else: 
             simulation.run(1)
-        print(f"job ended after {simulation.walltime} seconds!")
-        
-        hoomd.write.GSD.write(state = simulation.state, 
-                        mode = "wb", 
-                        filename = job.fn(f"initialize.gsd"), 
-                        logger = logger)
+        print(f"job (phase: {job.sp.crystal_name}) ended after {simulation.walltime} seconds, with {simulation.operations.integrator.overlaps} overlaps!")
 
-        return simulation
+        if simulation.operations.integrator.overlaps == 0: 
+            hoomd.write.GSD.write(state = simulation.state, 
+                            mode = "wb", 
+                            filename = job.fn(f"initialize.gsd"), 
+                            logger = logger)
+        else: 
+            hoomd.write.GSD.write(state = simulation.state, 
+                                        mode = "wb", 
+                                        filename = job.fn(f"initialize_temp.gsd"), 
+                                        logger = logger)
+        

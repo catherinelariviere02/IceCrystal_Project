@@ -44,7 +44,7 @@ def equilibrate(*jobs):
                                                                 communicator = communicator)
             else:
                 try:
-                    simulation = create_simulation(job.fn("compressed.gsd"),
+                    simulation = create_simulation(job.fn("compress.gsd"),
                                                 frame = 0,
                                                 shapes = shapes, 
                                                 atoms = job.sp.atoms, 
@@ -127,7 +127,7 @@ def equilibrate(*jobs):
         print("starting equilibration...")
 
         while simulation.timestep < sim_time: 
-            simulation.run(10_000)
+            simulation.run(min(10_000, sim_time))
             next_walltime = simulation.device.communicator.walltime + simulation.walltime
             if next_walltime >= HOOMD_RUN_WALLTIME_LIMIT_SECONDS: 
                 print("simulation timed out")
@@ -142,7 +142,7 @@ def equilibrate(*jobs):
 
         job.document["equilib_time"] = next_walltime
 
-        if simulation.timestep == sim_time: 
+        if simulation.timestep >= sim_time: 
             os.rename(job.fn("trajectory_temp.gsd"), job.fn("trajectory.gsd"))
 
         simulation.operations.writers.remove(gsd_writer) #GSD files usually close when python script completes, mostly necessary if you run in a notebook
