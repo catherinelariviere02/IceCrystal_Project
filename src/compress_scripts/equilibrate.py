@@ -113,9 +113,10 @@ def equilibrate(*jobs):
         simulation.operations.tuners.append(boxmc_tune)
 
         # ADD WRITER (AFTER LOGGER IS FULLY CONSTRUCTED)
-        sim_time = job.statepoint.runtime #10000
+        sim_time = job.statepoint.runtime 
         log_time = int(sim_time/(job.statepoint.logsteps*10))
 
+        #mode : appending to same trajectory_temp.gsd file when continuing run 
         gsd_writer = hoomd.write.GSD(
             filename= job.fn("trajectory_temp.gsd"), #"../../data/iceIX/trajectory_temp.gsd" 
             trigger=hoomd.trigger.Periodic(log_time), 
@@ -141,9 +142,6 @@ def equilibrate(*jobs):
         )
 
         job.document["equilib_time"] = next_walltime
-
-        if simulation.timestep >= sim_time: 
-            os.rename(job.fn("trajectory_temp.gsd"), job.fn("trajectory.gsd"))
 
         simulation.operations.writers.remove(gsd_writer) #GSD files usually close when python script completes, mostly necessary if you run in a notebook
         del gsd_writer
