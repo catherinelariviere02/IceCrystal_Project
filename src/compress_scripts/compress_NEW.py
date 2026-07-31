@@ -18,7 +18,7 @@ def compress(*jobs):
     CLUSTER_JOB_WALLTIME_MINUTES = int(os.environ.get("ACTION_WALLTIME_IN_MINUTES", "60"))
 
     # Allow up to 5 minutes for Python to launch and files to be written at the end.
-    HOOMD_RUN_WALLTIME_LIMIT_SECONDS = CLUSTER_JOB_WALLTIME_MINUTES * 60 - 300
+    HOOMD_RUN_WALLTIME_LIMIT_SECONDS = CLUSTER_JOB_WALLTIME_MINUTES * 60 - 600
 
     for job in jobs: 
         job.document["walltime_limit"] = HOOMD_RUN_WALLTIME_LIMIT_SECONDS

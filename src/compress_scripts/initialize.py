@@ -120,6 +120,6 @@ def initialize(*jobs):
         else: 
             hoomd.write.GSD.write(state = simulation.state, 
                                         mode = "wb", 
-                                        filename = job.fn(f"initialize_temp.gsd"), 
+                                        filename = job.fn(f"initialize_overlaps.gsd"), 
                                         logger = logger)
         

@@ -28,7 +28,7 @@ products = ["trajectory.gsd"]
 launchers = ["mpi"]
 [action.resources]
 processes.per_directory = 3
-walltime.per_submission = "08:00:00"
+walltime.per_submission = "12:00:00"
 [[action.group.include]]
 condition = ["/compression", "==", true]
 
@@ -40,7 +40,7 @@ products = ["trajectory.gsd"]
 launchers = ["mpi"]
 [action.resources]
 processes.per_directory = 3
-walltime.per_submission = "08:00:00"
+walltime.per_submission = "00:15:00"
 [[action.group.include]]
 condition = ["/compression", "==", false]
 
