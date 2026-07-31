@@ -63,17 +63,30 @@ flowchart LR
 
     ```mermaid
     flowchart LR
-    comp[Self-assembly job] --> |beginning long equilib| initcomp[initialize.gsd]
-    stab[Stability job] --> |beginning long equilib| inits[initialize.gsd]
+    comp[Self-assembly job]
+    stab[Stability job]
+    initcomp[initialize.gsd]
+    inits[initialize.gsd]
+    restartcomp[restart.gsd]
+    restarts[restart.gsd]
+    compsim[sim_time includes prior compression step]
+    stabsim[sim_time is run_time from doc]
+
+    comp --> |beginning long equilib| initcomp
+    stab --> |beginning long equilib| inits
     comp <--> |or| stab
-    comp --> |continuing| restartcomp[restart.gsd]
-    initcomp --> compsim[sim_time includes prior compression step]
-    restartcomp --> compsim[sim_time includes prior compression step]
-    stab[Stability job] --> |continuing| restarts[restart.gsd]
-    inits --> stabsim[sim_time is run_time from doc]
-    restarts --> stabsim[sim_time is run_time from doc]
-    
+    comp --> |continuing| restartcomp
+    initcomp --> compsim
+    restartcomp --> compsim
+    stab[Stability job] --> |continuing| restarts
+    inits --> stabsim
+    restarts --> stabsim
     ```
+    * add logger for overlaps (was mostly for debugging) and logger for shape type
+    * add movesize tuner, which triggers every 10 only for first 5000, and boxmc, which triggers every 10 for 5000 steps. 
+    * add gsd_writer which triggers to write 1000 steps total (currently hard coded as 100 (steps in sp) * 10). 
+    * sim runs 10,000 steps (or sim time if its less than 10,000), with walltime checks between each. Timeout writes to "restart.gsd", allowing continuation of sim. 
+    * if sim has run for enough steps, rename temp file to real trajectory file (only on rank 0)
 
 
 ### Errors/sticking points 
@@ -101,6 +114,10 @@ flowchart LR
 4. Equilibrate for 100 million timesteps (with MPI parallelization)
 
     * forgot to add communicator to create_simulation util for initializing stability test equilib, which meant for those jobs the partitions were all communicating. This error led to very varied behavior when jobs were submitted, because only 1 of 4 create_sim options had this problem. 
+    * changing file names is another process which should only be done on one rank. 
+    * MPI simulations cannot accept implicit references (i.e. "../../data"), because their path is different. Use direct references 
+    * 
 
     **difficulties from MPI specifically:** 
     * device.notice --> I was initially a bit confused, but I think the tutorials are actually pretty clear. 
+    * while I was trying to write overlaps I ran into lots of issues with hdf5 files, decided that write.GSD.table was easier. (notes: have to specify correct type in logger, need special reader, cannot be opened while sim is running or if sim crashes/fails)
