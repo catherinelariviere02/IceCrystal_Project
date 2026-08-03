@@ -1,5 +1,0 @@
-notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 3.
-[2026-07-25T07:48:52.174] error: *** STEP 54894893.0 ON gl3149 CANCELLED AT 2026-07-25T07:48:52 DUE TO TIME LIMIT ***
-[2026-07-25T07:48:52.174] error: *** JOB 54894893 ON gl3149 CANCELLED AT 2026-07-25T07:48:52 DUE TO TIME LIMIT ***
-srun: got SIGCONT
-srun: forcing job termination

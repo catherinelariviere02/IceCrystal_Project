@@ -1,0 +1,1 @@
+Ice VIII - rcuts for atoms : O-O : 2.948, O-H: 2.402, H-H: 2.572, H-O: 2.635. Please check it out. The JSON files are also attached

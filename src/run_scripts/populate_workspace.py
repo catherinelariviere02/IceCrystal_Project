@@ -7,16 +7,17 @@ import os
 
 project = signac.init_project("/home/clarivi/projects/IceCrystal_Project/data/")
 list = [1]
-phase_names = ["36_H2O_0", "141_H2O_0", "92_H2O_3", "92_H2O_5"] # ice II 
+phase_names = ["36_H2O_0"] # ice II 
 comp_list = [False]
 # could be made more efficient by changing how list comprehension works, possibly change once running for more ice
+
 for phase_name in phase_names:
     for comp_state in comp_list:
         if os.path.isdir(f"../../inputs/{phase_name}") != True: 
             os.mkdir(f"../../inputs/{phase_name}") #this should maybe just raise an error 
         statepoint = dict(inputfile = f"/home/clarivi/projects/IceCrystal_Project/inputs/{phase_name}/", 
                         crystal_name = phase_name,
-                        runtime = 1_000,
+                        runtime = 100_000_000,
                         logsteps = 100,
                         replicas = 5, 
                         compression=comp_state, 
