@@ -75,9 +75,9 @@ def equilibrate(*jobs):
         logger.add(simulation.operations.integrator, 
                     quantities=["type_shapes"])
         
-        logger2 = hoomd.logging.Logger(categories=["scalar"])
-        logger2.add(simulation.operations.integrator, 
-                            quantities=["overlaps"])
+        # logger2 = hoomd.logging.Logger(categories=["scalar"])
+        # logger2.add(simulation.operations.integrator, 
+        #                     quantities=["overlaps"])
         
         #TUNING TRIAL MOVE SIZE 
 
@@ -137,9 +137,9 @@ def equilibrate(*jobs):
         
         simulation.operations.writers.append(gsd_writer)
 
-        table = hoomd.write.Table(trigger=hoomd.trigger.Periodic(log_time),
-                          logger=logger2)
-        simulation.operations.writers.append(table)
+        # table = hoomd.write.Table(trigger=hoomd.trigger.Periodic(log_time),
+        #                   logger=logger2)
+        # simulation.operations.writers.append(table)
 
         print("starting equilibration...")
 

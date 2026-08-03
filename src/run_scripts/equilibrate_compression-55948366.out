@@ -1,0 +1,140 @@
+job id 2668ad2fe69df16653f390015d1eb8e2, rank 0
+job id 3b065c5605c8004eb52c7c49299765d2, rank 0
+job id b2c87e86836397b882fafe2e4f5280e6, rank 0
+job id 0a631b2609bd635ea2d051e1dcfba71b, rank 0
+got shape!
+got shape!
+got shape!
+notice(2): Using domain decomposition: n_x = 3 n_y = 1 n_z = 1.
+notice(2): Using domain decomposition: n_x = 1 n_y = 1 n_z = 3.
+got shape!
+notice(2): Using domain decomposition: n_x = 1 n_y = 1 n_z = 3.
+100000
+notice(2): Using domain decomposition: n_x = 1 n_y = 1 n_z = 3.
+100285200
+100000
+100457800
+100000
+100284500
+100000
+100284500
+starting equilibration...
+hpmc.integrate.ConvexPolyhedron.overlaps
+                   0                    
+starting equilibration...
+hpmc.integrate.ConvexPolyhedron.overlaps
+                   0                    
+starting equilibration...
+hpmc.integrate.ConvexPolyhedron.overlaps
+                   0                    
+starting equilibration...
+hpmc.integrate.ConvexPolyhedron.overlaps
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+                   0                    
+simulation timed out
+simulation timed out
+simulation timed out
+simulation timed out
+simulation timed out
+                   0                    
+[2026-08-02T20:53:11.014] error: *** JOB 55948366 ON gl3257 CANCELLED AT 2026-08-02T20:53:11 DUE TO TIME LIMIT ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+[2026-08-02T20:53:11.015] error: *** STEP 55948366.0 ON gl3257 CANCELLED AT 2026-08-02T20:53:11 DUE TO TIME LIMIT ***
+srun: got SIGCONT
+srun: forcing job termination

@@ -7,7 +7,7 @@ import os
 
 project = signac.init_project("/home/clarivi/projects/IceCrystal_Project/data/")
 list = [1]
-phase_names = ["141_H2O_0", "36_H2O_0", "92_H2O_3", "92_H2O_5"] # ice II 
+phase_names = ["36_H2O_0"] # ice II 
 comp_list = [False]
 # could be made more efficient by changing how list comprehension works, possibly change once running for more ice
 
