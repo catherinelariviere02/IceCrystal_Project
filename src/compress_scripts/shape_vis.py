@@ -42,13 +42,13 @@ class shape_class():
         ungrid = pv.UnstructuredGrid(cells, celltypes, points)
 
         pl.add_mesh(ungrid, show_edges=True, line_width=1, color=pv.Color('darkslateblue', opacity=0.5), lighting=True, specular=1.0, specular_power=1.0, ambient=0.5, opacity=0.5)
-        pl.export_html(self.filename)
+        pl.export_obj(self.filename)
 
-dir = "../../inputs/141_H2O_0/"
-for i, shape_file in enumerate(os.listdir("../../inputs/141_H2O_0/")):
+dir = "../../inputs/36_H2O_0/"
+for i, shape_file in enumerate(os.listdir(dir)):
     if shape_file.endswith(".json"):
         with open(dir + shape_file) as file:
             print(file, " ", i)
             shape = json.load(file)
-            verts = shape_class(poly_vertices = np.array(shape["8_vertices"]), filename = f"shape{i}.html")
+            verts = shape_class(poly_vertices = np.array(shape["8_vertices"]), filename = f"{dir}shape{i}.obj")
             verts.shape_func()
