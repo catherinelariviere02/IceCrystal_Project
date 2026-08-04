@@ -5,6 +5,9 @@ value_file = "signac_statepoint.json"
 [default.action]
 command = "python ../compress_scripts/project.py --action $ACTION_NAME {directories}"
 
+[default.action.submit_options.greatlakes]
+account = "sglotzer9"
+
 [[action]]
 name = "initialize"
 products = ["initialize.gsd"]

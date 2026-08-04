@@ -1,0 +1,20 @@
+job id 022cf9a850f064268634d2ec783672d1, rank 0
+job id 4ed340eff15064418bda4e2f7a86de39, rank 0
+job id 50439bf8b1cc73cae0809dae01d8fefb, rank 0
+job id ddff895b09f2a6135b309a05798b8556, rank 0
+got shape!
+got shape!
+got shape!
+notice(2): Using domain decomposition: n_x = 1 n_y = 1 n_z = 3.
+notice(2): Using domain decomposition: n_x = 1 n_y = 1 n_z = 3.
+notice(2): Using domain decomposition: n_x = 1 n_y = 1 n_z = 3.
+got shape!
+notice(2): Using domain decomposition: n_x = 1 n_y = 1 n_z = 3.
+100000
+100000000
+100000
+100000000
+100000
+100000000
+100000
+100000000
