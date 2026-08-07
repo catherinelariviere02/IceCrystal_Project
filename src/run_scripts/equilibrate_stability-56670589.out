@@ -1,0 +1,387 @@
+job id 4ed340eff15064418bda4e2f7a86de39, rank 0
+job id 50439bf8b1cc73cae0809dae01d8fefb, rank 0
+job id ddff895b09f2a6135b309a05798b8556, rank 0
+job id 022cf9a850f064268634d2ec783672d1, rank 0
+got shape!
+got shape!
+got shape!
+notice(2): Using domain decomposition: n_x = 1 n_y = 1 n_z = 5.
+notice(2): Using domain decomposition: n_x = 1 n_y = 1 n_z = 5.
+notice(2): Using domain decomposition: n_x = 1 n_y = 1 n_z = 5.
+100000
+100000000
+100000
+100000000
+100000
+100000000
+got shape!
+notice(2): Using domain decomposition: n_x = 1 n_y = 1 n_z = 5.
+starting equilibration...
+starting equilibration...
+starting equilibration...
+starting equilibration...
+starting equilibration...
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 147, in equilibrate
+    simulation.run(min(10_000, sim_time))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 561, in run
+    self._cpp_sys.run(steps_int, write_at_start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 147, in equilibrate
+    simulation.run(min(10_000, sim_time))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 561, in run
+    self._cpp_sys.run(steps_int, write_at_start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Communication error - 
+Simulation box too small for domain decomposition.
+r_ghost_max: 4.66853
+d.z/2: 3.54843
+
+RuntimeError: Communication error - 
+Simulation box too small for domain decomposition.
+r_ghost_max: 4.66853
+d.z/2: 3.54843
+
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 147, in equilibrate
+    simulation.run(min(10_000, sim_time))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 561, in run
+    self._cpp_sys.run(steps_int, write_at_start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Communication error - 
+Simulation box too small for domain decomposition.
+r_ghost_max: 4.66853
+d.z/2: 3.54843
+
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 147, in equilibrate
+    simulation.run(min(10_000, sim_time))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 561, in run
+    self._cpp_sys.run(steps_int, write_at_start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Communication error - 
+Simulation box too small for domain decomposition.
+r_ghost_max: 4.66853
+d.z/2: 3.54843
+
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 147, in equilibrate
+    simulation.run(min(10_000, sim_time))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 561, in run
+    self._cpp_sys.run(steps_int, write_at_start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Communication error - 
+Simulation box too small for domain decomposition.
+r_ghost_max: 4.66853
+d.z/2: 3.54843
+
+100000
+100000000
+starting equilibration...
+starting equilibration...
+starting equilibration...
+starting equilibration...
+starting equilibration...
+starting equilibration...
+starting equilibration...
+starting equilibration...
+starting equilibration...
+starting equilibration...
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 147, in equilibrate
+    simulation.run(min(10_000, sim_time))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 561, in run
+    self._cpp_sys.run(steps_int, write_at_start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 147, in equilibrate
+    simulation.run(min(10_000, sim_time))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 561, in run
+    self._cpp_sys.run(steps_int, write_at_start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Communication error - 
+Simulation box too small for domain decomposition.
+r_ghost_max: 4.26286
+d.z/2: 3.30762
+
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 147, in equilibrate
+    simulation.run(min(10_000, sim_time))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 561, in run
+    self._cpp_sys.run(steps_int, write_at_start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Communication error - 
+Simulation box too small for domain decomposition.
+r_ghost_max: 4.26286
+d.z/2: 3.2785
+
+RuntimeError: Communication error - 
+Simulation box too small for domain decomposition.
+r_ghost_max: 4.26286
+d.z/2: 3.30762
+
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 147, in equilibrate
+    simulation.run(min(10_000, sim_time))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 561, in run
+    self._cpp_sys.run(steps_int, write_at_start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Communication error - 
+Simulation box too small for domain decomposition.
+r_ghost_max: 4.26286
+d.z/2: 3.30762
+
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 147, in equilibrate
+    simulation.run(min(10_000, sim_time))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 561, in run
+    self._cpp_sys.run(steps_int, write_at_start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Communication error - 
+Simulation box too small for domain decomposition.
+r_ghost_max: 4.26286
+d.z/2: 3.30762
+
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 147, in equilibrate
+    simulation.run(min(10_000, sim_time))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 561, in run
+    self._cpp_sys.run(steps_int, write_at_start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Communication error - 
+Simulation box too small for domain decomposition.
+r_ghost_max: 4.26286
+d.z/2: 3.2785
+
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 147, in equilibrate
+    simulation.run(min(10_000, sim_time))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 561, in run
+    self._cpp_sys.run(steps_int, write_at_start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Communication error - 
+Simulation box too small for domain decomposition.
+r_ghost_max: 4.26286
+d.z/2: 3.2785
+
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 147, in equilibrate
+    simulation.run(min(10_000, sim_time))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 561, in run
+    self._cpp_sys.run(steps_int, write_at_start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Communication error - 
+Simulation box too small for domain decomposition.
+r_ghost_max: 4.26286
+d.z/2: 3.2785
+
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 147, in equilibrate
+    simulation.run(min(10_000, sim_time))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 561, in run
+    self._cpp_sys.run(steps_int, write_at_start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Communication error - 
+Simulation box too small for domain decomposition.
+r_ghost_max: 4.26286
+d.z/2: 3.2785
+
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 147, in equilibrate
+    simulation.run(min(10_000, sim_time))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 561, in run
+    self._cpp_sys.run(steps_int, write_at_start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Communication error - 
+Simulation box too small for domain decomposition.
+r_ghost_max: 4.26286
+d.z/2: 3.30762
+
+starting equilibration...
+Traceback (most recent call last):
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 147, in equilibrate
+    simulation.run(min(10_000, sim_time))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 561, in run
+    self._cpp_sys.run(steps_int, write_at_start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Communication error - 
+Simulation box too small for domain decomposition.
+r_ghost_max: 3.72043
+d.z/2: 3.50075
+
+starting equilibration...
+starting equilibration...
+starting equilibration...
+starting equilibration...
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 147, in equilibrate
+    simulation.run(min(10_000, sim_time))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 561, in run
+    self._cpp_sys.run(steps_int, write_at_start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 147, in equilibrate
+    simulation.run(min(10_000, sim_time))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 561, in run
+    self._cpp_sys.run(steps_int, write_at_start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Communication error - 
+Simulation box too small for domain decomposition.
+r_ghost_max: 3.72043
+d.z/2: 3.50075
+
+RuntimeError: Communication error - 
+Simulation box too small for domain decomposition.
+r_ghost_max: 3.72043
+d.z/2: 3.50075
+
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 25, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 147, in equilibrate
+    simulation.run(min(10_000, sim_time))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 561, in run
+    self._cpp_sys.run(steps_int, write_at_start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Communication error - 
+Simulation box too small for domain decomposition.
+r_ghost_max: 3.72043
+d.z/2: 3.50075
+
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 147, in equilibrate
+    simulation.run(min(10_000, sim_time))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 561, in run
+    self._cpp_sys.run(steps_int, write_at_start)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Communication error - 
+Simulation box too small for domain decomposition.
+r_ghost_max: 3.72043
+d.z/2: 3.50075
+
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 15 in communicator MPI_COMM_WORLD
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 16 in communicator MPI_COMM_WORLD
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 17 in communicator MPI_COMM_WORLD
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 18 in communicator MPI_COMM_WORLD
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 19 in communicator MPI_COMM_WORLD
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+[2026-08-07T12:09:36.858] error: *** STEP 56670589.0 ON gl3293 CANCELLED AT 2026-08-07T12:09:36 DUE to SIGNAL Killed ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: gl3293: tasks 0-3: Killed
+srun: error: gl3295: tasks 15-16,18-19: Killed
+srun: error: gl3295: task 17: Exited with exit code 1
+srun: error: gl3294: tasks 4-14: Killed
+[row] Error executing command.

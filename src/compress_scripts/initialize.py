@@ -46,7 +46,8 @@ def initialize_lattice(job):
     sim_type_counts, type_shapes, typeid, _, spacing, _ = get_shape_info(job.sp.inputfile, 
                                                                          job.sp.replicas, 
                                                                          job.sp.atoms, 
-                                                                         job.sp.crystal_name)
+                                                                         job.sp.crystal_name, 
+                                                                         job.sp.stoich)
     N = sum(sim_type_counts) 
 
     K = math.ceil(N ** (1/3))
@@ -92,7 +93,8 @@ def initialize(*jobs):
         _, _, _, shape_json_dicts, _, _ = get_shape_info(job.sp.inputfile, 
                                                          job.sp.replicas, 
                                                          job.sp.atoms, 
-                                                         job.sp.crystal_name)
+                                                         job.sp.crystal_name, 
+                                                         job.sp.stoich)
         
         simulation = create_simulation(filename = job.fn("initial_temp.gsd"), 
                                        frame = 0, 

@@ -32,7 +32,8 @@ def equilibrate(*jobs):
         _, _, _, shapes, _, _ = get_shape_info(job.sp.inputfile, 
                                                         job.sp.replicas, 
                                                         job.sp.atoms, 
-                                                        job.sp.crystal_name)
+                                                        job.sp.crystal_name, 
+                                                        job.sp.stoich)
         device.notice("got shape!")
         # self-assembly test   
          

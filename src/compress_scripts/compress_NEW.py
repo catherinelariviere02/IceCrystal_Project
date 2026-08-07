@@ -26,7 +26,8 @@ def compress(*jobs):
         _, _, _, shapes, _, shape_volume = get_shape_info(job.sp.inputfile, 
                                                             job.sp.replicas, 
                                                             job.sp.atoms, 
-                                                            job.sp.crystal_name)
+                                                            job.sp.crystal_name, 
+                                                            job.sp.stoich)
         
         simulation = create_simulation(job.fn("initialize.gsd"), 0, shapes = shapes, atoms = job.sp.atoms, communicator = None)
         logger = hoomd.logging.Logger()
@@ -41,7 +42,7 @@ def compress(*jobs):
         #set compress variables 
         initial_box = simulation.state.box 
         final_box = hoomd.Box.from_box(initial_box)
-        final_volume_fraction = 0.6 # possible make into a job quantity 
+        final_volume_fraction = job.sp.pf 
         final_box.volume = shape_volume / final_volume_fraction
 
         # move tuner 

@@ -10,7 +10,8 @@ for job in project:
         _, _, _, shapes, _, shape_volume = get_shape_info(job.sp.inputfile, 
                                                             job.sp.replicas, 
                                                             job.sp.atoms, 
-                                                            job.sp.crystal_name)
+                                                            job.sp.crystal_name, 
+                                                            job.sp.stoich)
         
         simulation = create_simulation(job.fn("timeout_config.gsd"),
                                                 frame = 0,

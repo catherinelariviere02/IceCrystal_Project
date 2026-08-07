@@ -18,3 +18,7 @@ notice(2): Using domain decomposition: n_x = 1 n_y = 1 n_z = 3.
 100284500
 100000
 100284500
+[2026-08-04T21:51:37.012] error: *** STEP 55996956.0 ON gl3358 CANCELLED AT 2026-08-04T21:51:37 DUE TO TIME LIMIT ***
+[2026-08-04T21:51:37.012] error: *** JOB 55996956 ON gl3358 CANCELLED AT 2026-08-04T21:51:37 DUE TO TIME LIMIT ***
+srun: got SIGCONT
+srun: forcing job termination

@@ -1,0 +1,26 @@
+job id 2668ad2fe69df16653f390015d1eb8e2, rank 0
+job id 3b065c5605c8004eb52c7c49299765d2, rank 0
+job id b2c87e86836397b882fafe2e4f5280e6, rank 0
+job id 0a631b2609bd635ea2d051e1dcfba71b, rank 0
+got shape!
+got shape!
+got shape!
+notice(2): Using domain decomposition: n_x = 2 n_y = 1 n_z = 2.
+notice(2): Using domain decomposition: n_x = 2 n_y = 1 n_z = 2.
+got shape!
+notice(2): Using domain decomposition: n_x = 2 n_y = 1 n_z = 2.
+100000
+100285200
+100000
+100457800
+notice(2): Using domain decomposition: n_x = 2 n_y = 1 n_z = 2.
+100000
+100284500
+100000
+100284500
+[2026-08-06T21:40:43.010] error: *** JOB 56604556 ON gl3064 CANCELLED AT 2026-08-06T21:40:43 DUE TO TIME LIMIT ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+[2026-08-06T21:40:43.012] error: *** STEP 56604556.0 ON gl3064 CANCELLED AT 2026-08-06T21:40:43 DUE TO TIME LIMIT ***
+srun: got SIGCONT
+srun: forcing job termination
+srun: error: gl3065: task 3: Terminated

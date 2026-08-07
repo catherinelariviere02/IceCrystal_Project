@@ -32,7 +32,7 @@ def create_simulation(filename, frame, shapes, atoms, communicator = None):
 
     return simulation
 
-def get_shape_info(input_dir, N_scaling, types, crystal_name):
+def get_shape_info(input_dir, N_scaling, types, crystal_name, stoich):
     """
     Inputs: 
     N_scaling = replication size of simulation box 
@@ -60,7 +60,8 @@ def get_shape_info(input_dir, N_scaling, types, crystal_name):
     shape_volume = 0
     for i, type in enumerate(types): 
         shape_file = input_dir + f"shape_{crystal_name}_{type}_unit_volume_principal_frame.json"
-        sim_type_counts.append(uc_atom_counts[type] * N_scaling ** 3) # N_scaling is "replicas" which could be made, so cubed for 3D  
+        # determine type of each particle in simulation from replicas AND stoich specification - hard codes "O" as reference
+        sim_type_counts.append(uc_atom_counts["O"] * stoich[type] * N_scaling ** 3) # N_scaling is "replicas" which could be made, so cubed for 3D  
         typeid = typeid + ([i] * sim_type_counts[i])
         with open(shape_file) as file: 
             shape_json_dicts.append(json.load(file))

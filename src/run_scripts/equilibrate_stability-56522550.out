@@ -4,11 +4,13 @@ job id 50439bf8b1cc73cae0809dae01d8fefb, rank 0
 job id ddff895b09f2a6135b309a05798b8556, rank 0
 got shape!
 got shape!
-got shape!
-notice(2): Using domain decomposition: n_x = 1 n_y = 1 n_z = 3.
 notice(2): Using domain decomposition: n_x = 1 n_y = 1 n_z = 3.
 notice(2): Using domain decomposition: n_x = 1 n_y = 1 n_z = 3.
 got shape!
+got shape!
+notice(2): Using domain decomposition: n_x = 1 n_y = 1 n_z = 3.
+100000
+100000000
 notice(2): Using domain decomposition: n_x = 1 n_y = 1 n_z = 3.
 100000
 100000000
@@ -16,9 +18,8 @@ notice(2): Using domain decomposition: n_x = 1 n_y = 1 n_z = 3.
 100000000
 100000
 100000000
-100000
-100000000
-[2026-08-04T21:51:37.012] error: *** JOB 56006256 ON gl3387 CANCELLED AT 2026-08-04T21:51:37 DUE TO TIME LIMIT ***
-[2026-08-04T21:51:37.013] error: *** STEP 56006256.0 ON gl3387 CANCELLED AT 2026-08-04T21:51:37 DUE TO TIME LIMIT ***
 srun: got SIGCONT
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+[2026-08-05T09:48:32.144] error: *** JOB 56522550 ON gl3059 CANCELLED AT 2026-08-05T09:48:32 DUE to SIGNAL Terminated ***
 srun: forcing job termination
+[2026-08-05T09:48:32.145] error: *** STEP 56522550.0 ON gl3059 CANCELLED AT 2026-08-05T09:48:32 DUE to SIGNAL Terminated ***
