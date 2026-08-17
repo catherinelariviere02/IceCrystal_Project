@@ -486,17 +486,114 @@ import signac
 #     print("removed")
 # simulation.run(5) 
 
-from utils import get_shape_info, create_simulation
+# from utils import get_shape_info, create_simulation
 
-project = signac.init_project("/home/clarivi/projects/IceCrystal_Project/data/")
+# project = signac.init_project("/home/clarivi/projects/IceCrystal_Project/data/")
 
-for job in project: 
-    _, _, _, shapes, _, shape_volume = get_shape_info(job.sp.inputfile, 
-                                                            job.sp.replicas, 
-                                                            job.sp.atoms, 
-                                                            job.sp.crystal_name, 
-                                                            job.sp.stoich)
+# for job in project: 
+#     _, _, _, shapes, _, shape_volume = get_shape_info(job.sp.inputfile, 
+#                                                             job.sp.replicas, 
+#                                                             job.sp.atoms, 
+#                                                             job.sp.crystal_name, 
+#                                                             job.sp.stoich)
         
-    simulation = create_simulation(job.fn("initialize.gsd"), 0, shapes = shapes, atoms = job.sp.atoms, communicator = None)
-    simulation.run(1)
-    print(f"{job.id} has {simulation.operations.integrator.overlaps} overlaps")
+#     simulation = create_simulation(job.fn("initialize.gsd"), 0, shapes = shapes, atoms = job.sp.atoms, communicator = None)
+#     simulation.run(1)
+#     print(f"{job.id} has {simulation.operations.integrator.overlaps} overlaps")
+
+### TEST FOR ADDING WALL 
+
+L = 20
+m = 10
+N = int(m**3 / 2)
+print(N)
+x_len = m 
+y_len = int(m / 2)
+z_len = m
+
+x = np.linspace(start=-m / 2, stop=m / 2, endpoint=False, num=x_len) + 1 / 2
+y = np.linspace(start=-m / 2, stop=0, endpoint=False, num=y_len) + 1 / 2
+z = np.linspace(start=-m / 2, stop=m/2, endpoint=False, num=z_len) + 1 / 2 
+
+position_2d = np.array(list(itertools.product(x, y, z)))
+
+print(np.shape(position_2d))
+
+frame = gsd.hoomd.Frame()
+frame.particles.N = N
+frame.particles.position = np.stack(
+    (position_2d[:, 0], position_2d[:, 1], position_2d[:, 2]), axis=-1
+)
+print(np.shape(frame.particles.position))
+frame.particles.types = ["mobile"]
+frame.configuration.box = [L, L, L, 0, 0, 0]
+
+with gsd.hoomd.open(name="initial_state.gsd", mode="w") as f:
+    f.append(frame)
+
+simulation = hoomd.Simulation(device=hoomd.device.CPU(), seed=1)
+simulation.create_state_from_gsd(filename="initial_state.gsd")
+simulation.operations.integrator = hoomd.hpmc.integrate.Sphere()
+simulation.operations.integrator.shape["mobile"] = dict(diameter=1.0)
+
+top = hoomd.wall.Plane(origin=(0, 0, 0), normal=(0, -1, 0))
+# bottom = hoomd.wall.Plane(origin=(0, -7, 0), normal=(0, 1, 0))
+# left = hoomd.wall.Plane(origin=(-7, 0, 0), normal=(1, 0, 0))
+# right = hoomd.wall.Plane(origin=(7, 0, 0), normal=(-1, 0, 0))
+# center = hoomd.wall.Plane(origin=(-4, 0, 0), normal=(1, 0, 0))
+
+wall_potential = hoomd.hpmc.external.wall.WallPotential(
+    walls=[top]
+)
+
+simulation.operations.integrator.external_potentials = [wall_potential]
+
+V_particle = (4 / 3) * np.pi * (1/2) ** 3
+initial_volume_fraction = (
+    simulation.state.N_particles * V_particle / (simulation.state.box.volume / 2)
+)
+print(initial_volume_fraction)
+
+initial_box = simulation.state.box 
+final_box = hoomd.Box.from_box(initial_box)
+final_volume_fraction = 0.6 
+final_box.volume = (2) * simulation.state.N_particles * V_particle / final_volume_fraction
+
+compress = hoomd.hpmc.update.QuickCompress(
+    trigger=hoomd.trigger.Periodic(10), target_box=final_box
+)
+
+simulation.operations.updaters.append(compress)
+
+periodic = hoomd.trigger.Periodic(10)
+tune = hoomd.hpmc.tune.MoveSize.scale_solver(
+    moves=["a", "d"],
+    target=0.2,
+    trigger=periodic,
+    max_translation_move=0.2,
+    max_rotation_move=0.2,
+)
+simulation.operations.tuners.append(tune)
+
+gsd_writer = hoomd.write.GSD(
+            filename= "wall_3D.gsd", 
+            trigger=hoomd.trigger.Periodic(100), 
+            mode="wb")
+
+simulation.operations.writers.append(gsd_writer)
+
+while not compress.complete and simulation.timestep < 1e6:
+    simulation.run(1000)
+
+simulation.run(1000) 
+
+simulation.operations.remove(tune)
+
+simulation.run(10_000)
+
+final_volume_fraction = (
+    simulation.state.N_particles * V_particle / (simulation.state.box.volume / 2)
+)
+print(final_volume_fraction)
+
+gsd_writer.flush() 
