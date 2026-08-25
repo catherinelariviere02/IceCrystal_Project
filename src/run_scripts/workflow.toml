@@ -1,5 +1,5 @@
 [workspace]
-path = "../../data/workspace"
+path = "../../data/data/workspace"
 value_file = "signac_statepoint.json"
 
 [default.action]
@@ -31,7 +31,7 @@ products = ["trajectory.gsd"]
 launchers = ["mpi"]
 [action.resources]
 processes.per_directory = 4
-walltime.per_submission = "12:00:00"
+walltime.per_submission = "05:00:00"
 [[action.group.include]]
 condition = ["/compression", "==", true]
 
@@ -43,7 +43,7 @@ products = ["trajectory.gsd"]
 launchers = ["mpi"]
 [action.resources]
 processes.per_directory = 4
-walltime.per_submission = "12:00:00"
+walltime.per_submission = "03:00:00"
 [[action.group.include]]
 condition = ["/compression", "==", false]
 

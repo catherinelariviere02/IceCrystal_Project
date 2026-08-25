@@ -14,7 +14,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     #open signac jobs
-    project = signac.get_project("../../data/workspace")
+    project = signac.get_project("../../data/data/workspace")
     jobs = [project.open_job(id=directory) for directory in args.directories]
 
     if args.action == "initialize":

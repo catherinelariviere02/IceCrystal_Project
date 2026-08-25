@@ -1,0 +1,122 @@
+{
+    "0_Id": "92_H2O_IceXI",
+    "1_Space_Group": "P4_12_12",
+    "2_Point_Group": "422",
+    "3_Commentt": "Vertices are in principal frame,centered, and correspond to unit volume",
+    "4_effective_latticesite_data": {
+        "particle_type": "O",
+        "equiv_site": 32,
+        "Wyckoff site": "a"
+    },
+    "4_Volume": 1.97589,
+    "6_center_of_mass": [
+        0.0,
+        0.0,
+        0.0
+    ],
+    "7_moment_of_inertia": [
+        0.554,
+        -0.0,
+        0.0,
+        0.684,
+        -0.0,
+        0.685
+    ],
+    "8_comment_about_moment_of_inertia": "The components are stored as xx, xy, xz, yy, yz, zz",
+    "8_vertices": [
+        [
+            -0.34463,
+            0.47096,
+            -0.86841
+        ],
+        [
+            -0.14149,
+            0.52507,
+            -1.05375
+        ],
+        [
+            -0.01809,
+            0.64637,
+            -0.98461
+        ],
+        [
+            -0.40627,
+            0.58625,
+            -0.54146
+        ],
+        [
+            -0.47095,
+            0.34463,
+            0.86842
+        ],
+        [
+            -0.52507,
+            0.14149,
+            1.05375
+        ],
+        [
+            -0.64636,
+            0.0181,
+            0.9846
+        ],
+        [
+            -0.58625,
+            0.40627,
+            0.54146
+        ],
+        [
+            -0.30075,
+            -0.55503,
+            -0.86686
+        ],
+        [
+            0.55501,
+            0.30075,
+            0.86686
+        ],
+        [
+            1.24269,
+            -0.10284,
+            0.31647
+        ],
+        [
+            1.2976,
+            0.38116,
+            0.21866
+        ],
+        [
+            -0.30359,
+            -0.92648,
+            -0.75823
+        ],
+        [
+            0.10284,
+            -1.24269,
+            -0.31647
+        ],
+        [
+            -0.38116,
+            -1.2976,
+            -0.21866
+        ],
+        [
+            0.92648,
+            0.30359,
+            0.75823
+        ]
+    ],
+    "10_truncation_btw_same_atom_types": [
+        0.5,
+        0.5
+    ],
+    "11_truncation_btw_different_atom_types": [
+        63,
+        32
+    ],
+    "12_distance_tol_rounding_factor": 3,
+    "13_pointgroup_tol": 0.01,
+    "14_packing_fraction_considered": 0.2,
+    "15_hierarchy_tolerance": 0.1,
+    "16_effective_neighbor_cell": 2,
+    "17_area_tol_voronoi": 0.0
+}

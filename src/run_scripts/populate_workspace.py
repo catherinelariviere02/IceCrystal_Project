@@ -7,12 +7,12 @@ import os
 import ase.io 
 from ase.formula import Formula
 
-project = signac.init_project("/home/clarivi/projects/IceCrystal_Project/data/")
+project = signac.init_project("/home/clarivi/projects/IceCrystal_Project/data/data/")
 list = [1]
-phase_names = ["92_H2O_3", "36_H2O_0"] # ice II 
+phase_names = ["92_H2O_1"] # ice II 
 comp_list = [False]
 # could be made more efficient by changing how list comprehension works, possibly change once running for more ice
-pf = 0.63
+pf = 0.57
 pf_name = str(pf).replace(".", "p")
 
 for phase_name in phase_names:
@@ -31,11 +31,12 @@ for phase_name in phase_names:
                         rdf_rmax=5,
                         bod_rmax=1.5, 
                         stoich={"O": 1, "H": 2}, 
-                        pf = pf)
+                        pf = pf, 
+                        seed = 2)
         job = project.open_job(statepoint)
         if job not in project:
             job.init()
 
 # for job in project: 
-#     if "pf" not in job.sp:
-#         job.sp.pf = 0.6
+#     if "seed" not in job.sp:
+#         job.sp.seed = 1
