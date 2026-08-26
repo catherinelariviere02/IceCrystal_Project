@@ -12,7 +12,7 @@ list = [1]
 phase_names = ["92_H2O_1"] # ice II
 comp_list = [False]
 # could be made more efficient by changing how list comprehension works, possibly change once running for more ice
-pf = 0.57
+pf = 0.6
 pf_name = str(pf).replace(".", "p")
 
 for phase_name in phase_names:
