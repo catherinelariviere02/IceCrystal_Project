@@ -9,7 +9,7 @@ from ase.formula import Formula
 
 project = signac.init_project("/home/clarivi/projects/IceCrystal_Project/data/data/")
 list = [1]
-phase_names = ["92_H2O_1"] # ice II 
+phase_names = ["92_H2O_1"] # ice II
 comp_list = [False]
 # could be made more efficient by changing how list comprehension works, possibly change once running for more ice
 pf = 0.57
@@ -22,9 +22,9 @@ for phase_name in phase_names:
             os.mkdir(f"../../inputs/{phase_name}") #this should maybe just raise an error 
         statepoint = dict(inputfile = f"/home/clarivi/projects/IceCrystal_Project/inputs/{phase_name}/", 
                         crystal_name = phase_name,
-                        runtime = 100_000_000,
+                        runtime = 10_000,
                         logsteps = 100,
-                        replicas = 5, 
+                        replicas = 5,
                         compression=comp_state, 
                         gsd=f"{phase_name}_nvt_final_pf{pf_name}_0.gsd", #insert gsd file here
                         atoms=["O", "H"], 
