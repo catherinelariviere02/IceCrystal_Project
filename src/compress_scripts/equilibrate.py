@@ -35,6 +35,7 @@ def equilibrate(*jobs):
                                                         job.sp.crystal_name, 
                                                         job.sp.stoich)
         device.notice("got shape!")
+
         # self-assembly test   
          
         if job.sp.compression == True: 
@@ -75,10 +76,6 @@ def equilibrate(*jobs):
         logger = hoomd.logging.Logger()
         logger.add(simulation.operations.integrator, 
                     quantities=["type_shapes"])
-        
-        # logger2 = hoomd.logging.Logger(categories=["scalar"])
-        # logger2.add(simulation.operations.integrator, 
-        #                     quantities=["overlaps"])
         
         #TUNING TRIAL MOVE SIZE 
 
@@ -130,17 +127,17 @@ def equilibrate(*jobs):
         device.notice(f"{log_time}")
         device.notice(f"{sim_time}") 
 
-        #mode : appending to same trajectory_temp.gsd file when continuing run 
+        # write  
         gsd_writer = hoomd.write.GSD(
             filename= job.fn("trajectory_temp.gsd"), #"../../data/iceIX/trajectory_temp.gsd" 
             trigger=hoomd.trigger.Periodic(log_time), 
             mode="ab", logger = logger)
-        
-        simulation.operations.writers.append(gsd_writer)
 
-        # table = hoomd.write.Table(trigger=hoomd.trigger.Periodic(log_time),
-        #                   logger=logger2)
-        # simulation.operations.writers.append(table)
+        # dynamically update image if specified 
+        if job.sp.image_write == True: 
+            gsd_writer.dynamic = ["property", "particles/image"]
+
+        simulation.operations.writers.append(gsd_writer)
 
         print("starting equilibration...")
 
