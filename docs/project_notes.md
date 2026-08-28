@@ -2,7 +2,7 @@
 
 ## Equilibration/Compression HPMC Code 
 
-### Overview of Workflow 
+#### Overview of Workflow 
 
 Workflow encoded in workflow.toml file using grouping: 
 
@@ -16,7 +16,22 @@ flowchart LR
   equilib --> analyze[Analysis]
 ```
 
-### Additional details 
+#### File conventions 
+
+### guidelines for inputs
+
+Input file should be organized first by crystal type. For each crystal type, there will be a json file for each type, the cif file used to generate the shapes, the gsd file of the generated unit cell (after nvt equilibration), and a README.md file with information on the r_cuts used to generate the shapes from crystal2shape.
+
+### Guideline for naming:
+Folder: name of crystal (and replica number)
+
+json: "shape_[crystal_name]_[type]_unit_volume_principal_frame.json" for each shape
+
+cif file: "[crystal_name].cif"
+
+gsd file of uc: "[crystal_name]_nvt_final_pf0p6_0.gsd"
+
+#### Code Details  
 
 1. Crystal2shape generation 
 
@@ -104,3 +119,22 @@ flowchart LR
 
     **difficulties from MPI specifically:** 
     * device.notice --> I was initially a bit confused, but I think the tutorials are actually pretty clear. 
+
+
+#### Notes on code: 
+
+### RSD calculations - August 28 notes 
+
+*the problem*
+- Freud calculation of MSD requires unwrapping of positions, which requires dynamic update
+- Runs up until now did not dynamically update image, so MSD calculations are wrong 
+
+*tests*
+- tests done in IceCrystal_Scratch done to ensure adding *dynamic="particles/image" does not alter results of trials 
+- add boolean in signac_statepoint for image writing to maintain integrity of previous trials : don't want to change image writing halfway through trial 
+
+*fix*
+- add boolean in signac_statepoint for image writing to maintain integrity of previous trials while adding image writing to new trials  
+    - don't want to change image writing halfway through trial for future runs
+- write analysis code in notebook to unwrap positions without dynamic updating (possible in non-dilute systems)
+
