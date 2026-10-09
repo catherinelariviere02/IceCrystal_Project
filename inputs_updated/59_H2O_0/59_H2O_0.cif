@@ -1,0 +1,291 @@
+####################################################################### 
+# 
+# This file contains crystal structure data downloaded from the 
+# Cambridge Structural Database (CSD) hosted by the Cambridge 
+# Crystallographic Data Centre (CCDC).
+# 
+# Full information about CCDC data access policies and citation 
+# guidelines are available at http://www.ccdc.cam.ac.uk/access/V1 
+# 
+# Audit and citation data items may have been added by the CCDC. 
+# Please retain this information to preserve the provenance of 
+# this file and to allow appropriate attribution of the data. 
+# 
+#######################################################################
+
+data_15390_PMMN_XFREE_phase_1
+_database_code_depnum_ccdc_archive 'CCDC 1463849'
+loop_
+_citation_id
+_citation_doi
+_citation_year
+1 10.1038/srep28920 2016
+_audit_update_record             
+;
+2016-03-11 deposited with the CCDC.	2026-06-04 downloaded from the CCDC.
+;
+
+_pd_block_id                     
+2016-03-04T14:21|15390_PMMN_XFREE_phase1|Kazuki_Komatsu||
+
+# Histograms for phase 1
+loop_
+_pd_block_diffractogram_id
+2016-03-04T14:21|15390_PMMN_XFREE_H_01|Kazuki_Komatsu|PLANET
+
+#==============================================================================
+# 7. CHEMICAL, STRUCTURAL AND CRYSTAL DATA
+
+_pd_char_particle_morphology     ?
+
+_chemical_name_systematic        'Deuterium Oxide'
+_chemical_name_common            'Deuterium Oxide'
+_chemical_formula_moiety         'D2 O'
+_chemical_formula_structural     'D2 O'
+_chemical_formula_analytical     ?
+_chemical_melting_point          ?
+_chemical_compound_source        ? # for minerals and
+# natural products
+_symmetry_space_group_name_Hall  ?
+
+_exptl_crystal_F_000             19.14
+_exptl_crystal_density_diffrn    1.477
+_exptl_crystal_density_meas      ?
+_exptl_crystal_density_method    ?
+
+_cell_measurement_temperature    84
+
+_cell_special_details            
+; ?
+;
+
+_geom_special_details            ?
+
+# The following item identifies the program(s) used (if appropriate).
+_computing_structure_solution    ?
+
+#==============================================================================
+
+# 8. Phase information from GSAS
+
+_pd_phase_name                   'ice XV'
+_cell_length_a                   6.2450(6)
+_cell_length_b                   6.2420(6)
+_cell_length_c                   5.77577(9)
+_cell_angle_alpha                90.0
+_cell_angle_beta                 90.0
+_cell_angle_gamma                90.0
+_cell_volume                     225.144(4)
+_symmetry_cell_setting           orthorhombic
+_symmetry_space_group_name_H-M   'P m m n'
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+1 +x,+y,+z
+2 -x+1/2,+y,+z
+3 +x,-y+1/2,+z
+4 -x+1/2,-y+1/2,+z
+-1 -x,-y,-z
+-2 +x+1/2,-y,-z
+-3 -x,+y+1/2,-z
+-4 +x+1/2,+y+1/2,-z
+
+# ATOMIC COORDINATES AND DISPLACEMENT PARAMETERS
+
+
+loop_
+_atom_site_type_symbol
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+_atom_site_thermal_displace_type
+_atom_site_U_iso_or_equiv
+_atom_site_symmetry_multiplicity
+O O1 0.75 0.25 0.75 1.0 Uiso 0.0122(3) 2
+O O2 0.75 0.5266(8) 0.1228(7) 1.0 Uiso 0.0122(3) 4
+D D1 0.75 0.4535(9) -0.0192(11) 0.666(4) Uiso 0.0189(3) 4
+D D2 0.75 0.3541(15) -0.144(2) 0.334(4) Uiso 0.0189(3) 4
+D D3 0.75 0.6733(10) 0.1381(10) 0.5 Uiso 0.0189(3) 4
+D D4 0.1401(11) 0.5296(12) 0.7701(9) 0.4170(19) Uiso 0.0189(3) 8
+O O2' 0.5323(8) 0.75 0.6316(8) 1.0 Uiso 0.0122(3) 4
+D D1' 0.468(2) 0.75 0.497(2) 0.334(4) Uiso 0.0189(3) 4
+D D4' 0.4660(10) 0.8685(8) 0.6974(7) 0.5830(19) Uiso 0.0189(3) 8
+D D3' 0.6902(10) 0.75 0.6112(10) 0.5 Uiso 0.0189(3) 4
+D D2' 0.3742(8) 0.75 0.3488(12) 0.666(4) Uiso 0.0189(3) 4
+
+loop_
+_atom_type_symbol
+_atom_type_number_in_cell
+O 10.0
+D 20.0
+
+# If you change Z, be sure to change all 3 of the following
+_chemical_formula_sum            'D2 O'
+_chemical_formula_weight         20.03
+_cell_formula_units_Z            10
+
+# MOLECULAR GEOMETRY
+
+# loop_
+# _geom_bond_atom_site_label_1
+# _geom_bond_atom_site_label_2
+# _geom_bond_distance
+# _geom_bond_site_symmetry_1
+# _geom_bond_site_symmetry_2
+# _geom_bond_publ_flag
+# O1 D1 1.841(6) . 1_556 N
+# O1 D1 1.841(6) . 3_556 N
+# O1 D2 0.895(12) . 1_556 N
+# O1 D2 0.895(12) . 3_556 N
+# O1 D1' 1.970(15) . -1_666 N
+# O1 D1' 1.970(15) . -2_566 N
+# O1 D2' 0.963(6) . -1_666 N
+# O1 D2' 0.963(6) . -2_566 N
+# O2 D1 0.938(6) . 1_555 N
+# O2 D2 1.878(13) . 1_555 N
+# O2 D3 0.920(7) . 1_555 N
+# O2 D3 1.875(9) . 3_565 N
+# O2 D4 0.988(8) . -1_666 N
+# O2 D4 0.988(8) . -2_566 N
+# O2 D4' 1.968(7) . -3_646 N
+# O2 D4' 1.968(7) . -4_546 N
+# D1 O1 1.841(6) . 1_554 N
+# D1 O2 0.938(6) . 1_555 N
+# D1 D2 0.949(13) . 1_555 N
+# D1 D3 1.645(8) . 1_555 N
+# D1 D4 1.598(8) . -1_666 N
+# D1 D4 1.598(8) . -2_566 N
+# D2 O1 0.895(12) . 1_554 N
+# D2 O2 1.878(13) . 1_555 N
+# D2 D1 0.949(13) . 1_555 N
+# D2 D2 1.300(18) . 3_555 N
+# D2 D2' 1.559(7) . -1_665 N
+# D2 D2' 1.559(7) . -2_565 N
+# D3 O2 0.920(7) . 1_555 N
+# D3 O2 1.875(9) . 3_565 N
+# D3 D1 1.645(8) . 1_555 N
+# D3 D3 0.958(12) . 3_565 N
+# D3 D4 1.535(8) . -1_666 N
+# D3 D4 1.535(8) . -2_566 N
+# D4 O2 0.988(8) . -1_666 N
+# D4 D1 1.598(8) . -1_666 N
+# D4 D3 1.535(8) . -1_666 N
+# D4 D4 1.373(14) . 2_555 N
+# D4 O2' 1.922(9) . 2_555 N
+# D4 D4' 1.010(4) . 4_565 N
+# O2' D4 1.922(9) . 2_555 N
+# O2' D4 1.922(9) . 4_565 N
+# O2' D1' 0.877(13) . 1_555 N
+# O2' D4' 0.929(6) . 1_555 N
+# O2' D4' 0.929(6) . 3_565 N
+# O2' D3' 0.993(6) . 1_555 N
+# O2' D3' 1.737(10) . 2_655 N
+# O2' D2' 1.909(7) . 1_555 N
+# D1' O1 1.970(15) . -1_666 N
+# D1' O2' 0.877(13) . 1_555 N
+# D1' D4' 1.375(12) . 1_555 N
+# D1' D4' 1.375(12) . 3_565 N
+# D1' D3' 1.538(16) . 1_555 N
+# D1' D2' 1.035(14) . 1_555 N
+# D4' O2 1.968(7) . -3_656 N
+# D4' D4 1.010(4) . 4_565 N
+# D4' O2' 0.929(6) . 1_555 N
+# D4' D1' 1.375(12) . 1_555 N
+# D4' D4' 1.479(10) . 3_565 N
+# D4' D3' 1.660(7) . 1_555 N
+# D3' O2' 0.993(6) . 1_555 N
+# D3' O2' 1.737(10) . 2_655 N
+# D3' D1' 1.538(16) . 1_555 N
+# D3' D4' 1.660(7) . 1_555 N
+# D3' D4' 1.660(7) . 3_565 N
+# D3' D3' 0.747(13) . 2_655 N
+# D2' O1 0.963(6) . -1_666 N
+# D2' D2 1.559(7) . -1_665 N
+# D2' D2 1.559(7) . -3_655 N
+# D2' O2' 1.909(7) . 1_555 N
+# D2' D1' 1.035(14) . 1_555 N
+# D2' D2' 1.551(10) . 2_555 N
+
+# loop_
+# _geom_angle_atom_site_label_1
+# _geom_angle_atom_site_label_2
+# _geom_angle_atom_site_label_3
+# _geom_angle
+# _geom_angle_site_symmetry_1
+# _geom_angle_site_symmetry_2
+# _geom_angle_site_symmetry_3
+# _geom_angle_publ_flag
+# D2 O1 D2 93.2(14) 1_556 . 3_556 N
+# D2 O1 D2' 114.03(25) 1_556 . -1_666 N
+# D2 O1 D2' 114.03(25) 1_556 . -2_666 N
+# D2 O1 D2' 114.03(25) 3_556 . -1_666 N
+# D2 O1 D2' 114.03(25) 3_556 . -2_666 N
+# D2' O1 D2' 107.3(7) -1_666 . -2_666 N
+# D1 O2 D3 124.6(8) 1_555 . 1_555 N
+# D1 O2 D4 112.0(5) 1_555 . -1_666 N
+# D1 O2 D4 112.0(5) 1_555 . -2_666 N
+# D3 O2 D4 107.0(6) 1_555 . -1_666 N
+# D3 O2 D4 107.0(6) 1_555 . -2_666 N
+# D4 O2 D4 87.9(8) -1_666 . -2_666 N
+# O2 D1 D2 168.3(12) 1_555 . 1_555 N
+# O1 D2 D1 174.2(15) 1_554 . 1_555 N
+# O1 D2 D2 43.4(7) 1_554 . 3_555 N
+# O1 D2 D2' 34.4(4) 1_554 . -1_665 N
+# O1 D2 D2' 34.4(4) 1_554 . -2_665 N
+# D1 D2 D2 130.8(9) 1_555 . 3_555 N
+# D1 D2 D2' 148.0(5) 1_555 . -1_665 N
+# D1 D2 D2' 148.0(5) 1_555 . -2_665 N
+# D2 D2 D2' 65.36(34) 3_555 . -1_665 N
+# D2 D2 D2' 65.36(34) 3_555 . -2_665 N
+# D2' D2 D2' 59.7(6) -1_665 . -2_665 N
+# O2 D3 D3 174.5(5) 1_555 . 3_565 N
+# O2 D3 D4 38.0(4) 1_555 . -1_666 N
+# O2 D3 D4 38.0(4) 1_555 . -2_666 N
+# D3 D3 D4 145.59(30) 3_565 . -1_666 N
+# D3 D3 D4 145.59(30) 3_565 . -2_666 N
+# D4 D3 D4 53.1(5) -1_666 . -2_666 N
+# O2 D4 D3 35.0(4) -1_666 . -1_666 N
+# O2 D4 D4 46.0(4) -1_666 . 2_555 N
+# O2 D4 D4' 159.9(8) -1_666 . 4_565 N
+# D3 D4 D4 63.44(25) -1_666 . 2_555 N
+# D3 D4 D4' 163.1(8) -1_666 . 4_565 N
+# D4 D4 D4' 131.0(6) 2_555 . 4_565 N
+# D1' O2' D4' 99.1(6) 1_555 . 1_555 N
+# D1' O2' D4' 99.1(6) 1_555 . 3_565 N
+# D1' O2' D3' 110.5(10) 1_555 . 1_555 N
+# D4' O2' D4' 105.5(7) 1_555 . 3_565 N
+# D4' O2' D3' 119.4(5) 1_555 . 1_555 N
+# D4' O2' D3' 119.4(5) 3_565 . 1_555 N
+# O2' D1' D4' 41.9(6) 1_555 . 1_555 N
+# O2' D1' D4' 41.9(6) 1_555 . 3_565 N
+# O2' D1' D3' 37.2(6) 1_555 . 1_555 N
+# O2' D1' D2' 173.0(15) 1_555 . 1_555 N
+# D4' D1' D4' 65.1(8) 1_555 . 3_565 N
+# D4' D1' D3' 69.2(8) 1_555 . 1_555 N
+# D4' D1' D2' 133.7(10) 1_555 . 1_555 N
+# D4' D1' D3' 69.2(8) 3_565 . 1_555 N
+# D4' D1' D2' 133.7(10) 3_565 . 1_555 N
+# D3' D1' D2' 149.8(12) 1_555 . 1_555 N
+# D4 D4' O2' 164.6(10) 4_565 . 1_555 N
+# D4 D4' D1' 134.0(9) 4_565 . 1_555 N
+# D4 D4' D4' 129.1(6) 4_565 . 3_565 N
+# O2' D4' D1' 39.0(5) 1_555 . 1_555 N
+# O2' D4' D4' 37.3(4) 1_555 . 3_565 N
+# D1' D4' D4' 57.5(4) 1_555 . 3_565 N
+# O2' D3' D1' 32.3(5) 1_555 . 1_555 N
+# O2' D3' D3' 173.2(5) 1_555 . 2_655 N
+# D1' D3' D3' 154.5(5) 1_555 . 2_655 N
+# O1 D2' D2 31.6(4) -1_666 . -1_665 N
+# O1 D2' D2 31.6(4) -1_666 . -3_665 N
+# O1 D2' D1' 160.7(10) -1_666 . 1_555 N
+# O1 D2' D2' 36.34(33) -1_666 . 2_555 N
+# D2 D2' D2 49.3(7) -1_665 . -3_665 N
+# D2 D2' D1' 155.34(35) -1_665 . 1_555 N
+# D2 D2' D2' 60.15(30) -1_665 . 2_555 N
+# D2 D2' D1' 155.34(35) -3_665 . 1_555 N
+# D2 D2' D2' 60.15(30) -3_665 . 2_555 N
+# D1' D2' D2' 124.4(8) 1_555 . 2_555 N
+# _exptl_crystal_colour            colorless
+# _diffrn_ambient_temperature      84

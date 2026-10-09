@@ -503,97 +503,138 @@ import signac
 
 ### TEST FOR ADDING WALL 
 
-L = 20
-m = 10
-N = int(m**3 / 2)
-print(N)
-x_len = m 
-y_len = int(m / 2)
-z_len = m
+# L = 20
+# m = 10
+# N = int(m**3 / 2)
+# print(N)
+# x_len = m 
+# y_len = int(m / 2)
+# z_len = m
 
-x = np.linspace(start=-m / 2, stop=m / 2, endpoint=False, num=x_len) + 1 / 2
-y = np.linspace(start=-m / 2, stop=0, endpoint=False, num=y_len) + 1 / 2
-z = np.linspace(start=-m / 2, stop=m/2, endpoint=False, num=z_len) + 1 / 2 
+# x = np.linspace(start=-m / 2, stop=m / 2, endpoint=False, num=x_len) + 1 / 2
+# y = np.linspace(start=-m / 2, stop=0, endpoint=False, num=y_len) + 1 / 2
+# z = np.linspace(start=-m / 2, stop=m/2, endpoint=False, num=z_len) + 1 / 2 
 
-position_2d = np.array(list(itertools.product(x, y, z)))
+# position_2d = np.array(list(itertools.product(x, y, z)))
 
-print(np.shape(position_2d))
+# print(np.shape(position_2d))
 
-frame = gsd.hoomd.Frame()
-frame.particles.N = N
-frame.particles.position = np.stack(
-    (position_2d[:, 0], position_2d[:, 1], position_2d[:, 2]), axis=-1
+# frame = gsd.hoomd.Frame()
+# frame.particles.N = N
+# frame.particles.position = np.stack(
+#     (position_2d[:, 0], position_2d[:, 1], position_2d[:, 2]), axis=-1
+# )
+# print(np.shape(frame.particles.position))
+# frame.particles.types = ["mobile"]
+# frame.configuration.box = [L, L, L, 0, 0, 0]
+
+# with gsd.hoomd.open(name="initial_state.gsd", mode="w") as f:
+#     f.append(frame)
+
+# simulation = hoomd.Simulation(device=hoomd.device.CPU(), seed=1)
+# simulation.create_state_from_gsd(filename="initial_state.gsd")
+# simulation.operations.integrator = hoomd.hpmc.integrate.Sphere()
+# simulation.operations.integrator.shape["mobile"] = dict(diameter=1.0)
+
+# top = hoomd.wall.Plane(origin=(0, 0, 0), normal=(0, -1, 0))
+# # bottom = hoomd.wall.Plane(origin=(0, -7, 0), normal=(0, 1, 0))
+# # left = hoomd.wall.Plane(origin=(-7, 0, 0), normal=(1, 0, 0))
+# # right = hoomd.wall.Plane(origin=(7, 0, 0), normal=(-1, 0, 0))
+# # center = hoomd.wall.Plane(origin=(-4, 0, 0), normal=(1, 0, 0))
+
+# wall_potential = hoomd.hpmc.external.wall.WallPotential(
+#     walls=[top]
+# )
+
+# simulation.operations.integrator.external_potentials = [wall_potential]
+
+# V_particle = (4 / 3) * np.pi * (1/2) ** 3
+# initial_volume_fraction = (
+#     simulation.state.N_particles * V_particle / (simulation.state.box.volume / 2)
+# )
+# print(initial_volume_fraction)
+
+# initial_box = simulation.state.box 
+# final_box = hoomd.Box.from_box(initial_box)
+# final_volume_fraction = 0.6 
+# final_box.volume = (2) * simulation.state.N_particles * V_particle / final_volume_fraction
+
+# compress = hoomd.hpmc.update.QuickCompress(
+#     trigger=hoomd.trigger.Periodic(10), target_box=final_box
+# )
+
+# simulation.operations.updaters.append(compress)
+
+# periodic = hoomd.trigger.Periodic(10)
+# tune = hoomd.hpmc.tune.MoveSize.scale_solver(
+#     moves=["a", "d"],
+#     target=0.2,
+#     trigger=periodic,
+#     max_translation_move=0.2,
+#     max_rotation_move=0.2,
+# )
+# simulation.operations.tuners.append(tune)
+
+# gsd_writer = hoomd.write.GSD(
+#             filename= "wall_3D.gsd", 
+#             trigger=hoomd.trigger.Periodic(100), 
+#             mode="wb")
+
+# simulation.operations.writers.append(gsd_writer)
+
+# while not compress.complete and simulation.timestep < 1e6:
+#     simulation.run(1000)
+
+# simulation.run(1000) 
+
+# simulation.operations.remove(tune)
+
+# simulation.run(10_000)
+
+# final_volume_fraction = (
+#     simulation.state.N_particles * V_particle / (simulation.state.box.volume / 2)
+# )
+# print(final_volume_fraction)
+
+# gsd_writer.flush() 
+
+
+### Shape analysis between my and sumitava's code : 
+
+shapes_GSD_C = "/Users/clarivi/Desktop/Research/IceCrystal_Project/inputs_updated/141_H2O_0/output_files/141_H2O_0_uc_pf0p2.gsd"
+shapes_GSD_S = "/Users/clarivi/Downloads/141_H2O_0_compression_traj_pf0p6.gsd"
+
+traj_c = gsd.hoomd.open(shapes_GSD_C, mode="r") 
+traj_s = gsd.hoomd.open(shapes_GSD_S, mode= "r")
+
+shapes_c = traj_c[0].particles.type_shapes
+shapes_s = traj_s[0].particles.type_shapes 
+
+o_verts_c = shapes_c[0]["vertices"]
+o_verts_s = shapes_s[0]["vertices"]
+print(shapes_c)
+print(shapes_s)
+
+c_oxygen = coxeter.shapes.ConvexPolyhedron(
+    o_verts_c
 )
-print(np.shape(frame.particles.position))
-frame.particles.types = ["mobile"]
-frame.configuration.box = [L, L, L, 0, 0, 0]
-
-with gsd.hoomd.open(name="initial_state.gsd", mode="w") as f:
-    f.append(frame)
-
-simulation = hoomd.Simulation(device=hoomd.device.CPU(), seed=1)
-simulation.create_state_from_gsd(filename="initial_state.gsd")
-simulation.operations.integrator = hoomd.hpmc.integrate.Sphere()
-simulation.operations.integrator.shape["mobile"] = dict(diameter=1.0)
-
-top = hoomd.wall.Plane(origin=(0, 0, 0), normal=(0, -1, 0))
-# bottom = hoomd.wall.Plane(origin=(0, -7, 0), normal=(0, 1, 0))
-# left = hoomd.wall.Plane(origin=(-7, 0, 0), normal=(1, 0, 0))
-# right = hoomd.wall.Plane(origin=(7, 0, 0), normal=(-1, 0, 0))
-# center = hoomd.wall.Plane(origin=(-4, 0, 0), normal=(1, 0, 0))
-
-wall_potential = hoomd.hpmc.external.wall.WallPotential(
-    walls=[top]
+s_oxygen = coxeter.shapes.ConvexPolyhedron(
+    o_verts_s
 )
 
-simulation.operations.integrator.external_potentials = [wall_potential]
+c_oxygen.centroid = [0.0, 0.0, 0.0]
+s_oxygen.centroid = [0.0, 0.0, 0.0]
+#fig, ax = plt.subplots(projection = "3d")
 
-V_particle = (4 / 3) * np.pi * (1/2) ** 3
-initial_volume_fraction = (
-    simulation.state.N_particles * V_particle / (simulation.state.box.volume / 2)
-)
-print(initial_volume_fraction)
+# fig = plt.figure(figsize=plt.figaspect(0.5))
+# ax = fig.add_subplot(1, 2, 1, projection='3d')
 
-initial_box = simulation.state.box 
-final_box = hoomd.Box.from_box(initial_box)
-final_volume_fraction = 0.6 
-final_box.volume = (2) * simulation.state.N_particles * V_particle / final_volume_fraction
+c_oxygen.plot(plot_verts = True)
+plt.show() 
 
-compress = hoomd.hpmc.update.QuickCompress(
-    trigger=hoomd.trigger.Periodic(10), target_box=final_box
-)
+s_oxygen.plot(plot_verts = True)
+plt.show()
 
-simulation.operations.updaters.append(compress)
+print(f"cat oxygen centroid {c_oxygen.centroid}")
+print(f"sum. oxygen centroid {s_oxygen.centroid}")
 
-periodic = hoomd.trigger.Periodic(10)
-tune = hoomd.hpmc.tune.MoveSize.scale_solver(
-    moves=["a", "d"],
-    target=0.2,
-    trigger=periodic,
-    max_translation_move=0.2,
-    max_rotation_move=0.2,
-)
-simulation.operations.tuners.append(tune)
-
-gsd_writer = hoomd.write.GSD(
-            filename= "wall_3D.gsd", 
-            trigger=hoomd.trigger.Periodic(100), 
-            mode="wb")
-
-simulation.operations.writers.append(gsd_writer)
-
-while not compress.complete and simulation.timestep < 1e6:
-    simulation.run(1000)
-
-simulation.run(1000) 
-
-simulation.operations.remove(tune)
-
-simulation.run(10_000)
-
-final_volume_fraction = (
-    simulation.state.N_particles * V_particle / (simulation.state.box.volume / 2)
-)
-print(final_volume_fraction)
-
-gsd_writer.flush() 

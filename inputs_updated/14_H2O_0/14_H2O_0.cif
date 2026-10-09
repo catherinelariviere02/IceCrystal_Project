@@ -1,0 +1,57 @@
+data_H2O
+_space_group_IT_number           14
+_symmetry_space_group_name_H-M  'P21/a'
+_cell_angle_alpha                90
+_cell_angle_beta                 109.76
+_cell_angle_gamma                90
+_cell_formula_units_Z            7
+_cell_length_a                   9.240
+_cell_length_b                   7.462
+_cell_length_c                   10.291
+_chemical_formula_structural     H2O
+_cell_volume                     667.7723
+loop_
+_citation_id
+_citation_doi
+_citation_year
+1 10.1063/5.0045443 2021
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+1 'x,y,z'
+2 '1/2-x, 1/2+y, -z'
+3 '-x, -y, -z'
+4 '1/2+x, 1/2-y, z'
+	
+loop_
+_atom_site_type_symbol
+_atom_site_label
+_atom_site_symmetry_multiplicity
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+O2- O1  4  0.253  0.563  0.252  1 
+O2- O2  4  0.477  0.799  0.408  1 
+O2- O3  4  0.051  0.806  0.094  1 
+O2- O4  4  0.260  0.403  0.499  1 
+O2- O5  4  0.211  0.405  0.003  1 
+O2- O6  4  0.417  0.111  0.233  1 
+O2- O7  4  0.126  0.113  0.265  1 
+H+  D8  4  0.344  0.640  0.301  1 
+H+  D9  4  0.244  0.495  0.330  1 
+H+  D10  4  0.107  0.715  0.156  1 
+H+  D11  4  0.483  0.905  0.357  1 
+H+  D12  4  0.577  0.750  0.444  1 
+H+  D13  4  0.949  0.751  0.048  1 	
+H+  D14  4  0.238  0.455  0.099  1 	
+H+  D15  4  0.303  0.490  0.577  1 	
+H+  D16  4  0.168  0.356  0.512  1 	
+H+  D17  4  0.307  0.372  0.991  1 	
+H+  D18  4  0.078  0.019  0.198  1 	
+H+  D19  4  0.324  0.137  0.254  1 	
+H+  D20  4  0.381  0.048  0.146  1 	
+H+  D21  4  0.050  0.208  0.253  1 
+
+
+
