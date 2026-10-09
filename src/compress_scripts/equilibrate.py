@@ -7,7 +7,7 @@ from mpl_toolkits.mplot3d import Axes3D
 import gsd.hoomd
 import plotly.graph_objects as go
 from utils import create_simulation, get_shape_info
-import os 
+import os
 import time
 import h5py
  
@@ -19,7 +19,7 @@ def equilibrate(*jobs):
 
     # Allow up to 10 minutes for Python to launch and files to be written at the end.
     HOOMD_RUN_WALLTIME_LIMIT_SECONDS = CLUSTER_JOB_WALLTIME_MINUTES * 60 - 600
-
+    print(HOOMD_RUN_WALLTIME_LIMIT_SECONDS)
     processes_per_directory = int(os.environ['ACTION_PROCESSES_PER_DIRECTORY'])
     communicator = hoomd.communicator.Communicator(ranks_per_partition=processes_per_directory)
     job = jobs[communicator.partition]
@@ -32,7 +32,7 @@ def equilibrate(*jobs):
         _, _, _, shapes, _, _ = get_shape_info(job.sp.inputfile, 
                                                         job.sp.replicas, 
                                                         job.sp.atoms, 
-                                                        job.sp.crystal_name, 
+                                                        job.sp.crystal_name,
                                                         job.sp.stoich)
         device.notice("got shape!")
 
@@ -125,30 +125,43 @@ def equilibrate(*jobs):
 
         #device.notice to only print on one rank 
         device.notice(f"{log_time}")
-        device.notice(f"{sim_time}") 
+        device.notice(f"{sim_time}")
 
         # write  
+        # log_time = 100 # DEBUGGING, CHANGE AND DELETE LATER 
         gsd_writer = hoomd.write.GSD(
             filename= job.fn("trajectory_temp.gsd"), #"../../data/iceIX/trajectory_temp.gsd" 
-            trigger=hoomd.trigger.Periodic(log_time), 
-            dynamic=["property", "particles/image"],
+            trigger=hoomd.trigger.Periodic(log_time),
             mode="ab", logger = logger)
 
         # dynamically update image if specified 
         if job.sp.image_write == True: 
             gsd_writer.dynamic = ["property", "particles/image"]
 
+        device.notice("checking progress...")
         simulation.operations.writers.append(gsd_writer)
 
-        print("starting equilibration...")
+        device.notice(f"starting equilibration...{simulation.timestep} is {simulation.timestep < sim_time}")
 
         while simulation.timestep < sim_time: 
-            simulation.run(min(10_000, sim_time))
+            device.notice("equilibrating ... ") 
+            simulation.run(min(100, sim_time))
+            device.notice(f"mps: {simulation.operations.integrator.mps}")
+            c = simulation.operations.integrator.counters
+            device.notice(f"overlap checks per trial ove: {c.overlap_checks / (sum([*c.translate, *c.rotate]))}")
 
+            t_accept = (simulation.operations.integrator.translate_moves[0]
+                         / sum(simulation.operations.integrator.translate_moves))
+            device.notice(f"translate acceptance {t_accept}")
+            r_accept = (simulation.operations.integrator.rotate_moves[0]
+                                     / sum(simulation.operations.integrator.rotate_moves))
+            device.notice(f"rotate acceptance {r_accept}")
+
+            # break
             next_walltime = simulation.device.communicator.walltime + simulation.walltime
             if next_walltime >= HOOMD_RUN_WALLTIME_LIMIT_SECONDS: 
                 print("simulation timed out")
-                hoomd.write.GSD.write(state= simulation.state, 
+                hoomd.write.GSD.write(state = simulation.state, 
                                           mode = "wb", 
                                           filename = job.fn("restart.gsd"))
 

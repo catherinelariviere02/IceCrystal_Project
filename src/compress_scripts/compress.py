@@ -13,22 +13,25 @@ def compress(*jobs):
 
     outputs: "compressed.gsd" 
     """
-
+    print("compression beginning")
     # Set walltime limits: 
     CLUSTER_JOB_WALLTIME_MINUTES = int(os.environ.get("ACTION_WALLTIME_IN_MINUTES", "60"))
 
     # Allow up to 5 minutes for Python to launch and files to be written at the end.
-    HOOMD_RUN_WALLTIME_LIMIT_SECONDS = CLUSTER_JOB_WALLTIME_MINUTES * 60 - 600
-
+    HOOMD_RUN_WALLTIME_LIMIT_SECONDS = CLUSTER_JOB_WALLTIME_MINUTES * 60 - 600 
+    
     for job in jobs: 
+        device = hoomd.device.CPU()
         job.document["walltime_limit"] = HOOMD_RUN_WALLTIME_LIMIT_SECONDS
-        
+
+        device.notice(f"compression for {job.id} has begun")
         _, _, _, shapes, _, shape_volume = get_shape_info(job.sp.inputfile, 
                                                             job.sp.replicas, 
                                                             job.sp.atoms, 
                                                             job.sp.crystal_name, 
                                                             job.sp.stoich)
-        
+
+        device.notice(f"shape achieved!")
         simulation = create_simulation(job.fn("initialize.gsd"), 0, shapes = shapes, atoms = job.sp.atoms, communicator = None)
         logger = hoomd.logging.Logger()
         logger.add(simulation.operations.integrator, 
@@ -36,7 +39,7 @@ def compress(*jobs):
 
         rho_init = shape_volume / simulation.state.box.volume 
 
-        print(f"initial volume fraction = {rho_init}")
+        device.notice(f"initial volume fraction = {rho_init}")
         job.document["initial_packingfrac"] = rho_init
         
         #set compress variables 
@@ -49,7 +52,7 @@ def compress(*jobs):
         tune = hoomd.hpmc.tune.MoveSize.scale_solver(
             moves=["a", "d"],
             target=0.3,
-            trigger=hoomd.trigger.Periodic(100),
+            trigger=hoomd.trigger.Periodic(10),
             types=job.sp.atoms,
             max_rotation_move=0.5,
             max_translation_move=0.5
@@ -67,6 +70,7 @@ def compress(*jobs):
             types=job.sp.atoms
         )
         #slow compress  
+        
         while simulation.state.box.volume > final_box.volume: 
             new_box = hoomd.Box.from_box(initial_box) 
             new_box.volume = simulation.state.box.volume * 0.99 # shrink by 1% of volume 
@@ -75,15 +79,16 @@ def compress(*jobs):
                                                        target_box=new_box)
             simulation.operations.updaters.append(compress)
 
-            tune_appended = False
+            tune_appended = False #tracks if pf is larger than 0.1 and move sizes are being tuned
             if shape_volume/simulation.state.box.volume > 0.1: 
                 #only tune once packing fraction is out of ideal gas regime 
                 simulation.operations.tuners.append(tune) 
                 tune_appended = True
 
+            
             while not compress.complete: 
                 simulation.run(100) 
-                print(f"compressing, currently time {simulation.walltime}")
+                
                 next_walltime = simulation.device.communicator.walltime + simulation.walltime 
                 if next_walltime >= HOOMD_RUN_WALLTIME_LIMIT_SECONDS:
                     print("Simulation timed out") 
@@ -91,8 +96,20 @@ def compress(*jobs):
                                           mode = "wb", 
                                           filename = job.fn("timeout_config.gsd"))
                     break
+
+            device.notice(f"compressing, currently time {simulation.walltime}")
             
-            print("compression running ... current pf: ", (shape_volume / simulation.state.box.volume))
+            device.notice(f"mps: {simulation.operations.integrator.mps}")
+            c = simulation.operations.integrator.counters
+            device.notice(f"overlap checks per trial ove: {c.overlap_checks / (sum([*c.translate, *c.rotate]))}, overlaps: {simulation.operations.integrator.overlaps}")
+
+            t_accept = (simulation.operations.integrator.translate_moves[0]
+                            / sum(simulation.operations.integrator.translate_moves))
+            device.notice(f"translate acceptance {t_accept}")
+            r_accept = (simulation.operations.integrator.rotate_moves[0]
+                                        / sum(simulation.operations.integrator.rotate_moves))
+            device.notice(f"rotate acceptance {r_accept}")
+            device.notice(f"compression running ... current pf: {(shape_volume / simulation.state.box.volume)}")
 
             simulation.operations.updaters.remove(compress)
 
@@ -126,7 +143,7 @@ def compress(*jobs):
 
         
         rho_final = shape_volume / simulation.state.box.volume 
-        print(f"final volume fraction: {rho_final} in time {next_walltime}")
+        device.notice(f"final volume fraction: {rho_final} in time {next_walltime}")
 
         hoomd.write.GSD.write(state=simulation.state, 
                               mode="wb", 

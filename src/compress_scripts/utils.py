@@ -61,7 +61,7 @@ def get_shape_info(input_dir, N_scaling, types, crystal_name, stoich):
     for i, type in enumerate(types): 
         shape_file = input_dir + f"shape_{crystal_name}_{type}_unit_volume_principal_frame.json"
         # determine type of each particle in simulation from replicas AND stoich specification - hard codes "O" as reference
-        sim_type_counts.append(uc_atom_counts["O"] * stoich[type] * N_scaling ** 3) # N_scaling is "replicas" which could be made, so cubed for 3D  
+        sim_type_counts.append(uc_atom_counts[types[0]] * stoich[type] * N_scaling ** 3) # N_scaling is "replicas" which could be made, so cubed for 3D  
         typeid = typeid + ([i] * sim_type_counts[i])
         with open(shape_file) as file: 
             shape_json_dicts.append(json.load(file))

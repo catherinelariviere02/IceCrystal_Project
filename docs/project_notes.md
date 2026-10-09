@@ -138,3 +138,8 @@ gsd file of uc: "[crystal_name]_nvt_final_pf0p6_0.gsd"
     - don't want to change image writing halfway through trial for future runs
 - write analysis code in notebook to unwrap positions without dynamic updating (possible in non-dilute systems)
 
+### Only oxygen run debugging: 
+
+- move size tuning on packing fractions of less than 0.15 is slowing code down to essentially untractable speeds 
+- this has not been a problem before? Adding tuner for 0.1 was working fine before
+- both decreasing the number of times (even just from 10 to 20) helped significantly with speed-up as well as just taking it off completely 
