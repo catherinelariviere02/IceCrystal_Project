@@ -131,6 +131,7 @@ def equilibrate(*jobs):
         gsd_writer = hoomd.write.GSD(
             filename= job.fn("trajectory_temp.gsd"), #"../../data/iceIX/trajectory_temp.gsd" 
             trigger=hoomd.trigger.Periodic(log_time), 
+            dynamic=["property", "particles/image"],
             mode="ab", logger = logger)
 
         # dynamically update image if specified 

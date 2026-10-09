@@ -7,13 +7,13 @@ import os
 import ase.io 
 from ase.formula import Formula
 
-# project = signac.init_project("/home/clarivi/projects/IceCrystal_Project/data/data/")
-# list = [1]
-# phase_names = ["92_H2O_1"] # ice II 
-# comp_list = [False]
-# # could be made more efficient by changing how list comprehension works, possibly change once running for more ice
-# pf = 0.57
-# pf_name = str(pf).replace(".", "p")
+project = signac.init_project("/home/clarivi/projects/IceCrystal_Project/data/data/")
+list = [1]
+phase_names = ["92_H2O_1"] # ice II
+comp_list = [False]
+# could be made more efficient by changing how list comprehension works, possibly change once running for more ice
+pf = 0.6
+pf_name = str(pf).replace(".", "p")
 
 # for phase_name in phase_names:
 #     print(f"{phase_name}_nvt_final_pf{pf_name}_0.gsd")
