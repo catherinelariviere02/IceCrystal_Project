@@ -1,0 +1,105 @@
+{
+    "0_Id": "148_H2O_0",
+    "1_Space_Group": "R-3",
+    "2_Point_Group": "-3",
+    "3_Commentt": "Vertices are in principal frame,centered, and correspond to unit volume",
+    "4_effective_latticesite_data": {
+        "particle_type": "O",
+        "equiv_site": 18,
+        "Wyckoff site": "f"
+    },
+    "5_Volume": 1.0,
+    "6_center_of_mass": [
+        0.0,
+        0.0,
+        0.0
+    ],
+    "7_moment_of_inertia": [
+        0.158,
+        -0.0,
+        -0.0,
+        0.204,
+        0.0,
+        0.255
+    ],
+    "8_comment_about_moment_of_inertia": "The components are stored as xx, xy, xz, yy, yz, zz",
+    "9_vertices": [
+        [
+            -0.42713,
+            -0.6959,
+            0.08766
+        ],
+        [
+            -0.21332,
+            -0.73597,
+            -0.27923
+        ],
+        [
+            -0.64106,
+            -0.57741,
+            -0.36995
+        ],
+        [
+            -0.77899,
+            0.10001,
+            -0.58565
+        ],
+        [
+            -0.68124,
+            0.4454,
+            -0.32378
+        ],
+        [
+            -0.4048,
+            0.42926,
+            -0.64558
+        ],
+        [
+            -0.06099,
+            -0.055,
+            0.98231
+        ],
+        [
+            -0.12095,
+            0.34501,
+            0.90247
+        ],
+        [
+            0.67101,
+            0.27203,
+            0.72262
+        ],
+        [
+            0.90672,
+            -0.08732,
+            -0.35836
+        ],
+        [
+            0.81753,
+            0.30076,
+            -0.48296
+        ],
+        [
+            0.93322,
+            0.25913,
+            0.35046
+        ]
+    ],
+    "10_truncation_btw_same_atom_types": [
+        0.5,
+        0.5
+    ],
+    "11_truncation_btw_different_atom_types": [
+        63,
+        32
+    ],
+    "12_distance_tol_rounding_factor": 3,
+    "13_pointgroup_tol": 0.01,
+    "14_packing_fraction_considered": 0.2,
+    "15_hierarchy_tolerance": [
+        0.0,
+        0.0
+    ],
+    "16_effective_neighbor_cell": 2,
+    "17_area_tol_voronoi": 0.1
+}
