@@ -32,7 +32,12 @@ def compress(*jobs):
                                                             job.sp.stoich)
 
         device.notice(f"shape achieved!")
-        simulation = create_simulation(job.fn("initialize.gsd"), 0, shapes = shapes, atoms = job.sp.atoms, communicator = None)
+        simulation = create_simulation(job.fn("initialize.gsd"), 
+                                       0, 
+                                       shapes = shapes, 
+                                       atoms = job.sp.atoms, 
+                                       updated = False if "updated" not in job.sp.inputfile else True,
+                                       communicator = None)
         logger = hoomd.logging.Logger()
         logger.add(simulation.operations.integrator, 
                    quantities=["type_shapes"])

@@ -16,6 +16,7 @@ for job in project:
         simulation = create_simulation(job.fn("timeout_config.gsd"),
                                                 frame = 0,
                                                 shapes = shapes, 
+                                                updated = False if "updated" not in job.sp.inputfile else True,
                                                 atoms = job.sp.atoms)
 
         packing_fraction = shape_volume /  simulation.state.box.volume

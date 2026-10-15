@@ -100,6 +100,7 @@ def initialize(*jobs):
                                        frame = 0, 
                                        shapes = shape_json_dicts,
                                        atoms = job.sp.atoms, 
+                                       updated = False if "updated" not in job.sp.inputfile else True,
                                        communicator = None)
        
         os.remove(job.fn("initial_temp.gsd")) #remove the initialized GSD without shape information 

@@ -4,7 +4,7 @@ from ase.formula import Formula
 import json 
 import coxeter 
 
-def create_simulation(filename, frame, shapes, atoms, communicator = None):
+def create_simulation(filename, frame, shapes, atoms, updated, communicator = None):
     """
     Inputs: 
     Filename: filename (including path) of gsd file 
@@ -22,9 +22,16 @@ def create_simulation(filename, frame, shapes, atoms, communicator = None):
     mc = hoomd.hpmc.integrate.ConvexPolyhedron()
 
     for i, shape in enumerate(shapes): 
-        mc.shape[atoms[i]] = dict(
-            vertices = shape["8_vertices"]
-        ) 
+        if updated:
+            cpu.notice("not updated")
+            mc.shape[atoms[i]] = dict(
+                vertices = shape["9_vertices"]
+            )
+        else: 
+            cpu.notice("updated")
+            mc.shape[atoms[i]] = dict(
+                vertices = shape["8_vertices"]
+            )
         mc.a[atoms[i]] = 0.2
         mc.d[atoms[i]] = 0.5
 
@@ -65,12 +72,21 @@ def get_shape_info(input_dir, N_scaling, types, crystal_name, stoich):
         typeid = typeid + ([i] * sim_type_counts[i])
         with open(shape_file) as file: 
             shape_json_dicts.append(json.load(file))
-            type_shapes.append(dict(type="ConvexPolyhedron", 
+            if "updated" not in input_dir:
+                print(f"{type} not updated")
+                type_shapes.append(dict(type="ConvexPolyhedron", 
+                                        rounding_radius = 0,
+                                        vertices = shape_json_dicts[i]["8_vertices"]))
+                poly=coxeter.shapes.ConvexPolyhedron(shape_json_dicts[i]["8_vertices"])
+                shape_volume += shape_json_dicts[i]["4_Volume"] * sim_type_counts[i]
+            else: 
+                print(f"{type} updated")
+                type_shapes.append(dict(type="ConvexPolyhedron", 
                                     rounding_radius = 0,
-                                    vertices = shape_json_dicts[i]["8_vertices"]))
-            poly=coxeter.shapes.ConvexPolyhedron(shape_json_dicts[i]["8_vertices"])
+                                    vertices = shape_json_dicts[i]["9_vertices"]))
+                poly=coxeter.shapes.ConvexPolyhedron(shape_json_dicts[i]["9_vertices"])
+                shape_volume += shape_json_dicts[i]["5_Volume"] * sim_type_counts[i]
             radius.append(poly.minimal_bounding_sphere.radius)
-            shape_volume += shape_json_dicts[i]["4_Volume"] * sim_type_counts[i]
     
     spacing = 2.2 * max(radius)
 

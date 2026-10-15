@@ -34,7 +34,7 @@ def equilibrate(*jobs):
                                                         job.sp.atoms, 
                                                         job.sp.crystal_name,
                                                         job.sp.stoich)
-        device.notice("got shape!")
+        #device.notice("got shape!")
 
         # self-assembly test   
          
@@ -42,10 +42,11 @@ def equilibrate(*jobs):
             sim_time = job.statepoint.runtime + job.document["compressed_step"]
             # start from timeout_config for equilibration if it exists, otherwise 
             if os.path.isfile(job.fn("restart.gsd")) == True: 
-                simulation = create_simulation(job.fn("restart.gsd"),
-                                                                frame = 0,
+                simulation = create_simulation(job.fn("trajectory_temp.gsd"),
+                                                                frame = -1,
                                                                 shapes = shapes, 
                                                                 atoms = job.sp.atoms, 
+                                                                updated = False if "updated" not in job.sp.inputfile else True,
                                                                 communicator = communicator)
             else:
                 try:
@@ -53,6 +54,7 @@ def equilibrate(*jobs):
                                                 frame = 0,
                                                 shapes = shapes, 
                                                 atoms = job.sp.atoms, 
+                                                updated = False if "updated" not in job.sp.inputfile else True,
                                                 communicator = communicator)
                 except OSError as err:
                     print("OS error:", err)
@@ -61,16 +63,18 @@ def equilibrate(*jobs):
         else:
             sim_time = job.statepoint.runtime
             if os.path.isfile(job.fn("restart.gsd")) == True: 
-                            simulation = create_simulation(job.fn("restart.gsd"),
-                                                                            frame = 0,
+                            simulation = create_simulation(job.fn("trajectory_temp.gsd"),
+                                                                            frame = -1,
                                                                             shapes = shapes, 
                                                                             atoms = job.sp.atoms, 
+                                                                            updated = False if "updated" not in job.sp.inputfile else True,
                                                                             communicator = communicator)
             else:
                 simulation = create_simulation(job.fn("initialize.gsd"), 
                                                frame = 0, 
                                                shapes = shapes, 
                                                atoms = job.sp.atoms, 
+                                               updated = False if "updated" not in job.sp.inputfile else True,
                                                communicator = communicator)
         
         logger = hoomd.logging.Logger()
@@ -124,8 +128,8 @@ def equilibrate(*jobs):
         log_time = int(job.statepoint.runtime/(job.statepoint.logsteps*10))
 
         #device.notice to only print on one rank 
-        device.notice(f"{log_time}")
-        device.notice(f"{sim_time}")
+        # device.notice(f"{log_time}")
+        # device.notice(f"{sim_time}")
 
         # write  
         # log_time = 100 # DEBUGGING, CHANGE AND DELETE LATER 
@@ -144,18 +148,18 @@ def equilibrate(*jobs):
         device.notice(f"starting equilibration...{simulation.timestep} is {simulation.timestep < sim_time}")
 
         while simulation.timestep < sim_time: 
-            device.notice("equilibrating ... ") 
-            simulation.run(min(100, sim_time))
-            device.notice(f"mps: {simulation.operations.integrator.mps}")
-            c = simulation.operations.integrator.counters
-            device.notice(f"overlap checks per trial ove: {c.overlap_checks / (sum([*c.translate, *c.rotate]))}")
+            # device.notice("equilibrating ... ") 
+            simulation.run(min(1000, sim_time))
+            # device.notice(f"mps: {simulation.operations.integrator.mps}")
+            # c = simulation.operations.integrator.counters
+            # device.notice(f"overlap checks per trial ove: {c.overlap_checks / (sum([*c.translate, *c.rotate]))}")
 
-            t_accept = (simulation.operations.integrator.translate_moves[0]
-                         / sum(simulation.operations.integrator.translate_moves))
-            device.notice(f"translate acceptance {t_accept}")
-            r_accept = (simulation.operations.integrator.rotate_moves[0]
-                                     / sum(simulation.operations.integrator.rotate_moves))
-            device.notice(f"rotate acceptance {r_accept}")
+            # t_accept = (simulation.operations.integrator.translate_moves[0]
+            #              / sum(simulation.operations.integrator.translate_moves))
+            # device.notice(f"translate acceptance {t_accept}")
+            # r_accept = (simulation.operations.integrator.rotate_moves[0]
+            #                          / sum(simulation.operations.integrator.rotate_moves))
+            # device.notice(f"rotate acceptance {r_accept}")
 
             # break
             next_walltime = simulation.device.communicator.walltime + simulation.walltime
