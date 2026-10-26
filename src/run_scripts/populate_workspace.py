@@ -9,7 +9,7 @@ from ase.formula import Formula
 
 project = signac.init_project("/home/clarivi/projects/IceCrystal_Project/data/data/")
 
-phase_names = ["141_H2O_0", "141_H2O_oxsub"] # ice II
+phase_names = ["141_H2O_2"] # ice II
 comp_list = [True]
 # could be made more efficient by changing how list comprehension works, possibly change once running for more ice
 pf = 0.63
@@ -18,9 +18,9 @@ pf_name = str(pf).replace(".", "p")
 for phase_name in phase_names:
     print(f"{phase_name}_nvt_final_pf{pf_name}_0.gsd")
     for comp_state in comp_list:
-        if os.path.isdir(f"../../inputs_updated/{phase_name}") != True: 
-            os.mkdir(f"../../inputs_updated/{phase_name}") #this should maybe just raise an error 
-        statepoint = dict(inputfile = f"/home/clarivi/projects/IceCrystal_Project/inputs_updated/{phase_name}/", 
+        if os.path.isdir(f"../../inputs/{phase_name}") != True: 
+            os.mkdir(f"../../inputs/{phase_name}") #this should maybe just raise an error 
+        statepoint = dict(inputfile = f"/home/clarivi/projects/IceCrystal_Project/inputs/{phase_name}/", 
                         crystal_name = phase_name,
                         runtime = 100_000_000,
                         logsteps = 100,
