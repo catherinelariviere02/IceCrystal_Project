@@ -15,12 +15,13 @@ comp_list = [True]
 pf = 0.63
 pf_name = str(pf).replace(".", "p")
 
+input_folder = "inputs"
 for phase_name in phase_names:
     print(f"{phase_name}_nvt_final_pf{pf_name}_0.gsd")
     for comp_state in comp_list:
-        if os.path.isdir(f"../../inputs/{phase_name}") != True: 
-            os.mkdir(f"../../inputs/{phase_name}") #this should maybe just raise an error 
-        statepoint = dict(inputfile = f"/home/clarivi/projects/IceCrystal_Project/inputs/{phase_name}/", 
+        if os.path.isdir(f"../../{input_folder}/{phase_name}") != True: 
+             raise OSError("file does not exist")
+        statepoint = dict(inputfile = f"/home/clarivi/projects/IceCrystal_Project/{input_folder}/{phase_name}/", 
                         crystal_name = phase_name,
                         runtime = 100_000_000,
                         logsteps = 100,
@@ -32,10 +33,11 @@ for phase_name in phase_names:
                         bod_rmax=1.5, 
                         stoich={"O": 1}, 
                         pf = pf, 
-                        seed = 1, 
+                        seed = 2, 
                         image_write = True)
         job = project.open_job(statepoint)
         if job not in project:
+            print("initializing")
             job.init()
 
 # for job in project: 

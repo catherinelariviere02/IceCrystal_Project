@@ -1,0 +1,55 @@
+job id fb40c6784fd4eb4106b6910e1f7cea65, rank 0
+job id e2f6816f47f4213870e5e3daa4b8bc6f, rank 0
+job id a991311dd665695d03e58a4fe4d751c9, rank 0
+job id e5ce123b57215b222d3990ad420b03f4, rank 0
+job id 98ab5778ce64316b4a84f988f310a7f9, rank 0
+job id f99a095c13847efe95364d55bf814d70, rank 0
+job id c7f4f8cbe97f12e347c5ab9b0968d00c, rank 0
+job id e0e704aed01a76e29ef949dcc5f577ee, rank 0
+job id 90c5e8188a66dc0a5958fc2f4c4ab212, rank 0
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+updated
+checking progress...
+starting equilibration...167900 is True
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+not updated
+checking progress...
+starting equilibration...108600 is True
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+updated
+checking progress...
+starting equilibration...232800 is True
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+updated
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+updated
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+checking progress...
+starting equilibration...309400 is True
+updated
+updated
+updated
+updated
+checking progress...
+starting equilibration...31697800 is True
+checking progress...
+starting equilibration...21544500 is True
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+updated
+updated
+updated
+checking progress...
+starting equilibration...21394500 is True
+checking progress...
+starting equilibration...195400 is True
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+updated
+updated
+checking progress...
+starting equilibration...285200 is True
+[2026-10-12T21:26:14.012] error: *** STEP 63753149.0 ON gl3367 CANCELLED AT 2026-10-12T21:26:14 DUE TO TIME LIMIT ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+[2026-10-12T21:26:14.013] error: *** JOB 63753149 ON gl3367 CANCELLED AT 2026-10-12T21:26:14 DUE TO TIME LIMIT ***
+srun: got SIGCONT
+srun: forcing job termination

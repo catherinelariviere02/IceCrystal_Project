@@ -1,0 +1,72 @@
+job id e0e704aed01a76e29ef949dcc5f577ee, rank 0
+job id f99a095c13847efe95364d55bf814d70, rank 0
+job id 98ab5778ce64316b4a84f988f310a7f9, rank 0
+job id c7f4f8cbe97f12e347c5ab9b0968d00c, rank 0
+job id d20551630ea635a6bd9c90f51d9d7888, rank 0
+job id 2322844427b9cf3d6b282f99537f17a2, rank 0
+job id 90c5e8188a66dc0a5958fc2f4c4ab212, rank 0
+job id 921fe121f07e50238610483ee6856c18, rank 0
+job id fe55a8c99d26d538e2d0c6d78a7c3631, rank 0
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+not updated
+checking progress...
+starting equilibration...5501 is True
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+not updated
+not updated
+checking progress...
+starting equilibration...52900000 is True
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+not updated
+checking progress...
+starting equilibration...167900 is True
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+not updated
+not updated
+checking progress...
+starting equilibration...44300000 is True
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+not updated
+not updated
+updated
+checking progress...
+starting equilibration...38900000 is True
+checking progress...
+starting equilibration...41700000 is True
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+not updated
+checking progress...
+starting equilibration...75400000 is True
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+not updated
+not updated
+checking progress...
+starting equilibration...44100000 is True
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+not updated
+not updated
+checking progress...
+starting equilibration...67300000 is True
+2322844427b9cf3d6b282f99537f17a2 ended on step 100174000 after 27476.516929 seconds
+42600
+O not updated
+42600
+O not updated
+42600
+O not updated
+42600
+O not updated
+42600
+O not updated
+42600
+O not updated
+42600
+O not updated
+42600
+O not updated
+[2026-10-28T04:20:12.012] error: *** JOB 64902987 ON gl3251 CANCELLED AT 2026-10-28T04:20:12 DUE TO TIME LIMIT ***
+[2026-10-28T04:20:12.013] error: *** STEP 64902987.0 ON gl3251 CANCELLED AT 2026-10-28T04:20:12 DUE TO TIME LIMIT ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: got SIGCONT
+srun: forcing job termination

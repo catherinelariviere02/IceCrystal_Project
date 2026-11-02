@@ -1,0 +1,37 @@
+compression beginning
+compression for 921fe121f07e50238610483ee6856c18 has begun
+O not updated
+shape achieved!
+not updated
+initial volume fraction = 0.6020500931851324
+compressing, currently time 1.065833
+mps: 375294.0194083302
+overlap checks per trial ove: 58.4122825, overlaps: 0
+translate acceptance 0.11177746459164192
+rotate acceptance 0.13613398297199683
+compression running ... current pf: 0.6081314072577095
+compressing, currently time 1.376255
+mps: 290643.81237488694
+overlap checks per trial ove: 79.88484, overlaps: 0
+translate acceptance 0.29016193018787895
+rotate acceptance 0.2911450113975101
+compression running ... current pf: 0.6142741487451611
+compressing, currently time 1.385332
+mps: 288739.8670352912
+overlap checks per trial ove: 81.0530075, overlaps: 0
+translate acceptance 0.29249165850832154
+rotate acceptance 0.2929888486255981
+compression running ... current pf: 0.6204789381264253
+compressing, currently time 1.397808
+mps: 286162.74361392064
+overlap checks per trial ove: 80.94327, overlaps: 0
+translate acceptance 0.29078875675459515
+rotate acceptance 0.2908412561077464
+compression running ... current pf: 0.6267464021479043
+compressing, currently time 1.417131
+mps: 282260.4261709045
+overlap checks per trial ove: 81.6670675, overlaps: 0
+translate acceptance 0.29602078108562224
+rotate acceptance 0.29285524461849344
+compression running ... current pf: 0.6330771738867719
+final volume fraction: 0.6330771738867719 in time 87.626912

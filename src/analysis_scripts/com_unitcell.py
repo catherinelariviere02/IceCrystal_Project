@@ -18,10 +18,10 @@ def com(molecules, positions, masses):
         mol_pos = positions[molecule]
         normed_positions = mol_pos - np.array([mol_pos[0]]*3)
         print("normed pos ", normed_positions)
-        com = np.transpose(normed_positions) @ masses / sum(masses)
-        # com = np.sum(normed_positions, axis = 0) / 3
+        # com = np.transpose(normed_positions) @ masses / sum(masses)
+        centroid = np.sum(normed_positions, axis = 0) / 3
         print("com ", com)
-        centers_of_mass[i, :] = com
+        centers_of_mass[i, :] = centroid #either com or centroid 
 
     return centers_of_mass
 

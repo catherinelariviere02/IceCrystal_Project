@@ -1,0 +1,931 @@
+compression beginning
+compression for 2322844427b9cf3d6b282f99537f17a2 has begun
+O not updated
+shape achieved!
+updated
+initial volume fraction = 0.13467178974219415
+compressing, currently time 0.897646
+mps: 445609.9620563117
+overlap checks per trial ove: 54.537395, overlaps: 0
+translate acceptance 0.76012799040072
+rotate acceptance 0.7729629722229168
+compression running ... current pf: 0.1360321108507012
+compressing, currently time 0.740762
+mps: 539985.2314039211
+overlap checks per trial ove: 54.760335, overlaps: 0
+translate acceptance 0.720441597219795
+rotate acceptance 0.7522067622304446
+compression running ... current pf: 0.13740617257646584
+compressing, currently time 0.714629
+mps: 559731.7765326855
+overlap checks per trial ove: 54.84484, overlaps: 0
+translate acceptance 0.7156871555236041
+rotate acceptance 0.7424435141414951
+compression running ... current pf: 0.13879411371360184
+compressing, currently time 0.736345
+mps: 543224.3625262106
+overlap checks per trial ove: 54.9307525, overlaps: 0
+translate acceptance 0.7135164297203601
+rotate acceptance 0.7410341617704466
+compression running ... current pf: 0.14019607445818366
+compressing, currently time 0.713535
+mps: 560589.179227368
+overlap checks per trial ove: 55.7271725, overlaps: 0
+translate acceptance 0.7101833034668482
+rotate acceptance 0.7366023713677817
+compression running ... current pf: 0.14161219642240774
+compressing, currently time 0.628558
+mps: 636378.2441369677
+overlap checks per trial ove: 55.4952, overlaps: 0
+translate acceptance 0.7203051561205855
+rotate acceptance 0.7370551864433955
+compression running ... current pf: 0.14304262264889675
+compressing, currently time 0.620765
+mps: 644367.2635655418
+overlap checks per trial ove: 56.3117525, overlaps: 0
+translate acceptance 0.7451017586246487
+rotate acceptance 0.7403254320814532
+compression running ... current pf: 0.14448749762514818
+compressing, currently time 0.623343
+mps: 641702.3078823504
+overlap checks per trial ove: 56.0026775, overlaps: 0
+translate acceptance 0.7386078642404825
+rotate acceptance 0.7314904986640697
+compression running ... current pf: 0.14594696729812948
+compressing, currently time 0.623633
+mps: 641403.9048669728
+overlap checks per trial ove: 57.142945, overlaps: 0
+translate acceptance 0.7389501380607467
+rotate acceptance 0.7336172084282916
+compression running ... current pf: 0.14742117908901967
+compressing, currently time 0.627151
+mps: 637804.9305510157
+overlap checks per trial ove: 56.6730675, overlaps: 0
+translate acceptance 0.7305225523100058
+rotate acceptance 0.7220626776049563
+compression running ... current pf: 0.14891028190810068
+compressing, currently time 0.624464
+mps: 640549.3351097901
+overlap checks per trial ove: 56.904305, overlaps: 0
+translate acceptance 0.730051683476341
+rotate acceptance 0.7205470579442977
+compression running ... current pf: 0.15041442616979864
+compressing, currently time 0.636786
+mps: 628155.4998939987
+overlap checks per trial ove: 57.1507475, overlaps: 0
+translate acceptance 0.7266585934607032
+rotate acceptance 0.7192923731777261
+compression running ... current pf: 0.1519337638078775
+compressing, currently time 0.629213
+mps: 635714.7738524156
+overlap checks per trial ove: 56.9805675, overlaps: 0
+translate acceptance 0.7206273112586759
+rotate acceptance 0.7153120207031269
+compression running ... current pf: 0.15346844829078526
+compressing, currently time 0.640601
+mps: 624413.636569409
+overlap checks per trial ove: 57.163765, overlaps: 0
+translate acceptance 0.7185596290683554
+rotate acceptance 0.709383313903088
+compression running ... current pf: 0.15501863463715693
+compressing, currently time 0.63503
+mps: 629892.4930987405
+overlap checks per trial ove: 56.9418775, overlaps: 0
+translate acceptance 0.7132718452416602
+rotate acceptance 0.7075477368811236
+compression running ... current pf: 0.15658447943147166
+compressing, currently time 0.644736
+mps: 620408.973595394
+overlap checks per trial ove: 57.5616525, overlaps: 0
+translate acceptance 0.7106706662740263
+rotate acceptance 0.7070830014976434
+compression running ... current pf: 0.1581661408398704
+compressing, currently time 0.64302
+mps: 622064.6325153183
+overlap checks per trial ove: 57.0121675, overlaps: 0
+translate acceptance 0.702026966247214
+rotate acceptance 0.6963101181602618
+compression running ... current pf: 0.15976377862613178
+compressing, currently time 0.647005
+mps: 618235.1550147372
+overlap checks per trial ove: 57.4152375, overlaps: 0
+translate acceptance 0.7033102717402172
+rotate acceptance 0.6942427334013483
+compression running ... current pf: 0.16137755416780988
+compressing, currently time 0.647253
+mps: 617997.3178916404
+overlap checks per trial ove: 57.70512, overlaps: 0
+translate acceptance 0.6970771169153234
+rotate acceptance 0.687852514100564
+compression running ... current pf: 0.16300763047253516
+compressing, currently time 0.655152
+mps: 610546.2710123315
+overlap checks per trial ove: 57.6376075, overlaps: 0
+translate acceptance 0.6934605313130909
+rotate acceptance 0.6849798891401356
+compression running ... current pf: 0.16465417219448003
+compressing, currently time 0.65369
+mps: 611911.7806785796
+overlap checks per trial ove: 58.6540475, overlaps: 0
+translate acceptance 0.6909535672479515
+rotate acceptance 0.6827654449319833
+compression running ... current pf: 0.16631734565098996
+compressing, currently time 0.660353
+mps: 605737.5460360534
+overlap checks per trial ove: 58.26234, overlaps: 0
+translate acceptance 0.6830540261355317
+rotate acceptance 0.670980865299285
+compression running ... current pf: 0.16799731883938385
+compressing, currently time 0.657928
+mps: 607970.1851421206
+overlap checks per trial ove: 58.29024, overlaps: 0
+translate acceptance 0.6770740098106377
+rotate acceptance 0.6675516091454056
+compression running ... current pf: 0.16969426145392302
+compressing, currently time 0.668325
+mps: 598511.2033815883
+overlap checks per trial ove: 58.91148, overlaps: 0
+translate acceptance 0.6761277319013883
+rotate acceptance 0.6658106915447941
+compression running ... current pf: 0.1714083449029525
+compressing, currently time 0.663294
+mps: 603050.8341700663
+overlap checks per trial ove: 58.91509, overlaps: 0
+translate acceptance 0.6758036344345406
+rotate acceptance 0.6673093926239704
+compression running ... current pf: 0.17313974232621468
+compressing, currently time 0.66765
+mps: 599116.3034524077
+overlap checks per trial ove: 58.1197175, overlaps: 0
+translate acceptance 0.6634430176565008
+rotate acceptance 0.6535536283891547
+compression running ... current pf: 0.17488862861233806
+compressing, currently time 0.666656
+mps: 600010.5001837532
+overlap checks per trial ove: 59.2197875, overlaps: 0
+translate acceptance 0.666675023315049
+rotate acceptance 0.6593354540831081
+compression running ... current pf: 0.17665518041650313
+compressing, currently time 0.675368
+mps: 592269.6959287381
+overlap checks per trial ove: 58.9063, overlaps: 0
+translate acceptance 0.6568579450644978
+rotate acceptance 0.6432610414435693
+compression running ... current pf: 0.17843957617828596
+compressing, currently time 0.672752
+mps: 594573.6238221868
+overlap checks per trial ove: 58.881935, overlaps: 0
+translate acceptance 0.6521508656471601
+rotate acceptance 0.6413959626863434
+compression running ... current pf: 0.18024199613968273
+compressing, currently time 0.679886
+mps: 588334.7919133384
+overlap checks per trial ove: 59.0956225, overlaps: 0
+translate acceptance 0.6497715247715248
+rotate acceptance 0.6409318617276066
+compression running ... current pf: 0.18206262236331588
+compressing, currently time 0.67831
+mps: 589702.612972278
+overlap checks per trial ove: 58.854395, overlaps: 0
+translate acceptance 0.6416534466760454
+rotate acceptance 0.6300903049923327
+compression running ... current pf: 0.18390163875082413
+compressing, currently time 0.687099
+mps: 582157.7385500488
+overlap checks per trial ove: 59.14151, overlaps: 0
+translate acceptance 0.6407213787238301
+rotate acceptance 0.6310237125509107
+compression running ... current pf: 0.18575923106143852
+compressing, currently time 0.681438
+mps: 586994.8359129311
+overlap checks per trial ove: 59.035335, overlaps: 0
+translate acceptance 0.6343055986080974
+rotate acceptance 0.6197833848369386
+compression running ... current pf: 0.187635586930746
+compressing, currently time 0.692724
+mps: 577431.3831069561
+overlap checks per trial ove: 59.537925, overlaps: 0
+translate acceptance 0.6301383577278097
+rotate acceptance 0.6197235151926803
+compression running ... current pf: 0.18953089588964242
+compressing, currently time 0.689329
+mps: 580276.1243937928
+overlap checks per trial ove: 59.3939525, overlaps: 0
+translate acceptance 0.6236347072191577
+rotate acceptance 0.6098009249548011
+compression running ... current pf: 0.1914453493834772
+compressing, currently time 0.693813
+mps: 576524.2219445297
+overlap checks per trial ove: 59.380385, overlaps: 0
+translate acceptance 0.6175035164208093
+rotate acceptance 0.60626901005379
+compression running ... current pf: 0.19337914079139115
+compressing, currently time 0.696117
+mps: 574616.0487389333
+overlap checks per trial ove: 60.0558, overlaps: 0
+translate acceptance 0.6140363149426895
+rotate acceptance 0.6035564539532278
+compression running ... current pf: 0.1953324654458497
+compressing, currently time 0.703967
+mps: 568209.260106312
+overlap checks per trial ove: 59.656725, overlaps: 0
+translate acceptance 0.6084355743769178
+rotate acceptance 0.5950296413570597
+compression running ... current pf: 0.1973055206523733
+compressing, currently time 0.699349
+mps: 571960.4946886319
+overlap checks per trial ove: 60.169445, overlaps: 0
+translate acceptance 0.6046764846082441
+rotate acceptance 0.5912657880969582
+compression running ... current pf: 0.19929850570946805
+compressing, currently time 0.702793
+mps: 569158.442327175
+overlap checks per trial ove: 59.4823725, overlaps: 0
+translate acceptance 0.5965370646977425
+rotate acceptance 0.5785269963918067
+compression running ... current pf: 0.20131162192875565
+compressing, currently time 0.701226
+mps: 570430.3183714214
+overlap checks per trial ove: 59.6962425, overlaps: 0
+translate acceptance 0.5887154116551331
+rotate acceptance 0.5758485027010295
+compression running ... current pf: 0.20334507265530866
+compressing, currently time 0.709084
+mps: 564108.8560859589
+overlap checks per trial ove: 59.7367875, overlaps: 0
+translate acceptance 0.58504315054076
+rotate acceptance 0.5705156984226751
+compression running ... current pf: 0.20539906328819055
+compressing, currently time 0.706015
+mps: 566561.0030395997
+overlap checks per trial ove: 59.575375, overlaps: 0
+translate acceptance 0.5783059201500617
+rotate acceptance 0.5619321570140667
+compression running ... current pf: 0.2074738013012025
+compressing, currently time 0.714829
+mps: 559575.1705305332
+overlap checks per trial ove: 59.5302325, overlaps: 0
+translate acceptance 0.572405198860935
+rotate acceptance 0.5629186710425752
+compression running ... current pf: 0.209569496263841
+compressing, currently time 0.714192
+mps: 560074.2658476514
+overlap checks per trial ove: 59.7457425, overlaps: 0
+translate acceptance 0.5704958232819634
+rotate acceptance 0.5512479685399571
+compression running ... current pf: 0.21168635986246567
+compressing, currently time 0.721929
+mps: 554071.8742035216
+overlap checks per trial ove: 60.2738375, overlaps: 0
+translate acceptance 0.5629322407057278
+rotate acceptance 0.5480625912872689
+compression running ... current pf: 0.21382460592168245
+compressing, currently time 0.716731
+mps: 558089.436622666
+overlap checks per trial ove: 59.9855375, overlaps: 0
+translate acceptance 0.5572638201887538
+rotate acceptance 0.5436550583083821
+compression running ... current pf: 0.2159844504259419
+compressing, currently time 0.72481
+mps: 551869.5270064251
+overlap checks per trial ove: 60.1402275, overlaps: 0
+translate acceptance 0.552226643737002
+rotate acceptance 0.5305548887822051
+compression running ... current pf: 0.21816611154135535
+compressing, currently time 0.718897
+mps: 556408.715586121
+overlap checks per trial ove: 59.959375, overlaps: 0
+translate acceptance 0.5433795428999625
+rotate acceptance 0.5250694357562867
+compression running ... current pf: 0.22036980963773267
+compressing, currently time 0.727852
+mps: 549563.0286968075
+overlap checks per trial ove: 59.907475, overlaps: 0
+translate acceptance 0.5377463648223774
+rotate acceptance 0.5179828049274536
+compression running ... current pf: 0.22259576731084108
+compressing, currently time 0.725239
+mps: 551543.0796510938
+overlap checks per trial ove: 59.826555, overlaps: 0
+translate acceptance 0.5310922183135592
+rotate acceptance 0.5154252369366353
+compression running ... current pf: 0.22484420940488997
+compressing, currently time 0.732306
+mps: 546220.4955585446
+overlap checks per trial ove: 59.61067, overlaps: 0
+translate acceptance 0.5280651849477659
+rotate acceptance 0.5077575104082427
+compression running ... current pf: 0.2271153630352423
+compressing, currently time 0.728839
+mps: 548818.0517233573
+overlap checks per trial ove: 59.3350775, overlaps: 0
+translate acceptance 0.5163294098878802
+rotate acceptance 0.49660750911434176
+compression running ... current pf: 0.2294094576113558
+compressing, currently time 0.734186
+mps: 544821.0671410242
+overlap checks per trial ove: 59.231805, overlaps: 0
+translate acceptance 0.5097525225491127
+rotate acceptance 0.49228647246667967
+compression running ... current pf: 0.23172672485995532
+compressing, currently time 0.73171
+mps: 546665.4093362251
+overlap checks per trial ove: 59.37842, overlaps: 0
+translate acceptance 0.5038867379486048
+rotate acceptance 0.48328049291140757
+compression running ... current pf: 0.23406739884843974
+compressing, currently time 0.743756
+mps: 537811.5105108537
+overlap checks per trial ove: 59.241685, overlaps: 0
+translate acceptance 0.5004005968893651
+rotate acceptance 0.4793507673566386
+compression running ... current pf: 0.23643171600852492
+compressing, currently time 0.738039
+mps: 541977.5133529711
+overlap checks per trial ove: 58.9396075, overlaps: 0
+translate acceptance 0.4903022846396991
+rotate acceptance 0.47437217579077856
+compression running ... current pf: 0.23881991516012624
+compressing, currently time 0.750397
+mps: 533051.8819396693
+overlap checks per trial ove: 59.67029, overlaps: 0
+translate acceptance 0.48773738334125655
+rotate acceptance 0.46779906577073915
+compression running ... current pf: 0.24123223753548104
+compressing, currently time 0.742856
+mps: 538463.0917204568
+overlap checks per trial ove: 59.431855, overlaps: 0
+translate acceptance 0.47989982469321313
+rotate acceptance 0.45839281257798853
+compression running ... current pf: 0.2436689268035162
+compressing, currently time 0.753558
+mps: 530815.8506921175
+overlap checks per trial ove: 59.5693525, overlaps: 0
+translate acceptance 0.47421111645042446
+rotate acceptance 0.45055038357040117
+compression running ... current pf: 0.24613022909446083
+compressing, currently time 0.745749
+mps: 536373.4983218214
+overlap checks per trial ove: 59.2440025, overlaps: 0
+translate acceptance 0.4632926445384911
+rotate acceptance 0.44160249771093196
+compression running ... current pf: 0.24861639302470792
+compressing, currently time 0.752083
+mps: 531856.8985828672
+overlap checks per trial ove: 58.9976875, overlaps: 0
+translate acceptance 0.455484793345464
+rotate acceptance 0.43391546140150833
+compression running ... current pf: 0.25112766972192707
+compressing, currently time 0.747336
+mps: 535234.4862284167
+overlap checks per trial ove: 58.327205, overlaps: 0
+translate acceptance 0.44809293378618015
+rotate acceptance 0.4220607464042241
+compression running ... current pf: 0.2536643128504314
+compressing, currently time 0.763932
+mps: 523607.4985829872
+overlap checks per trial ove: 58.8027175, overlaps: 0
+translate acceptance 0.4418861889078779
+rotate acceptance 0.42026302189173054
+compression running ... current pf: 0.2562265786367993
+compressing, currently time 0.752355
+mps: 531664.6153273592
+overlap checks per trial ove: 58.21878, overlaps: 0
+translate acceptance 0.4315927793072092
+rotate acceptance 0.4074394680089866
+compression running ... current pf: 0.2588147258957569
+compressing, currently time 0.757213
+mps: 528253.6462707934
+overlap checks per trial ove: 58.62074, overlaps: 0
+translate acceptance 0.4291149901242242
+rotate acceptance 0.4025742811262605
+compression running ... current pf: 0.26142901605632
+compressing, currently time 0.755672
+mps: 529330.8860602034
+overlap checks per trial ove: 58.31767, overlaps: 0
+translate acceptance 0.4193076596700527
+rotate acceptance 0.394465730097914
+compression running ... current pf: 0.264069713188202
+compressing, currently time 0.762623
+mps: 524505.5551694612
+overlap checks per trial ove: 58.144705, overlaps: 0
+translate acceptance 0.41256267325840895
+rotate acceptance 0.3864474354746845
+compression running ... current pf: 0.2667370840284869
+compressing, currently time 0.757611
+mps: 527976.1354786764
+overlap checks per trial ove: 57.7717375, overlaps: 0
+translate acceptance 0.4063444939248997
+rotate acceptance 0.38088044777687186
+compression running ... current pf: 0.2694313980085726
+compressing, currently time 0.765586
+mps: 522475.5938588219
+overlap checks per trial ove: 58.115405, overlaps: 0
+translate acceptance 0.39880450456294064
+rotate acceptance 0.37465490201973134
+compression running ... current pf: 0.27215292728138635
+compressing, currently time 0.764263
+mps: 523380.72545802355
+overlap checks per trial ove: 58.0192225, overlaps: 0
+translate acceptance 0.3912018892322747
+rotate acceptance 0.3638280080317665
+compression running ... current pf: 0.2749019467488751
+compressing, currently time 0.767045
+mps: 521482.47036675864
+overlap checks per trial ove: 57.4608225, overlaps: 0
+translate acceptance 0.38178956834532374
+rotate acceptance 0.35762610088070457
+compression running ... current pf: 0.27767873408977267
+compressing, currently time 0.765023
+mps: 522860.097016691
+overlap checks per trial ove: 57.11769, overlaps: 0
+translate acceptance 0.37148243907561973
+rotate acceptance 0.3464974330005649
+compression running ... current pf: 0.2804835697876492
+compressing, currently time 0.765094
+mps: 522812.25942467124
+overlap checks per trial ove: 56.647715, overlaps: 0
+translate acceptance 0.36586196534107984
+rotate acceptance 0.3373315363881402
+compression running ... current pf: 0.28331673715924166
+compressing, currently time 0.765898
+mps: 522263.4375118325
+overlap checks per trial ove: 56.9212275, overlaps: 0
+translate acceptance 0.36052529046824583
+rotate acceptance 0.33220724102379307
+compression running ... current pf: 0.2861785223830724
+compressing, currently time 0.770958
+mps: 518835.6808486076
+overlap checks per trial ove: 55.7446725, overlaps: 0
+translate acceptance 0.3500477387813864
+rotate acceptance 0.32357604036948684
+compression running ... current pf: 0.2890692145283559
+compressing, currently time 0.764046
+mps: 523529.37326989905
+overlap checks per trial ove: 56.017985, overlaps: 0
+translate acceptance 0.34276550178135384
+rotate acceptance 0.31457592229905273
+compression running ... current pf: 0.29198910558419783
+compressing, currently time 0.766587
+mps: 521794.7129150714
+overlap checks per trial ove: 55.6751575, overlaps: 0
+translate acceptance 0.3347286604859335
+rotate acceptance 0.3052380285073671
+compression running ... current pf: 0.29493849048908866
+compressing, currently time 0.772153
+mps: 518032.0480526528
+overlap checks per trial ove: 55.9079775, overlaps: 0
+translate acceptance 0.3303706288477356
+rotate acceptance 0.3012964216755686
+compression running ... current pf: 0.2979176671606956
+compressing, currently time 0.773329
+mps: 517244.2776619007
+overlap checks per trial ove: 55.4961075, overlaps: 0
+translate acceptance 0.3238069089456869
+rotate acceptance 0.29493689903846154
+compression running ... current pf: 0.3009269365259551
+compressing, currently time 0.774614
+mps: 516386.89255150635
+overlap checks per trial ove: 55.5163025, overlaps: 0
+translate acceptance 0.3130101032341358
+rotate acceptance 0.291162702397546
+compression running ... current pf: 0.30396660255146973
+compressing, currently time 0.775524
+mps: 515780.2982241684
+overlap checks per trial ove: 55.0243525, overlaps: 0
+translate acceptance 0.3036111124983146
+rotate acceptance 0.28829527876369787
+compression running ... current pf: 0.30703697227421173
+compressing, currently time 0.777272
+mps: 514620.3645570663
+overlap checks per trial ove: 55.2793275, overlaps: 0
+translate acceptance 0.29966097626833876
+rotate acceptance 0.2903596748227624
+compression running ... current pf: 0.31013835583253707
+compressing, currently time 0.787003
+mps: 508257.9205643696
+overlap checks per trial ove: 55.757135, overlaps: 0
+translate acceptance 0.2964384847335104
+rotate acceptance 0.29227009594775955
+compression running ... current pf: 0.3132710664975123
+compressing, currently time 0.788786
+mps: 507108.3918832231
+overlap checks per trial ove: 55.5349675, overlaps: 0
+translate acceptance 0.29409967749043486
+rotate acceptance 0.2920885001697318
+compression running ... current pf: 0.3164354207045578
+compressing, currently time 0.797138
+mps: 501795.8017254249
+overlap checks per trial ove: 55.85752, overlaps: 0
+translate acceptance 0.2941829584839983
+rotate acceptance 0.29060798888294603
+compression running ... current pf: 0.31963173808541195
+compressing, currently time 0.806481
+mps: 495981.9264186013
+overlap checks per trial ove: 56.113755, overlaps: 0
+translate acceptance 0.29366340106737493
+rotate acceptance 0.29261892289655517
+compression running ... current pf: 0.3228603415004161
+compressing, currently time 0.819489
+mps: 488109.0533246938
+overlap checks per trial ove: 56.3052775, overlaps: 0
+translate acceptance 0.29380229995112855
+rotate acceptance 0.29400824167560685
+compression running ... current pf: 0.32612155707112744
+compressing, currently time 0.819871
+mps: 487881.63015889085
+overlap checks per trial ove: 56.6968525, overlaps: 0
+translate acceptance 0.29755992658274694
+rotate acceptance 0.29143151359430536
+compression running ... current pf: 0.32941571421326005
+compressing, currently time 0.83297
+mps: 480209.94778917346
+overlap checks per trial ove: 57.280525, overlaps: 0
+translate acceptance 0.29387303716009966
+rotate acceptance 0.29039977618129315
+compression running ... current pf: 0.33274314566995966
+compressing, currently time 0.833147
+mps: 480107.9282622733
+overlap checks per trial ove: 57.385395, overlaps: 0
+translate acceptance 0.2959917318234924
+rotate acceptance 0.2928087164645443
+compression running ... current pf: 0.33610418754541377
+compressing, currently time 0.842643
+mps: 474697.43971935887
+overlap checks per trial ove: 58.0137375, overlaps: 0
+translate acceptance 0.2939775399841212
+rotate acceptance 0.2908532891410032
+compression running ... current pf: 0.3394991793388017
+compressing, currently time 0.849902
+mps: 470643.05136715923
+overlap checks per trial ove: 58.27884, overlaps: 0
+translate acceptance 0.2953359572955162
+rotate acceptance 0.2919741190801889
+compression running ... current pf: 0.3429284639785876
+compressing, currently time 0.8585
+mps: 465928.94583576004
+overlap checks per trial ove: 58.892135, overlaps: 0
+translate acceptance 0.2934651663825724
+rotate acceptance 0.2933448029247458
+compression running ... current pf: 0.34639238785715915
+compressing, currently time 0.867366
+mps: 461166.86746640684
+overlap checks per trial ove: 59.455425, overlaps: 0
+translate acceptance 0.2960530600181342
+rotate acceptance 0.29382613773037825
+compression running ... current pf: 0.34989130086581727
+compressing, currently time 0.874896
+mps: 457197.1982955688
+overlap checks per trial ove: 59.154455, overlaps: 0
+translate acceptance 0.2959850420193274
+rotate acceptance 0.29111430043055814
+compression running ... current pf: 0.35342555643011836
+compressing, currently time 0.878653
+mps: 455242.80374937976
+overlap checks per trial ove: 59.1994325, overlaps: 0
+translate acceptance 0.29517217875919033
+rotate acceptance 0.29171093785074004
+compression running ... current pf: 0.356995511545574
+compressing, currently time 0.892588
+mps: 448135.5879034761
+overlap checks per trial ove: 59.4194, overlaps: 0
+translate acceptance 0.2939973703812947
+rotate acceptance 0.29380760210230483
+compression running ... current pf: 0.36060152681371105
+compressing, currently time 0.90018
+mps: 444355.5733297785
+overlap checks per trial ove: 60.352435, overlaps: 0
+translate acceptance 0.2936490850376749
+rotate acceptance 0.2944648340948244
+compression running ... current pf: 0.36424396647849605
+compressing, currently time 0.90659
+mps: 441213.7791063215
+overlap checks per trial ove: 60.48824, overlaps: 0
+translate acceptance 0.29398141215696844
+rotate acceptance 0.2935027597744097
+compression running ... current pf: 0.3679231984631273
+compressing, currently time 0.91385
+mps: 437708.59550254414
+overlap checks per trial ove: 60.48565, overlaps: 0
+translate acceptance 0.2924518860276824
+rotate acceptance 0.29324247359638694
+compression running ... current pf: 0.37163959440719924
+compressing, currently time 0.929632
+mps: 430278.25018743996
+overlap checks per trial ove: 61.71247, overlaps: 0
+translate acceptance 0.29689436647874934
+rotate acceptance 0.29157329224858936
+compression running ... current pf: 0.3753935297042417
+compressing, currently time 0.93973
+mps: 425654.6302178607
+overlap checks per trial ove: 62.29824, overlaps: 0
+translate acceptance 0.29631535302874384
+rotate acceptance 0.29534376282417
+compression running ... current pf: 0.37918538353963804
+compressing, currently time 0.943473
+mps: 423965.94705513254
+overlap checks per trial ove: 61.6571625, overlaps: 0
+translate acceptance 0.29486858698480695
+rotate acceptance 0.2949663289570969
+compression running ... current pf: 0.3830155389289274
+compressing, currently time 0.950685
+mps: 420749.6918008508
+overlap checks per trial ove: 60.92618, overlaps: 0
+translate acceptance 0.29309474420813236
+rotate acceptance 0.29282516817965837
+compression running ... current pf: 0.38688438275649245
+compressing, currently time 0.962843
+mps: 415436.80063811096
+overlap checks per trial ove: 61.9224475, overlaps: 0
+translate acceptance 0.2917473033589871
+rotate acceptance 0.2935424363467297
+compression running ... current pf: 0.3907923058146387
+compressing, currently time 0.970387
+mps: 412207.1010917305
+overlap checks per trial ove: 62.1293775, overlaps: 0
+translate acceptance 0.2925004750332523
+rotate acceptance 0.29392442529022966
+compression running ... current pf: 0.3947397028430694
+compressing, currently time 0.982012
+mps: 407327.4128293879
+overlap checks per trial ove: 63.5763025, overlaps: 0
+translate acceptance 0.2963854580978299
+rotate acceptance 0.2961186962671669
+compression running ... current pf: 0.3987269725687571
+compressing, currently time 0.993272
+mps: 402709.83447619027
+overlap checks per trial ove: 63.2336375, overlaps: 0
+translate acceptance 0.2931436287257452
+rotate acceptance 0.29388122375524894
+compression running ... current pf: 0.40275451774621934
+compressing, currently time 1.007335
+mps: 397087.7583800408
+overlap checks per trial ove: 64.3755275, overlaps: 0
+translate acceptance 0.30078267793028507
+rotate acceptance 0.2949411136239959
+compression running ... current pf: 0.40682274519820144
+compressing, currently time 1.006894
+mps: 397261.6752723477
+overlap checks per trial ove: 63.6027575, overlaps: 0
+translate acceptance 0.2895492377255812
+rotate acceptance 0.2894507977128234
+compression running ... current pf: 0.4109320658567692
+compressing, currently time 1.023223
+mps: 390921.62705490395
+overlap checks per trial ove: 64.80351, overlaps: 0
+translate acceptance 0.29749371425136983
+rotate acceptance 0.29140170308772
+compression running ... current pf: 0.4150828948048173
+compressing, currently time 1.033602
+mps: 386996.1551931982
+overlap checks per trial ove: 64.9753875, overlaps: 0
+translate acceptance 0.2991131805229091
+rotate acceptance 0.29238907730148633
+compression running ... current pf: 0.41927565131799743
+compressing, currently time 1.0428
+mps: 383583.029903174
+overlap checks per trial ove: 65.4440575, overlaps: 0
+translate acceptance 0.2939459448689467
+rotate acceptance 0.2911936238343321
+compression running ... current pf: 0.4235107589070681
+compressing, currently time 1.045872
+mps: 382455.9793167807
+overlap checks per trial ove: 64.687145, overlaps: 0
+translate acceptance 0.294239349901538
+rotate acceptance 0.29130707318907806
+compression running ... current pf: 0.42778864536067485
+compressing, currently time 1.058644
+mps: 377842.1998728561
+overlap checks per trial ove: 65.1442825, overlaps: 0
+translate acceptance 0.2931151704210284
+rotate acceptance 0.2930548193192843
+compression running ... current pf: 0.4321097427885603
+compressing, currently time 1.072813
+mps: 372851.90695107804
+overlap checks per trial ove: 66.13517, overlaps: 0
+translate acceptance 0.29292348894029707
+rotate acceptance 0.29105519391170775
+compression running ... current pf: 0.43647448766521235
+compressing, currently time 1.091246
+mps: 366553.79864283453
+overlap checks per trial ove: 67.1542725, overlaps: 0
+translate acceptance 0.29839770686489814
+rotate acceptance 0.2967980849479508
+compression running ... current pf: 0.4408833208739519
+compressing, currently time 1.094783
+mps: 365369.2101539757
+overlap checks per trial ove: 66.596075, overlaps: 0
+translate acceptance 0.2945281951405126
+rotate acceptance 0.2929888598720708
+compression running ... current pf: 0.4453366877514666
+compressing, currently time 1.106228
+mps: 361589.43869567453
+overlap checks per trial ove: 68.2939825, overlaps: 0
+translate acceptance 0.2949654669212086
+rotate acceptance 0.2911926844153635
+compression running ... current pf: 0.4498350381327944
+compressing, currently time 1.11827
+mps: 357695.68860444135
+overlap checks per trial ove: 67.2460275, overlaps: 0
+translate acceptance 0.29726839311950903
+rotate acceptance 0.29467028184374033
+compression running ... current pf: 0.4543788263967622
+compressing, currently time 1.1311
+mps: 353638.3641042915
+overlap checks per trial ove: 68.167535, overlaps: 0
+translate acceptance 0.2953009751374874
+rotate acceptance 0.29143664399002095
+compression running ... current pf: 0.458968511511881
+compressing, currently time 1.137737
+mps: 351575.1003966646
+overlap checks per trial ove: 68.279455, overlaps: 0
+translate acceptance 0.2959162272291467
+rotate acceptance 0.290737143543736
+compression running ... current pf: 0.4636045570827079
+compressing, currently time 1.149499
+mps: 347977.6841911128
+overlap checks per trial ove: 68.9198925, overlaps: 0
+translate acceptance 0.2948694896460787
+rotate acceptance 0.28938964692220676
+compression running ... current pf: 0.46828743139667467
+compressing, currently time 1.164041
+mps: 343630.8030651868
+overlap checks per trial ove: 69.123405, overlaps: 0
+translate acceptance 0.2962942541641395
+rotate acceptance 0.2929939800198505
+compression running ... current pf: 0.4730176074713883
+compressing, currently time 1.169186
+mps: 342118.3626899398
+overlap checks per trial ove: 69.1031125, overlaps: 0
+translate acceptance 0.2945307204656912
+rotate acceptance 0.29168004334042297
+compression running ... current pf: 0.4777955631024126
+compressing, currently time 1.18305
+mps: 338109.1247200034
+overlap checks per trial ove: 70.2029775, overlaps: 0
+translate acceptance 0.29095642874633326
+rotate acceptance 0.2917640113862055
+compression running ... current pf: 0.48262178091152785
+compressing, currently time 1.194113
+mps: 334976.67306192964
+overlap checks per trial ove: 70.8668125, overlaps: 0
+translate acceptance 0.29805041798198
+rotate acceptance 0.2956758998755691
+compression running ... current pf: 0.48749674839548285
+compressing, currently time 1.210099
+mps: 330551.4672766443
+overlap checks per trial ove: 71.5263275, overlaps: 0
+translate acceptance 0.2996163062346485
+rotate acceptance 0.29557073677792717
+compression running ... current pf: 0.4924209579752353
+compressing, currently time 1.222313
+mps: 327248.68936899904
+overlap checks per trial ove: 70.8329575, overlaps: 0
+translate acceptance 0.29494682713566833
+rotate acceptance 0.2927391221774637
+compression running ... current pf: 0.49739490704569234
+compressing, currently time 1.242004
+mps: 322060.4137027044
+overlap checks per trial ove: 72.5006525, overlaps: 0
+translate acceptance 0.29641186428793237
+rotate acceptance 0.2962334408162043
+compression running ... current pf: 0.5024190980259517
+compressing, currently time 1.248517
+mps: 320380.3555581186
+overlap checks per trial ove: 72.2823225, overlaps: 0
+translate acceptance 0.292262779560701
+rotate acceptance 0.29122698220590737
+compression running ... current pf: 0.5074940384100521
+compressing, currently time 1.243184
+mps: 321754.72154944204
+overlap checks per trial ove: 71.929205, overlaps: 0
+translate acceptance 0.29630036721540803
+rotate acceptance 0.2919462583502214
+compression running ... current pf: 0.5126202408182345
+compressing, currently time 1.26798
+mps: 315462.63778816524
+overlap checks per trial ove: 73.46736, overlaps: 0
+translate acceptance 0.2938812593912709
+rotate acceptance 0.295811819852665
+compression running ... current pf: 0.5177982230487218
+compressing, currently time 1.28401
+mps: 311524.05355098477
+overlap checks per trial ove: 73.5714525, overlaps: 0
+translate acceptance 0.2975633177289641
+rotate acceptance 0.2936227856200264
+compression running ... current pf: 0.523028508130022
+compressing, currently time 1.281905
+mps: 312035.6032623322
+overlap checks per trial ove: 73.002775, overlaps: 0
+translate acceptance 0.2975396734502831
+rotate acceptance 0.29412621188614924
+compression running ... current pf: 0.5283116243737597
+compressing, currently time 1.295104
+mps: 308855.50504052185
+overlap checks per trial ove: 73.38919, overlaps: 0
+translate acceptance 0.29788704185860204
+rotate acceptance 0.2981026562812063
+compression running ... current pf: 0.5336481054280401
+compressing, currently time 1.308063
+mps: 305795.9026407005
+overlap checks per trial ove: 73.346035, overlaps: 0
+translate acceptance 0.2958713880256785
+rotate acceptance 0.2938738278176232
+compression running ... current pf: 0.5390384903313533
+compressing, currently time 1.318985
+mps: 303263.49427779694
+overlap checks per trial ove: 73.02186, overlaps: 0
+translate acceptance 0.2909508360369354
+rotate acceptance 0.29099423991985973
+compression running ... current pf: 0.5444833235670238
+compressing, currently time 1.337638
+mps: 299034.7904551085
+overlap checks per trial ove: 74.9544775, overlaps: 0
+translate acceptance 0.2954934968246116
+rotate acceptance 0.29336008445616335
+compression running ... current pf: 0.5499831551182057
+compressing, currently time 1.348102
+mps: 296713.6735303957
+overlap checks per trial ove: 75.2748025, overlaps: 0
+translate acceptance 0.29404396881701034
+rotate acceptance 0.29247919203209516
+compression running ... current pf: 0.55553854052344
+compressing, currently time 1.365123
+mps: 293013.8895909013
+overlap checks per trial ove: 75.6549175, overlaps: 0
+translate acceptance 0.2969624220264583
+rotate acceptance 0.2954841856899659
+compression running ... current pf: 0.5611500409327675
+compressing, currently time 1.378316
+mps: 290209.2118208016
+overlap checks per trial ove: 76.150375, overlaps: 0
+translate acceptance 0.2921137285460249
+rotate acceptance 0.2898991011190967
+compression running ... current pf: 0.5668182231644117
+compressing, currently time 1.380639
+mps: 289721.9683131083
+overlap checks per trial ove: 76.99979, overlaps: 0
+translate acceptance 0.2981216198654444
+rotate acceptance 0.2931817499774926
+compression running ... current pf: 0.5725436597620319
+compressing, currently time 1.385317
+mps: 288742.78503965883
+overlap checks per trial ove: 76.6671825, overlaps: 0
+translate acceptance 0.29532684116858965
+rotate acceptance 0.2916524974495409
+compression running ... current pf: 0.5783269290525574
+compressing, currently time 1.409953
+mps: 283697.3998424061
+overlap checks per trial ove: 77.735935, overlaps: 0
+translate acceptance 0.2960838874373667
+rotate acceptance 0.29507023575392716
+compression running ... current pf: 0.5841686152046034
+compressing, currently time 1.431469
+mps: 279433.22558853874
+overlap checks per trial ove: 77.8660975, overlaps: 0
+translate acceptance 0.29418156870796675
+rotate acceptance 0.29121798040008584
+compression running ... current pf: 0.5900693082874781
+compressing, currently time 1.441217
+mps: 277543.4077889782
+overlap checks per trial ove: 77.7843675, overlaps: 0
+translate acceptance 0.2912549160527839
+rotate acceptance 0.29015307860305756
+compression running ... current pf: 0.5960296043307859
+compressing, currently time 1.468916
+mps: 272309.6487477841
+overlap checks per trial ove: 79.3288675, overlaps: 0
+translate acceptance 0.29430980399992007
+rotate acceptance 0.29335922641093914
+compression running ... current pf: 0.6020501053846322
+compressing, currently time 1.482045
+mps: 269897.33780013426
+overlap checks per trial ove: 79.5347625, overlaps: 0
+translate acceptance 0.2931946570404312
+rotate acceptance 0.29303990733915974
+compression running ... current pf: 0.6081314195804365
+compressing, currently time 1.503934
+mps: 265969.47202400106
+overlap checks per trial ove: 79.75666, overlaps: 0
+translate acceptance 0.2906930117389953
+rotate acceptance 0.2908615719173641
+compression running ... current pf: 0.61427416119236
+compressing, currently time 1.518118
+mps: 263484.3032519891
+overlap checks per trial ove: 80.107045, overlaps: 0
+translate acceptance 0.28943862320437563
+rotate acceptance 0.2859524427496157
+compression running ... current pf: 0.6204789506993533
+compressing, currently time 1.527183
+mps: 261920.1497135576
+overlap checks per trial ove: 80.679695, overlaps: 0
+translate acceptance 0.2911776770617603
+rotate acceptance 0.2914571859788704
+compression running ... current pf: 0.6267464148478316
+compressing, currently time 1.532437
+mps: 261022.3200185848
+overlap checks per trial ove: 81.17763, overlaps: 0
+translate acceptance 0.2910051322068489
+rotate acceptance 0.28881580920204314
+compression running ... current pf: 0.6330771867149813
+final volume fraction: 0.6330771867149813 in time 1491.035228

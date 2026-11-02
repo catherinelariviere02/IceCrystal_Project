@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 21, in <module>
+    initialize(*jobs)
+    ~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/initialize.py", line 89, in initialize
+    initialize_lattice(job)
+    ~~~~~~~~~~~~~~~~~~^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/initialize.py", line 46, in initialize_lattice
+    sim_type_counts, type_shapes, typeid, _, spacing, _ = get_shape_info(job.sp.inputfile,
+                                                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                                                                         job.sp.replicas,
+                                                                         ^^^^^^^^^^^^^^^^
+                                                                         job.sp.atoms,
+                                                                         ^^^^^^^^^^^^^
+                                                                         job.sp.crystal_name,
+                                                                         ^^^^^^^^^^^^^^^^^^^^
+                                                                         job.sp.stoich)
+                                                                         ^^^^^^^^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/utils.py", line 60, in get_shape_info
+    atoms = ase.io.read(cif)
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/ase/io/formats.py", line 814, in read
+    format = format or filetype(filename, read=isinstance(filename, str))
+                       ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/ase/io/formats.py", line 989, in filetype
+    fd = open_with_compression(filename, 'rb')
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/ase/io/formats.py", line 618, in open_with_compression
+    return open(filename, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/clarivi/projects/IceCrystal_Project/inputs/141_H2O_com/141_H2O_com.cif'
+[row] Error executing command.

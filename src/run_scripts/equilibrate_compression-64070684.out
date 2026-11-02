@@ -1,0 +1,108 @@
+job id 90c5e8188a66dc0a5958fc2f4c4ab212, rank 0
+job id fb40c6784fd4eb4106b6910e1f7cea65, rank 0
+job id f99a095c13847efe95364d55bf814d70, rank 0
+job id c7f4f8cbe97f12e347c5ab9b0968d00c, rank 0
+job id e0e704aed01a76e29ef949dcc5f577ee, rank 0
+job id e2f6816f47f4213870e5e3daa4b8bc6f, rank 0
+job id e5ce123b57215b222d3990ad420b03f4, rank 0
+job id 98ab5778ce64316b4a84f988f310a7f9, rank 0
+job id a991311dd665695d03e58a4fe4d751c9, rank 0
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+updated
+updated
+checking progress...
+starting equilibration...40583800 is True
+updated
+checking progress...
+starting equilibration...40345800 is True
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+42600
+O not updated
+not updated
+Traceback (most recent call last):
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 27, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 45, in equilibrate
+    simulation = create_simulation(job.fn("restart.gsd"),
+                                                    frame = 0,
+    ...<2 lines>...
+                                                    updated = False if "updated" not in job.sp.inputfile else True,
+                                                    communicator = communicator)
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/utils.py", line 20, in create_simulation
+    simulation.create_state_from_gsd(filename, frame)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 234, in create_state_from_gsd
+    reader = _hoomd.GSDReader(
+        self.device._cpp_exec_conf, filename, abs(frame), frame < 0
+    )
+RuntimeError: Cannot read frame 0 /home/clarivi/projects/IceCrystal_Project/data/data/workspace/fb40c6784fd4eb4106b6910e1f7cea65/restart.gsd only has 0 frames.
+checking progress...
+starting equilibration...42080600 is True
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+updated
+checking progress...
+starting equilibration...39022900 is True
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+updated
+updated
+checking progress...
+starting equilibration...27268500 is True
+42600
+O not updated
+H not updated
+Traceback (most recent call last):
+  File "/home/clarivi/projects/IceCrystal_Project/src/run_scripts/../compress_scripts/project.py", line 27, in <module>
+    equilibrate(*jobs)
+    ~~~~~~~~~~~^^^^^^^
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/equilibrate.py", line 45, in equilibrate
+    simulation = create_simulation(job.fn("restart.gsd"),
+                                                    frame = 0,
+    ...<2 lines>...
+                                                    updated = False if "updated" not in job.sp.inputfile else True,
+                                                    communicator = communicator)
+  File "/home/clarivi/projects/IceCrystal_Project/src/compress_scripts/utils.py", line 20, in create_simulation
+    simulation.create_state_from_gsd(filename, frame)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/clarivi/micromamba/envs/python-env/lib/python3.14/site-packages/hoomd/simulation.py", line 234, in create_state_from_gsd
+    reader = _hoomd.GSDReader(
+        self.device._cpp_exec_conf, filename, abs(frame), frame < 0
+    )
+RuntimeError: Cannot read frame 0 /home/clarivi/projects/IceCrystal_Project/data/data/workspace/90c5e8188a66dc0a5958fc2f4c4ab212/restart.gsd only has 0 frames.
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+updated
+updated
+checking progress...
+starting equilibration...26996500 is True
+notice(2): Using domain decomposition: n_x = 2 n_y = 2 n_z = 2.
+updated
+updated
+checking progress...
+starting equilibration...13005200 is True
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 64 in communicator MPI_COMM_WORLD
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+[2026-10-15T15:09:44.078] error: *** STEP 64070684.0 ON gl3181 CANCELLED AT 2026-10-15T15:09:44 DUE to SIGNAL Killed ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: gl3182: tasks 9-11: Killed
+srun: error: gl3328: tasks 12-15: Killed
+srun: error: gl3181: tasks 0-7: Killed
+srun: error: gl3332: tasks 62-63,65-71: Killed
+srun: error: gl3330: tasks 39,41-47,49: Killed
+srun: error: gl3332: task 64: Exited with exit code 1
+srun: error: gl3329: tasks 17-23,25-38: Killed
+srun: error: gl3331: tasks 50-61: Killed
+srun: error: gl3181: task 8: Killed
+srun: error: gl3330: task 40: Killed
+srun: error: gl3330: task 48: Killed
+[2026-10-15T15:09:45.137] error:  mpi/pmix_v4: _errhandler: gl3328 [2]: pmixp_client_v2.c:226: Error handler invoked: status = -61, source = [slurm.pmix.64070684.0:13]
+[2026-10-15T15:09:45.188] error:  mpi/pmix_v4: _errhandler: gl3329 [3]: pmixp_client_v2.c:226: Error handler invoked: status = -61, source = [slurm.pmix.64070684.0:17]
+srun: error: gl3328: task 16: Killed
+srun: error: gl3329: task 24: Killed
+[row] Error executing command.

@@ -47,7 +47,6 @@ walltime.per_submission = "12:00:00"
 [[action.group.include]]
 condition = ["/compression", "==", false]
 
-
 [[action]]
 name = "analyze_compression"
 previous_actions = ["equilibrate_compression"]
