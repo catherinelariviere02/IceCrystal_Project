@@ -1,1 +1,2 @@
 data/ # don't save data outputs (large files sometimes)
+*.out # don't save out files 
