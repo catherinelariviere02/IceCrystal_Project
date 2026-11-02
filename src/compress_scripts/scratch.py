@@ -601,40 +601,117 @@ import signac
 
 ### Shape analysis between my and sumitava's code : 
 
-shapes_GSD_C = "/Users/clarivi/Desktop/Research/IceCrystal_Project/inputs_updated/141_H2O_0/output_files/141_H2O_0_uc_pf0p2.gsd"
-shapes_GSD_S = "/Users/clarivi/Downloads/141_H2O_0_compression_traj_pf0p6.gsd"
+# shapes_GSD_C = "/Users/clarivi/Desktop/Research/IceCrystal_Project/inputs_updated/141_H2O_0/output_files/141_H2O_0_uc_pf0p2.gsd"
+# shapes_GSD_S = "/Users/clarivi/Downloads/141_H2O_0_compression_traj_pf0p6.gsd"
 
-traj_c = gsd.hoomd.open(shapes_GSD_C, mode="r") 
-traj_s = gsd.hoomd.open(shapes_GSD_S, mode= "r")
+# traj_c = gsd.hoomd.open(shapes_GSD_C, mode="r") 
+# traj_s = gsd.hoomd.open(shapes_GSD_S, mode= "r")
 
-shapes_c = traj_c[0].particles.type_shapes
-shapes_s = traj_s[0].particles.type_shapes 
+# shapes_c = traj_c[0].particles.type_shapes
+# shapes_s = traj_s[0].particles.type_shapes 
 
-o_verts_c = shapes_c[0]["vertices"]
-o_verts_s = shapes_s[0]["vertices"]
-print(shapes_c)
-print(shapes_s)
+# o_verts_c = shapes_c[0]["vertices"]
+# o_verts_s = shapes_s[0]["vertices"]
+# print(shapes_c)
+# print(shapes_s)
 
-c_oxygen = coxeter.shapes.ConvexPolyhedron(
-    o_verts_c
-)
-s_oxygen = coxeter.shapes.ConvexPolyhedron(
-    o_verts_s
-)
+# c_oxygen = coxeter.shapes.ConvexPolyhedron(
+#     o_verts_c
+# )
+# s_oxygen = coxeter.shapes.ConvexPolyhedron(
+#     o_verts_s
+# )
 
-c_oxygen.centroid = [0.0, 0.0, 0.0]
-s_oxygen.centroid = [0.0, 0.0, 0.0]
-#fig, ax = plt.subplots(projection = "3d")
+# c_oxygen.centroid = [0.0, 0.0, 0.0]
+# s_oxygen.centroid = [0.0, 0.0, 0.0]
+# #fig, ax = plt.subplots(projection = "3d")
 
-# fig = plt.figure(figsize=plt.figaspect(0.5))
-# ax = fig.add_subplot(1, 2, 1, projection='3d')
+# # fig = plt.figure(figsize=plt.figaspect(0.5))
+# # ax = fig.add_subplot(1, 2, 1, projection='3d')
 
-c_oxygen.plot(plot_verts = True)
-plt.show() 
+# c_oxygen.plot(plot_verts = True)
+# plt.show() 
 
-s_oxygen.plot(plot_verts = True)
-plt.show()
+# s_oxygen.plot(plot_verts = True)
+# plt.show()
 
-print(f"cat oxygen centroid {c_oxygen.centroid}")
-print(f"sum. oxygen centroid {s_oxygen.centroid}")
+# print(f"cat oxygen centroid {c_oxygen.centroid}")
+# print(f"sum. oxygen centroid {s_oxygen.centroid}")
 
+
+### FIND SPACE GROUP OF CIF FILE
+
+# import pymatgen.symmetry 
+# import pymatgen.io.cif as cif
+
+
+# cif_file = "/home/clarivi/projects/IceCrystal_Project/inputs_updated/141_H2O_com/141_H2O_com.cif"
+# structure = cif.CifParser(cif_file).parse_structures()[0]
+
+
+# sp_analyzer = pymatgen.symmetry.analyzer.SpacegroupAnalyzer(structure)
+# sp_number = sp_analyzer.get_space_group_number()
+# print(sp_number)
+
+
+### INITIALIZE FROM DIFFERENT JOB ### 
+from utils import create_simulation, get_shape_info
+import signac 
+
+project = signac.init_project("/home/clarivi/projects/IceCrystal_Project/data/data/")
+
+conditions = {"crystal_name":"141_H2O_2", "pf":0.63, "seed":2}
+jobs = [job for job in project.find_jobs(conditions)]
+print(jobs) 
+
+for job in project.find_jobs(conditions): 
+    directory = "/home/clarivi/projects/IceCrystal_Project/data/data/workspace/e2f6816f47f4213870e5e3daa4b8bc6f/"
+    gsdfile = directory + "trajectory.gsd" # "92_H2O_IceXI_nvt_traj_pf0p6_0.gsd"
+
+    traj = gsd.hoomd.open(gsdfile, mode="r") 
+
+    # INITIALIZE SIMULATION
+    cpu = hoomd.device.CPU()
+    simulation = hoomd.Simulation(device = cpu, seed = 1)
+    simulation.timestep = 0
+
+    # create state from unit cell 
+    simulation.create_state_from_gsd(filename = gsdfile, frame = -1)
+
+    # create larger cell from unit cell (replication)
+    
+    hoomd.write.GSD.write(state = simulation.state, 
+                        mode = "wb", 
+                        filename = job.fn(f"initial_temp.gsd"))
+
+    _, _, _, shape_json_dicts, _, _ = get_shape_info(job.sp.inputfile,
+                                                         job.sp.replicas, 
+                                                         job.sp.atoms, 
+                                                         job.sp.crystal_name, 
+                                                         job.sp.stoich)
+        
+    simulation = create_simulation(filename = job.fn("initial_temp.gsd"), 
+                                    frame = 0, 
+                                    shapes = shape_json_dicts,
+                                    atoms = job.sp.atoms, 
+                                    updated = False if "updated" not in job.sp.inputfile else True,
+                                    communicator = None)
+    
+    os.remove(job.fn("initial_temp.gsd")) #remove the initialized GSD without shape information 
+
+    logger = hoomd.logging.Logger()
+    logger.add(simulation.operations.integrator, quantities=["type_shapes"])
+
+    simulation.run(1)
+    print(f"job (phase: {job.sp.crystal_name}) ended after {simulation.walltime} seconds, with {simulation.operations.integrator.overlaps} overlaps!")
+
+    if simulation.operations.integrator.overlaps == 0: 
+        hoomd.write.GSD.write(state = simulation.state, 
+                        mode = "wb", 
+                        filename = job.fn(f"initialize.gsd"), 
+                        logger = logger)
+    else: 
+        hoomd.write.GSD.write(state = simulation.state, 
+                                    mode = "wb", 
+                                    filename = job.fn(f"initialize_overlaps.gsd"), 
+                                    logger = logger)

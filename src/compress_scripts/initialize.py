@@ -33,6 +33,7 @@ def initialize_stability(job):
     hoomd.write.GSD.write(state = simulation.state, 
                         mode = "wb", 
                         filename = job.fn(f"initial_temp.gsd"))
+                        
     
 def initialize_lattice(job): 
     """
@@ -72,6 +73,8 @@ def initialize_lattice(job):
     with gsd.hoomd.open(name=job.fn("initial_temp.gsd"), 
                         mode="w") as f: 
         f.append(frame)
+
+
 
 def initialize(*jobs):
     """

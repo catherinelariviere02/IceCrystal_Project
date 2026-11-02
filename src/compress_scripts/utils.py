@@ -23,12 +23,12 @@ def create_simulation(filename, frame, shapes, atoms, updated, communicator = No
 
     for i, shape in enumerate(shapes): 
         if updated:
-            cpu.notice("not updated")
+            cpu.notice("updated")
             mc.shape[atoms[i]] = dict(
                 vertices = shape["9_vertices"]
             )
         else: 
-            cpu.notice("updated")
+            cpu.notice("not updated")
             mc.shape[atoms[i]] = dict(
                 vertices = shape["8_vertices"]
             )
